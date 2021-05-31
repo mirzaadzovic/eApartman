@@ -23,10 +23,10 @@ namespace eApartman.Services
             return entity;
         }
 
-        public virtual T GetById(int Id)
+        public virtual T GetById(int id)
         {
             var set = _context.Set<TDb>();
-            var entity = set.Find(Id);
+            var entity = set.Find(id);
             return _mapper.Map<T>(entity);
         }
     }

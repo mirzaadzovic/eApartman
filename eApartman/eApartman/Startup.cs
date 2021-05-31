@@ -35,7 +35,7 @@ namespace eApartman
             services.AddDbContext<eApartmanContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("LocalDB")));
             services.AddScoped<ICRUDService<Model.Drzava, object, DrzavaUpsertRequest, DrzavaUpsertRequest>, BaseCRUDService<Model.Drzava, Drzava, DrzavaUpsertRequest, DrzavaUpsertRequest, object>>();
-            services.AddScoped<ICRUDService<Model.Grad, object, GradUpsertRequest, GradUpsertRequest>, BaseCRUDService<Model.Grad, Grad, GradUpsertRequest, GradUpsertRequest, object>>();
+            services.AddScoped<ICRUDService<Model.Grad, GradSearchObject, GradUpsertRequest, GradUpsertRequest>, GradService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

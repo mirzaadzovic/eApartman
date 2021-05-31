@@ -4,10 +4,9 @@ using System.Text;
 
 namespace eApartman.Model.Requests
 {
-    public class GradUpsertRequest
+    public class GradSearchObject
     {
         public string Naziv { get; set; }
-        public int? PostanskiBroj { get; set; }
-        public int? DrzavaId { get; set; }
+        public bool IncludeDrzava { get; set; }
     }
 }

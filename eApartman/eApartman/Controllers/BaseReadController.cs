@@ -22,9 +22,9 @@ namespace eApartman.Controllers
             return _service.Get(search);
         }
         [HttpGet("{id}")]
-        public virtual T GetById(int Id)
+        public virtual T GetById(int id)
         {
-            return _service.GetById(Id);
+            return _service.GetById(id);
         }
     }
 }

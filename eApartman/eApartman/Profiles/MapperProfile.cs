@@ -13,6 +13,7 @@ namespace eApartman.Profiles
         public MapperProfile()
         {
             CreateMap<Grad, Model.Grad>().ReverseMap();
+            CreateMap<GradUpsertRequest, Grad>().ReverseMap();
             CreateMap<Drzava, Model.Drzava>().ReverseMap();
             CreateMap<DrzavaUpsertRequest, Database.Drzava>().ReverseMap();
         }

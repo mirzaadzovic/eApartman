@@ -21,9 +21,9 @@ namespace eApartman.Services
             return _mapper.Map<T>(entity);
         }
 
-        public virtual T Update(int Id, TUpdate request)
+        public virtual T Update(int id, TUpdate request)
         {
-            var entity = _context.Set<TDb>().Find(Id);
+            var entity = _context.Set<TDb>().Find(id);
             _mapper.Map(request, entity);
             _context.SaveChanges();
 

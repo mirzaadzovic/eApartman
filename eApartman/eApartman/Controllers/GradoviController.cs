@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace eApartman.Controllers
 {
-    public class GradoviController:BaseCRUDController<Model.Grad, Grad, GradUpsertRequest, GradUpsertRequest, object>
+    public class GradoviController:BaseCRUDController<Model.Grad, Grad, GradUpsertRequest, GradUpsertRequest, GradSearchObject>
     {
-        public GradoviController(ICRUDService<Model.Grad, object, GradUpsertRequest, GradUpsertRequest> service)
+        public GradoviController(ICRUDService<Model.Grad, GradSearchObject, GradUpsertRequest, GradUpsertRequest> service)
             :base(service)
         {
 
