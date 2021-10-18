@@ -29,5 +29,14 @@ namespace eApartman.Services
 
             return _mapper.Map<T>(entity);
         }
+        public virtual T Delete(int id)
+        {
+            var entity = _context.Set<TDb>().Find(id);
+
+            _context.Remove(entity);
+            _context.SaveChanges();
+
+            return _mapper.Map<T>(entity);
+        }
     }
 }

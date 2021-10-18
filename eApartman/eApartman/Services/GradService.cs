@@ -23,13 +23,9 @@ namespace eApartman.Services
                 if (!string.IsNullOrEmpty(search?.Naziv))
                 {
                     set=set.Where(g => g.Naziv == search.Naziv);
-                }
-                if (search.IncludeDrzava)
-                {
-                    set=set.Include(g => g.Drzava);
-                }
+                }              
             }
-
+            set = set.Include(g => g.Drzava);
             var entity = _mapper.Map<List<Model.Grad>>(set);
             
             return entity;
@@ -37,7 +33,8 @@ namespace eApartman.Services
         public override Model.Grad GetById(int id)
         {
             var set = _context.Set<Grad>()
-                .Include(g => g.Drzava);
+                .Include(g => g.Drzava)
+                .Include(g=>g.Adresas);
 
             var entity = set.Where(g => g.GradId == id).FirstOrDefault();
 

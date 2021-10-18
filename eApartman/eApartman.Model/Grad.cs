@@ -12,7 +12,7 @@ namespace eApartman.Model
         public string Naziv { get; set; }
         public int? PostanskiBroj { get; set; }
         public int? DrzavaId { get; set; }
-
         public virtual Drzava Drzava { get; set; }
+        public ICollection<Adresa> Adresas { get; set; }
     }
 }

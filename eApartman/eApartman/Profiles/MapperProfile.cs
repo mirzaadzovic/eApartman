@@ -12,10 +12,19 @@ namespace eApartman.Profiles
     {
         public MapperProfile()
         {
+            CreateMap<Database.Korisnik, Model.Korisnik>().ReverseMap();
+            CreateMap<Database.KorisnikUloga, Model.KorisnikUloga>().ReverseMap();
+            CreateMap<Database.Uloga, Model.Uloga>().ReverseMap();
+            CreateMap<KorisnikInsertRequest, Korisnik>().ReverseMap();
+            CreateMap<KorisnikUpdateRequest, Korisnik>().ReverseMap();
             CreateMap<Grad, Model.Grad>().ReverseMap();
+            CreateMap<Drzava, Model.Grad>().ReverseMap();
             CreateMap<GradUpsertRequest, Grad>().ReverseMap();
             CreateMap<Drzava, Model.Drzava>().ReverseMap();
             CreateMap<DrzavaUpsertRequest, Database.Drzava>().ReverseMap();
+            CreateMap<Adresa, Model.Adresa>().ReverseMap();
+            CreateMap<AdresaUpsertRequest, Adresa>();
+            CreateMap<Apartman, Model.Apartman>();
         }
     }
 }

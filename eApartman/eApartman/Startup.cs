@@ -1,6 +1,8 @@
 using eApartman.Database;
 using eApartman.Model.Requests;
+using eApartman.Security;
 using eApartman.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,12 +33,41 @@ namespace eApartman
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(Startup));
-            services.AddControllers();
-            services.AddSwaggerGen();
+            services.AddControllers()
+                .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "eProdaja API", Version = "v1" });
+
+                c.AddSecurityDefinition("basicAuth", new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "basic"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "basicAuth" }
+                        },
+                        new string[]{}
+                    }
+                });
+            });
+
             services.AddDbContext<eApartmanContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("LocalDB")));
+                options.UseSqlServer(Configuration.GetConnectionString("BackupDB")));
             services.AddScoped<ICRUDService<Model.Drzava, object, DrzavaUpsertRequest, DrzavaUpsertRequest>, BaseCRUDService<Model.Drzava, Drzava, DrzavaUpsertRequest, DrzavaUpsertRequest, object>>();
             services.AddScoped<ICRUDService<Model.Grad, GradSearchObject, GradUpsertRequest, GradUpsertRequest>, GradService>();
+            services.AddScoped<ICRUDService<Model.Apartman, object, object, object>, BaseCRUDService<Model.Apartman, Apartman, object, object, object>>();
+            services.AddScoped<ICRUDService<Model.Adresa, object, AdresaUpsertRequest, AdresaUpsertRequest>, AdreseService>();
+            services.AddScoped<ICRUDService<Model.Korisnik, KorisnikSearchObject, KorisnikInsertRequest, KorisnikUpdateRequest>, KorisniciService>();
+            services.AddScoped<IKorisniciService, KorisniciService>();
+
+            services.AddAuthentication("BasicAuthentication")
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +77,7 @@ namespace eApartman
             {
                 app.UseDeveloperExceptionPage();
             }
+	   
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
@@ -52,13 +85,14 @@ namespace eApartman
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");              
             });
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

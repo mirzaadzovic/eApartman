@@ -4,9 +4,11 @@ using System.Text;
 
 namespace eApartman.Model.Requests
 {
-    public class GradSearchObject
+    public class AdresaUpsertRequest
     {
         public string Naziv { get; set; }
-        public bool IncludeAdrese { get; set; }
+        public int Broj { get; set; }
+        public int? GradId { get; set; }
+
     }
 }
