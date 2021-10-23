@@ -14,5 +14,9 @@ namespace eApartman.Model
         public int? DrzavaId { get; set; }
         public virtual Drzava Drzava { get; set; }
         public ICollection<Adresa> Adresas { get; set; }
+        public override string ToString()
+        {
+            return Naziv;
+        }
     }
 }

@@ -25,6 +25,11 @@ namespace eApartman.Profiles
             CreateMap<Adresa, Model.Adresa>().ReverseMap();
             CreateMap<AdresaUpsertRequest, Adresa>();
             CreateMap<Apartman, Model.Apartman>();
+            CreateMap<ApartmanSlika, Model.ApartmanSlika>().ReverseMap();
+            CreateMap<ApartmanTip, Model.ApartmanTip>().ReverseMap();
+            CreateMap<Rezervacija, Model.Rezervacija>().ReverseMap();
+            CreateMap<Utisak, Model.Utisak>().ReverseMap();
+
         }
     }
 }

@@ -8,5 +8,7 @@ namespace eApartman.Model.Requests
     {
         public string Naziv { get; set; }
         public bool IncludeAdrese { get; set; }
+        public string Drzava { get; set; }
+        public int DrzavaId { get; set; }
     }
 }

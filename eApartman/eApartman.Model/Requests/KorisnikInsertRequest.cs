@@ -1,6 +1,6 @@
-﻿using System;
+﻿using eApartman.Model.DataAttributes;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace eApartman.Model.Requests
@@ -9,10 +9,11 @@ namespace eApartman.Model.Requests
     {
         public string Ime { get; set; }
         public string Prezime { get; set; }
+        //[BezDvotacke]
         public string Username { get; set; }
-        [EmailAddress]
         public string Email { get; set; }
         public string Telefon { get; set; }
+        //[BezDvotacke]
         public string Password{ get; set; }
         public string PasswordPotvrda { get; set; }
         public DateTime? DatumRegistracije { get; set; }

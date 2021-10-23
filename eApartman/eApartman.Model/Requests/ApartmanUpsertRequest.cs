@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace eApartman.Model
+namespace eApartman.Model.Requests
 {
-    public class Apartman
+    public class ApartmanUpsertRequest
     {
-        public int ApartmanId { get; set; }
         public string Naziv { get; set; }
         public int? VlasnikId { get; set; }
         public virtual Korisnik Vlasnik { get; set; }
@@ -21,10 +20,5 @@ namespace eApartman.Model
         public byte[] SlikaProfilnaFile { get; set; }
         public byte[] SlikaProfilnaThumbnail { get; set; }
         public int? ApartmanTipId { get; set; }
-
-        public virtual ApartmanTip ApartmanTip { get; set; }
-        public virtual ICollection<ApartmanSlika> ApartmanSlikas { get; set; }
-        public virtual ICollection<Rezervacija> Rezervacijas { get; set; }
-        public virtual ICollection<Utisak> Utisaks { get; set; }
     }
 }

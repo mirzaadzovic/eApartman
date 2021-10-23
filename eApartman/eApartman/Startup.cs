@@ -59,12 +59,14 @@ namespace eApartman
 
             services.AddDbContext<eApartmanContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("BackupDB")));
-            services.AddScoped<ICRUDService<Model.Drzava, object, DrzavaUpsertRequest, DrzavaUpsertRequest>, BaseCRUDService<Model.Drzava, Drzava, DrzavaUpsertRequest, DrzavaUpsertRequest, object>>();
+            
+            services.AddScoped<ICRUDService<Model.Drzava, DrzavaSearchObject, DrzavaUpsertRequest, DrzavaUpsertRequest>, DrzaveService>();
             services.AddScoped<ICRUDService<Model.Grad, GradSearchObject, GradUpsertRequest, GradUpsertRequest>, GradService>();
-            services.AddScoped<ICRUDService<Model.Apartman, object, object, object>, BaseCRUDService<Model.Apartman, Apartman, object, object, object>>();
             services.AddScoped<ICRUDService<Model.Adresa, object, AdresaUpsertRequest, AdresaUpsertRequest>, AdreseService>();
             services.AddScoped<ICRUDService<Model.Korisnik, KorisnikSearchObject, KorisnikInsertRequest, KorisnikUpdateRequest>, KorisniciService>();
             services.AddScoped<IKorisniciService, KorisniciService>();
+            services.AddScoped<ICRUDService<Model.Apartman, ApartmanSearchObject, ApartmanUpsertRequest, ApartmanUpsertRequest>, ApartmaniService>();
+            services.AddScoped<IReadService<Model.ApartmanTip, object>, BaseReadService<Model.ApartmanTip, object, ApartmanTip>>();
 
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);

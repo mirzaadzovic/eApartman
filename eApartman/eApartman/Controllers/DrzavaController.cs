@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace eApartman.Controllers
 {
-    public class DrzavaController:BaseCRUDController<Model.Drzava, Drzava, DrzavaUpsertRequest, DrzavaUpsertRequest, object>
+    public class DrzavaController:BaseCRUDController<Model.Drzava, Drzava, DrzavaUpsertRequest, DrzavaUpsertRequest, DrzavaSearchObject>
     {
-        public DrzavaController(ICRUDService<Model.Drzava, object, DrzavaUpsertRequest, DrzavaUpsertRequest> service):base(service)
+        public DrzavaController(ICRUDService<Model.Drzava, DrzavaSearchObject, DrzavaUpsertRequest, DrzavaUpsertRequest> service):base(service)
         {
 
         }

@@ -18,15 +18,21 @@ namespace eApartman.Services
         public override IEnumerable<Model.Grad> Get(GradSearchObject search)
         {
             var set = _context.Set<Grad>().AsQueryable();
+            set = set.Include(g => g.Drzava);
+
             if (search != null)
             {
                 if (!string.IsNullOrEmpty(search?.Naziv))
                 {
                     set=set.Where(g => g.Naziv == search.Naziv);
-                }              
+                }
+                if(search.DrzavaId>0)
+                {
+                    set = set.Where(g => g.DrzavaId == search.DrzavaId);
+                }
             }
-            set = set.Include(g => g.Drzava);
-            var entity = _mapper.Map<List<Model.Grad>>(set);
+
+            var entity = _mapper.Map<List<Model.Grad>>(set.OrderBy(g=>g.Drzava.Naziv).ThenBy(g=>g.Naziv));
             
             return entity;
         }

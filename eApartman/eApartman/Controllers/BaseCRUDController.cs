@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace eApartman.Controllers
 {
-    [Authorize]
     public class BaseCRUDController<T, TDb, TInsert, TUpdate, TSearch>:BaseReadController<T, TSearch> where T:class where TDb:class where TInsert:class where TUpdate:class where TSearch:class
     {
         protected readonly new ICRUDService<T, TSearch, TInsert, TUpdate> _service;
@@ -21,17 +20,17 @@ namespace eApartman.Controllers
         }
 
         [HttpPost]
-        public T Insert([FromBody]TInsert request)
+        public virtual T Insert([FromBody]TInsert request)
         {
             return _service.Insert(request);
         }
         [HttpPut("{id}")]
-        public T Update(int id, [FromBody]TUpdate request)
+        public virtual T Update(int id, [FromBody]TUpdate request)
         {
             return _service.Update(id, request);
         }
         [HttpDelete("{id}")]
-        public T Delete(int id)
+        public virtual T Delete(int id)
         {
             return _service.Delete(id);
         }
