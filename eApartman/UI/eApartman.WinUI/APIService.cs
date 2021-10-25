@@ -52,14 +52,14 @@ namespace eApartman.WinUI
 
         public async Task<T> Update<T>(int id, object request)
         {
-            string url = _url;
-            if (request != null)
-            {
-                url += "?";
-                url += await request.ToQueryString();
-            }
+            string url = $"{_url}/{id}";
 
             return await url.WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
+        }
+        public async Task<T> Delete<T>(int id)
+        {
+            string url = $"{_url}/{id}";
+            return await url.WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<T>();
         }
     }
 }

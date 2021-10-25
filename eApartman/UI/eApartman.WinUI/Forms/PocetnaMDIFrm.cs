@@ -92,9 +92,15 @@ namespace eApartman.WinUI.Forms
 
         private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (Form childForm in MdiChildren)
+            var dialogResult = MessageBox.Show("Jeste li sigurni da želite zatvoriti sve prozore?", "Poruka"
+                , MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if(dialogResult==DialogResult.Yes)
             {
-                childForm.Close();
+                foreach (Form childForm in MdiChildren)
+                {
+                    childForm.Close();
+                }
             }
         }
 

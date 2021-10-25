@@ -1,5 +1,6 @@
 ﻿using eApartman.Model;
 using eApartman.Model.Requests;
+using eApartman.WinUI.Helpers;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
@@ -20,56 +21,79 @@ namespace eApartman.WinUI.Forms.Apartmani
         public ApartmaniPregledFrm()
         {
             InitializeComponent();
-          
+            dgvApartmani.AutoGenerateColumns = false;
         }
 
         private async void ApartmaniPregledFrm_Load(object sender, EventArgs e)
         {
             try
             {
-                ApartmanSearchObject request = new ApartmanSearchObject()
-                {
-                    VlasnikId = APIService.Korisnik.KorisnikId
-                };
-                LoadKorisnik();
-                dgvApartmani.DataSource = await LoadApartmani(request);
+                await LoadApartmani();
             }
             catch
             {
                 MessageBox.Show("Došlo je do greške", "Greška", MessageBoxButtons.OK,
                      MessageBoxIcon.Error);
             }
-            
-
         }
 
         private async void btnPretrazi_Click(object sender, EventArgs e)
         {
             if(txtNaziv.Text!="")
             {
-                ApartmanSearchObject request = new ApartmanSearchObject()
-                {
-                    VlasnikId = APIService.Korisnik.KorisnikId,
-                    Naziv = txtNaziv.Text
-                };
-                dgvApartmani.DataSource = await LoadApartmani(request);
+                await LoadApartmani();
             }
         }
-        private async Task<List<Apartman>> LoadApartmani(ApartmanSearchObject request)
+        private async Task LoadApartmani()
         {
-            return await _service.Get<List<Apartman>>(request);
-        }
-        private void LoadKorisnik()
-        {
-            txtUsername.Text = APIService.Korisnik.Username;
-            
+            ApartmanSearchObject request = new ApartmanSearchObject()
+            {
+                VlasnikId = APIService.Korisnik.KorisnikId,
+            };
+
+            if (txtNaziv.Text != "") request.Naziv = txtNaziv.Text;
+
+            dgvApartmani.DataSource = await _service.Get<List<Apartman>>(request);
         }
 
-        private void btnDodaj_Click(object sender, EventArgs e)
+
+        private async void btnDodaj_Click(object sender, EventArgs e)
         {
             ApartmaniDodavanjeFrm frm = new ApartmaniDodavanjeFrm();
             frm.MdiParent = this.MdiParent;
             frm.Show();
+            await LoadApartmani();
+        }
+
+        private async void dgvApartmani_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Apartman apartman=dgvApartmani.SelectedRows[0].DataBoundItem as Apartman;
+            ApartmaniDodavanjeFrm frm = new ApartmaniDodavanjeFrm(apartman);
+            frm.ShowDialog();
+
+            await LoadApartmani();
+        }
+
+        private async void dgvApartmani_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            byte[] imgStream = (dgvApartmani.SelectedRows[0].DataBoundItem as Apartman).SlikaProfilnaFile;
+            Image img = ImageBytesConverter.BytesToImage(imgStream);
+            pbApartman.Image = img;
+            
+            if(e.ColumnIndex==dgvApartmani.ColumnCount-1)
+            {
+
+                await DeleteApartman();
+            }
+        }
+        public async Task DeleteApartman()
+        {
+            Apartman apartman = dgvApartmani.SelectedRows[0].DataBoundItem as Apartman;
+            if (MessageBox.Show($"Želite li potvrditi brisanje apartmana {apartman.Naziv}", "Pitanje", MessageBoxButtons.YesNo)==DialogResult.Yes)
+            {
+                Apartman obrisan = await _service.Delete<Apartman>(apartman.ApartmanId);
+                MessageBox.Show($"Apartman {obrisan.Naziv} je obrisan.");
+            }
         }
     }
 }

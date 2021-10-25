@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace eApartman.Model
 {
@@ -21,7 +22,12 @@ namespace eApartman.Model
         public byte[] SlikaProfilnaFile { get; set; }
         public byte[] SlikaProfilnaThumbnail { get; set; }
         public int? ApartmanTipId { get; set; }
-
+        public string AdresaNaziv => Adresa?.Naziv;
+        public string GradNaziv => Adresa?.Grad?.Naziv;
+        public string ApartmanTipNaziv => ApartmanTip?.ApartmanTipNaziv;
+        public int? DrzavaId => Adresa?.Grad?.DrzavaId;
+        public int? GradId => Adresa?.GradId;
+        public int CijenaInt => ((int)Cijena);
         public virtual ApartmanTip ApartmanTip { get; set; }
         public virtual ICollection<ApartmanSlika> ApartmanSlikas { get; set; }
         public virtual ICollection<Rezervacija> Rezervacijas { get; set; }

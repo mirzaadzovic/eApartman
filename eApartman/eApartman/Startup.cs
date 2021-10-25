@@ -62,7 +62,7 @@ namespace eApartman
             
             services.AddScoped<ICRUDService<Model.Drzava, DrzavaSearchObject, DrzavaUpsertRequest, DrzavaUpsertRequest>, DrzaveService>();
             services.AddScoped<ICRUDService<Model.Grad, GradSearchObject, GradUpsertRequest, GradUpsertRequest>, GradService>();
-            services.AddScoped<ICRUDService<Model.Adresa, object, AdresaUpsertRequest, AdresaUpsertRequest>, AdreseService>();
+            services.AddScoped<ICRUDService<Model.Adresa, AdresaSearchObject, AdresaUpsertRequest, AdresaUpsertRequest>, AdreseService>();
             services.AddScoped<ICRUDService<Model.Korisnik, KorisnikSearchObject, KorisnikInsertRequest, KorisnikUpdateRequest>, KorisniciService>();
             services.AddScoped<IKorisniciService, KorisniciService>();
             services.AddScoped<ICRUDService<Model.Apartman, ApartmanSearchObject, ApartmanUpsertRequest, ApartmanUpsertRequest>, ApartmaniService>();

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace eApartman.Controllers
 {
-    public class AdreseController:BaseCRUDController<Model.Adresa, Adresa, AdresaUpsertRequest, AdresaUpsertRequest, object>
+    public class AdreseController:BaseCRUDController<Model.Adresa, Adresa, AdresaUpsertRequest, AdresaUpsertRequest, AdresaSearchObject>
     {
-        public AdreseController(ICRUDService<Model.Adresa, object, AdresaUpsertRequest, AdresaUpsertRequest> service)
+        public AdreseController(ICRUDService<Model.Adresa, AdresaSearchObject, AdresaUpsertRequest, AdresaUpsertRequest> service)
             :base(service)
         {
 

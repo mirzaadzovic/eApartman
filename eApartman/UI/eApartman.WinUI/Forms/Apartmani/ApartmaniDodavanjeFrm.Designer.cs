@@ -46,6 +46,8 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.button2 = new System.Windows.Forms.Button();
             this.txtNaslov = new MaterialSkin.Controls.MaterialLabel();
             this.cmbTipApartmana = new MaterialSkin.Controls.MaterialComboBox();
+            this.ofdSlika = new System.Windows.Forms.OpenFileDialog();
+            this.btnDodajGrad = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +68,7 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.txtUsername.Depth = 0;
             this.txtUsername.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.txtUsername.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
+            this.txtUsername.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.txtUsername.Location = new System.Drawing.Point(400, 195);
             this.txtUsername.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtUsername.Name = "txtUsername";
@@ -155,7 +158,7 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.cmbGrad.MaxDropDownItems = 4;
             this.cmbGrad.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbGrad.Name = "cmbGrad";
-            this.cmbGrad.Size = new System.Drawing.Size(302, 35);
+            this.cmbGrad.Size = new System.Drawing.Size(218, 35);
             this.cmbGrad.StartIndex = 0;
             this.cmbGrad.TabIndex = 8;
             this.cmbGrad.UseAccent = false;
@@ -263,6 +266,7 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.btnSacuvaj.TabIndex = 19;
             this.btnSacuvaj.Text = "SAČUVAJ";
             this.btnSacuvaj.UseVisualStyleBackColor = false;
+            this.btnSacuvaj.Click += new System.EventHandler(this.btnSacuvaj_Click);
             // 
             // pbSlika
             // 
@@ -289,6 +293,7 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.btnSlika.TabIndex = 22;
             this.btnSlika.Text = "DODAJ SLIKU...";
             this.btnSlika.UseVisualStyleBackColor = false;
+            this.btnSlika.Click += new System.EventHandler(this.btnSlika_Click);
             // 
             // button2
             // 
@@ -343,13 +348,31 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.cmbTipApartmana.UseAccent = false;
             this.cmbTipApartmana.UseTallSize = false;
             // 
+            // btnDodajGrad
+            // 
+            this.btnDodajGrad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnDodajGrad.FlatAppearance.BorderColor = System.Drawing.Color.Honeydew;
+            this.btnDodajGrad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDodajGrad.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.btnDodajGrad.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnDodajGrad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDodajGrad.ImageKey = "(none)";
+            this.btnDodajGrad.Location = new System.Drawing.Point(306, 399);
+            this.btnDodajGrad.Name = "btnDodajGrad";
+            this.btnDodajGrad.Size = new System.Drawing.Size(68, 33);
+            this.btnDodajGrad.TabIndex = 26;
+            this.btnDodajGrad.Text = "...";
+            this.btnDodajGrad.UseVisualStyleBackColor = false;
+            this.btnDodajGrad.Click += new System.EventHandler(this.btnDodajGrad_Click);
+            // 
             // ApartmaniDodavanjeFrm
             // 
             this.AcceptButton = this.btnSacuvaj;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(887, 648);
+            this.ClientSize = new System.Drawing.Size(891, 648);
+            this.Controls.Add(this.btnDodajGrad);
             this.Controls.Add(this.cmbTipApartmana);
             this.Controls.Add(this.txtNaslov);
             this.Controls.Add(this.button2);
@@ -372,7 +395,6 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
             this.ShowIcon = false;
             this.Sizable = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "eApartman";
             this.Load += new System.EventHandler(this.ApartmaniDodavanjeFrm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbUser)).EndInit();
@@ -389,7 +411,6 @@ namespace eApartman.WinUI.Forms.Apartmani
         private MaterialSkin.Controls.MaterialTextBox txtNaziv;
         private MaterialSkin.Controls.MaterialTextBox txtAdresa;
         private MaterialSkin.Controls.MaterialComboBox cmbDrzava;
-        private MaterialSkin.Controls.MaterialComboBox cmbGrad;
         private MaterialSkin.Controls.MaterialTextBox txtBroj;
         private MaterialSkin.Controls.MaterialTextBox txtCijena;
         private MaterialSkin.Controls.MaterialTextBox txtOsoba;
@@ -401,5 +422,8 @@ namespace eApartman.WinUI.Forms.Apartmani
         private System.Windows.Forms.Button button2;
         private MaterialSkin.Controls.MaterialLabel txtNaslov;
         private MaterialSkin.Controls.MaterialComboBox cmbTipApartmana;
+        private System.Windows.Forms.OpenFileDialog ofdSlika;
+        private System.Windows.Forms.Button btnDodajGrad;
+        private MaterialSkin.Controls.MaterialComboBox cmbGrad;
     }
 }

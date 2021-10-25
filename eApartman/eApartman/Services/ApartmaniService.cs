@@ -29,6 +29,16 @@ namespace eApartman.Services
 
             return _mapper.Map<List<Model.Apartman>>(set);
         }
+        public override Model.Apartman Update(int id, ApartmanUpsertRequest request)
+        {
+            var entity = _context.Set<Apartman>().Find(id);
+            _mapper.Map(request, entity);
+            _context.Entry(entity).Property(a=>a.VlasnikId).IsModified = false;
+            _context.SaveChanges();
+         
+
+            return _mapper.Map<Model.Apartman>(entity);
+        }
 
         IQueryable<Apartman> GetSlobodniApartmani(IQueryable<Apartman> set, DateTime checkin, DateTime checkout)
         {
@@ -51,10 +61,12 @@ namespace eApartman.Services
             set = GetSlobodniApartmani(set, search.CheckIn, search.CheckOut);
 
             if (search.IncludeRezervacije)
-                set.Include("Rezervacijas.Gost");
+                set=set.Include("Rezervacijas.Gost");
 
             if (search.IncludeSlike)
-                set.Include("Slikas");
+                set=set.Include("Slikas");
+
+            set=set.Include("ApartmanTip");
 
             if (!string.IsNullOrWhiteSpace(search.Grad) && search.Grad != "")
             {

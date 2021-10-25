@@ -11,6 +11,7 @@ namespace eApartman.Model.Requests
         public string Grad { get; set; }
         public string Tip { get; set; }
         public int Osoba { get; set; }
+        public bool IncludeTip { get; set; }
         public bool IncludeRezervacije { get; set; }
         public bool IncludeSlike { get; set; }
         public bool Parking { get; set; }

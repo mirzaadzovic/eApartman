@@ -9,16 +9,16 @@ namespace eApartman.Model
     public class Korisnik
     {
         public int KorisnikId { get; set; }
-        //[Required(AllowEmptyStrings = false)]
-        //[MinLength(2)]
+        [Required(AllowEmptyStrings = false)]
+        [MinLength(2)]
         public string Ime { get; set; }
-        //[Required(AllowEmptyStrings = false)]
-        //[MinLength(2)]
+        [Required(AllowEmptyStrings = false)]
+        [MinLength(2)]
         public string Prezime { get; set; }
-        //[MinLength(3)]
-        //[Required(AllowEmptyStrings = false, ErrorMessage = "Neispravan unos!")]
+        [MinLength(3)]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Neispravan unos!")]
         public string Username { get; set; }
-        //[EmailAddress()]
+        [EmailAddress]
         public string Email { get; set; }
         public string Telefon { get; set; }
         public DateTime? DatumRegistracije { get; set; }
