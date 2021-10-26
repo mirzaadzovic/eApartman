@@ -43,11 +43,13 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.pbSlika = new System.Windows.Forms.PictureBox();
             this.btnSlika = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnGalerija = new System.Windows.Forms.Button();
             this.txtNaslov = new MaterialSkin.Controls.MaterialLabel();
             this.cmbTipApartmana = new MaterialSkin.Controls.MaterialComboBox();
             this.ofdSlika = new System.Windows.Forms.OpenFileDialog();
             this.btnDodajGrad = new System.Windows.Forms.Button();
+            this.ofdGalerija = new System.Windows.Forms.OpenFileDialog();
+            this.txtGalerijaCount = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             this.SuspendLayout();
@@ -295,21 +297,22 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.btnSlika.UseVisualStyleBackColor = false;
             this.btnSlika.Click += new System.EventHandler(this.btnSlika_Click);
             // 
-            // button2
+            // btnGalerija
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.SystemColors.Control;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.ImageKey = "(none)";
-            this.button2.Location = new System.Drawing.Point(589, 513);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(203, 36);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "DODAJ GALERIJU...";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnGalerija.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnGalerija.FlatAppearance.BorderColor = System.Drawing.Color.GhostWhite;
+            this.btnGalerija.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGalerija.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.btnGalerija.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnGalerija.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGalerija.ImageKey = "(none)";
+            this.btnGalerija.Location = new System.Drawing.Point(589, 513);
+            this.btnGalerija.Name = "btnGalerija";
+            this.btnGalerija.Size = new System.Drawing.Size(203, 36);
+            this.btnGalerija.TabIndex = 23;
+            this.btnGalerija.Text = "DODAJ GALERIJU...";
+            this.btnGalerija.UseVisualStyleBackColor = false;
+            this.btnGalerija.Click += new System.EventHandler(this.btnGalerija_Click);
             // 
             // txtNaslov
             // 
@@ -365,6 +368,19 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.btnDodajGrad.UseVisualStyleBackColor = false;
             this.btnDodajGrad.Click += new System.EventHandler(this.btnDodajGrad_Click);
             // 
+            // txtGalerijaCount
+            // 
+            this.txtGalerijaCount.AutoSize = true;
+            this.txtGalerijaCount.Depth = 0;
+            this.txtGalerijaCount.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtGalerijaCount.FontType = MaterialSkin.MaterialSkinManager.fontType.Body2;
+            this.txtGalerijaCount.Location = new System.Drawing.Point(798, 526);
+            this.txtGalerijaCount.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtGalerijaCount.Name = "txtGalerijaCount";
+            this.txtGalerijaCount.Size = new System.Drawing.Size(12, 17);
+            this.txtGalerijaCount.TabIndex = 27;
+            this.txtGalerijaCount.Text = "0 ";
+            // 
             // ApartmaniDodavanjeFrm
             // 
             this.AcceptButton = this.btnSacuvaj;
@@ -372,10 +388,11 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(891, 648);
+            this.Controls.Add(this.txtGalerijaCount);
             this.Controls.Add(this.btnDodajGrad);
             this.Controls.Add(this.cmbTipApartmana);
             this.Controls.Add(this.txtNaslov);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnGalerija);
             this.Controls.Add(this.btnSlika);
             this.Controls.Add(this.pbSlika);
             this.Controls.Add(this.btnSacuvaj);
@@ -419,11 +436,13 @@ namespace eApartman.WinUI.Forms.Apartmani
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.PictureBox pbSlika;
         private System.Windows.Forms.Button btnSlika;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnGalerija;
         private MaterialSkin.Controls.MaterialLabel txtNaslov;
         private MaterialSkin.Controls.MaterialComboBox cmbTipApartmana;
         private System.Windows.Forms.OpenFileDialog ofdSlika;
         private System.Windows.Forms.Button btnDodajGrad;
         private MaterialSkin.Controls.MaterialComboBox cmbGrad;
+        private System.Windows.Forms.OpenFileDialog ofdGalerija;
+        private MaterialSkin.Controls.MaterialLabel txtGalerijaCount;
     }
 }

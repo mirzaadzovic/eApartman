@@ -18,6 +18,7 @@ namespace eApartman.WinUI.Forms.Apartmani
     public partial class ApartmaniPregledFrm : MaterialForm
     {
         private APIService _service = new APIService("Apartmani");
+        private APIService _serviceTip = new APIService("ApartmaniTip");
         public ApartmaniPregledFrm()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace eApartman.WinUI.Forms.Apartmani
         {
             try
             {
-                await LoadApartmani();
+                await LoadData();
             }
             catch
             {
@@ -39,10 +40,7 @@ namespace eApartman.WinUI.Forms.Apartmani
 
         private async void btnPretrazi_Click(object sender, EventArgs e)
         {
-            if(txtNaziv.Text!="")
-            {
-                await LoadApartmani();
-            }
+            await LoadApartmani();   
         }
         private async Task LoadApartmani()
         {
@@ -52,16 +50,37 @@ namespace eApartman.WinUI.Forms.Apartmani
             };
 
             if (txtNaziv.Text != "") request.Naziv = txtNaziv.Text;
+            if (cmbApartmanTip.SelectedIndex > 0) request.Tip = (cmbApartmanTip.Items[cmbApartmanTip.SelectedIndex] as ApartmanTip).ApartmanTipNaziv;
 
             dgvApartmani.DataSource = await _service.Get<List<Apartman>>(request);
         }
+        private async Task LoadApartmaniTip()
+        {
+
+  
+            var tipovi = await _serviceTip.Get<List<ApartmanTip>>();
+            tipovi.Insert(0, new ApartmanTip() { ApartmanTipNaziv="Svi"});
+            cmbApartmanTip.DataSource = tipovi;
+            cmbApartmanTip.DisplayMember = "ApartmanTipNaziv";
+            cmbApartmanTip.ValueMember = "ApartmanTipId";
+
+            cmbApartmanTip.Hint = "Tip apartmana";
+        }
+        public async Task LoadData()
+        {
+            btnPretrazi.Enabled = false;
+            await LoadApartmani();
+            await LoadApartmaniTip();
+            btnPretrazi.Enabled = true;
+        }
+
 
 
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
             ApartmaniDodavanjeFrm frm = new ApartmaniDodavanjeFrm();
-            frm.MdiParent = this.MdiParent;
-            frm.Show();
+            //frm.MdiParent = this.MdiParent;
+            frm.ShowDialog();
             await LoadApartmani();
         }
 
@@ -69,8 +88,8 @@ namespace eApartman.WinUI.Forms.Apartmani
         {
             Apartman apartman=dgvApartmani.SelectedRows[0].DataBoundItem as Apartman;
             ApartmaniDodavanjeFrm frm = new ApartmaniDodavanjeFrm(apartman);
+            //frm.MdiParent = this.MdiParent;
             frm.ShowDialog();
-
             await LoadApartmani();
         }
 
@@ -82,7 +101,6 @@ namespace eApartman.WinUI.Forms.Apartmani
             
             if(e.ColumnIndex==dgvApartmani.ColumnCount-1)
             {
-
                 await DeleteApartman();
             }
         }

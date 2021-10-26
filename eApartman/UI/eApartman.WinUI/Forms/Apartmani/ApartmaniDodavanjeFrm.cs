@@ -34,6 +34,11 @@ namespace eApartman.WinUI.Forms.Apartmani
             _serviceApartmaniTip = new APIService("ApartmaniTip");
             _apartman = apartman;
 
+            ofdSlika.Filter = "Images (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|" +
+            "All files (*.*)|*.*";
+            ofdGalerija.Filter= "Images (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|" +
+            "All files (*.*)|*.*";
+            ofdGalerija.Multiselect = true;
         }
 
         private async void ApartmaniDodavanjeFrm_Load(object sender, EventArgs e)
@@ -70,7 +75,7 @@ namespace eApartman.WinUI.Forms.Apartmani
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                    e.Handled = true;
+                e.Handled = true;
             }
         }
         private async Task LoadDrzave()
@@ -134,11 +139,19 @@ namespace eApartman.WinUI.Forms.Apartmani
 
         private void btnSlika_Click(object sender, EventArgs e)
         {
-            var result = ofdSlika.ShowDialog();
-            if(result==DialogResult.OK)
+            try
             {
-                var fileName = ofdSlika.FileName;
-                pbSlika.Image = Image.FromFile(fileName);
+                var result = ofdSlika.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    var fileName = ofdSlika.FileName;
+                    pbSlika.Image = Image.FromFile(fileName);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Pogrešan format fajla!");
+                ofdSlika.FileName = "";
             }
         }
 
@@ -174,11 +187,13 @@ namespace eApartman.WinUI.Forms.Apartmani
                 if(_apartman==null)
                 {
                     var apartman = await _serviceApartmani.Insert<Apartman>(request);
+                    await SaveSlike(apartman);
                     MessageBox.Show($"Apartman {apartman.Naziv} dodan!");
                 }
                 else
                 {
                     var apartman = await _serviceApartmani.Update<Apartman>(_apartman.ApartmanId, request);
+                    await SaveSlike(apartman);
                     MessageBox.Show($"Apartman {apartman.Naziv} ažuriran!");
                 }
 
@@ -271,6 +286,57 @@ namespace eApartman.WinUI.Forms.Apartmani
             await LoadDrzave();
             cmbDrzava.SelectedValue = selectedValue;
             cmbGrad.SelectedValue = parameters.SelectedIndexGrad;
+        }
+
+        private void btnGalerija_Click(object sender, EventArgs e)
+        {
+            var result=ofdGalerija.ShowDialog();
+            if(result==DialogResult.OK)
+            {
+                string[] filenames = ofdGalerija.FileNames;
+                txtGalerijaCount.Text = filenames.Count().ToString();
+            }
+        }
+        private async Task SaveSlike(Apartman apartman)
+        {
+            List<ApartmanSlikaInsertRequest> slike=new List<ApartmanSlikaInsertRequest>();
+
+            //Dodavanje profilne slike u listu
+            if(ofdSlika.FileName!="")
+            {
+                byte[] fileProfilna = File.ReadAllBytes(ofdSlika.FileName);
+                ApartmanSlikaInsertRequest profilna = new ApartmanSlikaInsertRequest()
+                {
+                    SlikaFile = fileProfilna,
+                    ApartmanId = apartman.ApartmanId
+                };
+                slike.Add(profilna);
+            }
+
+
+            //Dodavanje galerije slika u listu 
+            foreach(string filename in ofdGalerija.FileNames)
+            {
+                byte[] file = File.ReadAllBytes(filename);
+                ApartmanSlikaInsertRequest slika = new ApartmanSlikaInsertRequest()
+                {
+                    SlikaFile = file,
+                    ApartmanId = apartman.ApartmanId
+                };
+                slike.Add(slika);
+            }
+
+            //Slanje liste slika na API ako ima novih slika
+            try
+            {
+                if (slike.Count > 0)
+                    await _serviceSlike.Insert<ApartmanSlika>(slike);
+            }
+            catch
+            {
+                MessageBox.Show("Server nije dostupan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
     }
 }
