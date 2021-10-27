@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace eApartman.Controllers
 {
-    public class SlikeController:BaseCRUDController<Model.ApartmanSlika, ApartmanSlika, List<ApartmanSlikaInsertRequest>, ApartmanSlikaInsertRequest, object>
+    public class SlikeController:BaseCRUDController<Model.ApartmanSlika, ApartmanSlika, List<ApartmanSlikaInsertRequest>, ApartmanSlikaInsertRequest, ApartmanSlikaSearchObject>
     {
-        public SlikeController(ICRUDService<Model.ApartmanSlika, object, List<ApartmanSlikaInsertRequest>, ApartmanSlikaInsertRequest> service)
+        public SlikeController(ICRUDService<Model.ApartmanSlika, ApartmanSlikaSearchObject, List<ApartmanSlikaInsertRequest>, ApartmanSlikaInsertRequest> service)
             :base(service)
         {
 

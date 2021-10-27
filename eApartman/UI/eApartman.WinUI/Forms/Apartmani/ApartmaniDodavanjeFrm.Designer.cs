@@ -50,6 +50,9 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.btnDodajGrad = new System.Windows.Forms.Button();
             this.ofdGalerija = new System.Windows.Forms.OpenFileDialog();
             this.txtGalerijaCount = new MaterialSkin.Controls.MaterialLabel();
+            this.btnPrev = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.txtProfilna = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             this.SuspendLayout();
@@ -273,10 +276,10 @@ namespace eApartman.WinUI.Forms.Apartmani
             // pbSlika
             // 
             this.pbSlika.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.pbSlika.Location = new System.Drawing.Point(554, 287);
+            this.pbSlika.Location = new System.Drawing.Point(584, 287);
             this.pbSlika.Name = "pbSlika";
             this.pbSlika.Size = new System.Drawing.Size(266, 157);
-            this.pbSlika.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbSlika.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbSlika.TabIndex = 20;
             this.pbSlika.TabStop = false;
             // 
@@ -289,11 +292,11 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.btnSlika.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSlika.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSlika.ImageKey = "(none)";
-            this.btnSlika.Location = new System.Drawing.Point(589, 463);
+            this.btnSlika.Location = new System.Drawing.Point(617, 463);
             this.btnSlika.Name = "btnSlika";
             this.btnSlika.Size = new System.Drawing.Size(203, 36);
             this.btnSlika.TabIndex = 22;
-            this.btnSlika.Text = "DODAJ SLIKU...";
+            this.btnSlika.Text = "DODAJ PROFILNU...";
             this.btnSlika.UseVisualStyleBackColor = false;
             this.btnSlika.Click += new System.EventHandler(this.btnSlika_Click);
             // 
@@ -306,7 +309,7 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.btnGalerija.ForeColor = System.Drawing.SystemColors.Control;
             this.btnGalerija.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGalerija.ImageKey = "(none)";
-            this.btnGalerija.Location = new System.Drawing.Point(589, 513);
+            this.btnGalerija.Location = new System.Drawing.Point(617, 513);
             this.btnGalerija.Name = "btnGalerija";
             this.btnGalerija.Size = new System.Drawing.Size(203, 36);
             this.btnGalerija.TabIndex = 23;
@@ -374,12 +377,58 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.txtGalerijaCount.Depth = 0;
             this.txtGalerijaCount.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtGalerijaCount.FontType = MaterialSkin.MaterialSkinManager.fontType.Body2;
-            this.txtGalerijaCount.Location = new System.Drawing.Point(798, 526);
+            this.txtGalerijaCount.Location = new System.Drawing.Point(825, 526);
             this.txtGalerijaCount.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtGalerijaCount.Name = "txtGalerijaCount";
             this.txtGalerijaCount.Size = new System.Drawing.Size(12, 17);
             this.txtGalerijaCount.TabIndex = 27;
             this.txtGalerijaCount.Text = "0 ";
+            // 
+            // btnPrev
+            // 
+            this.btnPrev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnPrev.FlatAppearance.BorderColor = System.Drawing.Color.Honeydew;
+            this.btnPrev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrev.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.btnPrev.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnPrev.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrev.ImageKey = "(none)";
+            this.btnPrev.Location = new System.Drawing.Point(548, 346);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(30, 36);
+            this.btnPrev.TabIndex = 28;
+            this.btnPrev.Text = "<";
+            this.btnPrev.UseVisualStyleBackColor = false;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.btnNext.FlatAppearance.BorderColor = System.Drawing.Color.Honeydew;
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.btnNext.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnNext.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNext.ImageKey = "(none)";
+            this.btnNext.Location = new System.Drawing.Point(856, 349);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(30, 36);
+            this.btnNext.TabIndex = 29;
+            this.btnNext.Text = ">";
+            this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // txtProfilna
+            // 
+            this.txtProfilna.AutoSize = true;
+            this.txtProfilna.Depth = 0;
+            this.txtProfilna.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtProfilna.Location = new System.Drawing.Point(666, 265);
+            this.txtProfilna.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtProfilna.Name = "txtProfilna";
+            this.txtProfilna.Size = new System.Drawing.Size(94, 19);
+            this.txtProfilna.TabIndex = 30;
+            this.txtProfilna.Text = "Profilna slika";
             // 
             // ApartmaniDodavanjeFrm
             // 
@@ -387,7 +436,10 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(891, 648);
+            this.ClientSize = new System.Drawing.Size(914, 648);
+            this.Controls.Add(this.txtProfilna);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.btnPrev);
             this.Controls.Add(this.txtGalerijaCount);
             this.Controls.Add(this.btnDodajGrad);
             this.Controls.Add(this.cmbTipApartmana);
@@ -412,6 +464,7 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
             this.ShowIcon = false;
             this.Sizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "eApartman";
             this.Load += new System.EventHandler(this.ApartmaniDodavanjeFrm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbUser)).EndInit();
@@ -444,5 +497,8 @@ namespace eApartman.WinUI.Forms.Apartmani
         private MaterialSkin.Controls.MaterialComboBox cmbGrad;
         private System.Windows.Forms.OpenFileDialog ofdGalerija;
         private MaterialSkin.Controls.MaterialLabel txtGalerijaCount;
+        private System.Windows.Forms.Button btnPrev;
+        private System.Windows.Forms.Button btnNext;
+        private MaterialSkin.Controls.MaterialLabel txtProfilna;
     }
 }

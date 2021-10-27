@@ -8,17 +8,20 @@ using System.Threading.Tasks;
 
 namespace eApartman.Services
 {
-    public class SlikeService : BaseCRUDService<Model.ApartmanSlika, ApartmanSlika, List<ApartmanSlikaInsertRequest>, ApartmanSlikaInsertRequest, object>
+    public class SlikeService : BaseCRUDService<Model.ApartmanSlika, ApartmanSlika, List<ApartmanSlikaInsertRequest>, ApartmanSlikaInsertRequest, ApartmanSlikaSearchObject>
     {
         public SlikeService(eApartmanContext context, IMapper mapper) : base(context, mapper)
         {
         }
-        public override IEnumerable<Model.ApartmanSlika> Get(object search=null)
+        public override IEnumerable<Model.ApartmanSlika> Get(ApartmanSlikaSearchObject search=null)
         {
-            var set = _context.Set<ApartmanSlika>().AsQueryable();
-            if(int.TryParse(search?.ToString(), out int id))
+            var set = _context.Set<ApartmanSlika>()
+                .OrderBy(s=>s.SlikaId)
+                .AsQueryable();
+
+            if(search?.ApartmanSlikaId>0)
             {
-                set = set.Where(s => s.ApartmanId == id);
+                set = set.Where(s => s.ApartmanId == search.ApartmanSlikaId);
             }
 
             var entity = _mapper.Map<List<Model.ApartmanSlika>>(set);

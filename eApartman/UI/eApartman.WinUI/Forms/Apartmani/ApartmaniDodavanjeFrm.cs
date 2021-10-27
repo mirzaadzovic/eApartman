@@ -24,6 +24,8 @@ namespace eApartman.WinUI.Forms.Apartmani
         private readonly APIService _serviceSlike;
         private readonly APIService _serviceApartmaniTip;
         private readonly Apartman _apartman;
+        private readonly List<Image> _slike;
+        private int slikaIndex = 0;
         public ApartmaniDodavanjeFrm(Apartman apartman=null)
         {
             InitializeComponent();
@@ -33,6 +35,7 @@ namespace eApartman.WinUI.Forms.Apartmani
             _serviceSlike = new APIService("Slike");
             _serviceApartmaniTip = new APIService("ApartmaniTip");
             _apartman = apartman;
+            _slike = new List<Image>();
 
             ofdSlika.Filter = "Images (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|" +
             "All files (*.*)|*.*";
@@ -117,10 +120,16 @@ namespace eApartman.WinUI.Forms.Apartmani
             cmbDrzava.Hint = "Loading Države...";
             cmbGrad.Hint = "Loading Gradovi...";
             cmbTipApartmana.Hint = "Loading Tipovi...";
+            btnPrev.Enabled = false;
+            btnNext.Enabled = false;
 
             await LoadApartmaniTip();
             await LoadDrzave();
-            if(_apartman!=null) LoadApartman(); 
+            if (_apartman != null)
+            {
+                LoadApartman();
+                await LoadSlike();
+            }
         }
         private void LoadApartman()
         {
@@ -146,6 +155,11 @@ namespace eApartman.WinUI.Forms.Apartmani
                 {
                     var fileName = ofdSlika.FileName;
                     pbSlika.Image = Image.FromFile(fileName);
+
+                    if (_slike.Count > 0) _slike.RemoveAt(0);
+                    _slike.Insert(0, pbSlika.Image);
+
+                    CheckGalleryButtons();
                 }
             }
             catch
@@ -164,15 +178,17 @@ namespace eApartman.WinUI.Forms.Apartmani
                 int apartmanTipId = GetAdresaTip();
                 byte[] file;
 
+                //Slika handling
                 if (ofdSlika.FileName != "")
                     file = File.ReadAllBytes(ofdSlika.FileName);
-                else
+                else if (_apartman != null)
                     file = _apartman.SlikaProfilnaFile;
+                else
+                    throw new Exception("Obavezno dodavanje profilne slike!");
 
                 ApartmanUpsertRequest request = new ApartmanUpsertRequest()
                 {
                     VlasnikId = APIService.Korisnik.KorisnikId,
-                    //Vlasnik=APIService.Korisnik,
                     Naziv = txtNaziv.Text,
                     AdresaId = adresa.AdresaId,
                     ApartmanTipId=apartmanTipId,
@@ -184,12 +200,16 @@ namespace eApartman.WinUI.Forms.Apartmani
                     CheckoutVrijeme = new TimeSpan(12, 0, 0),
                     PetFriendly = false    
                 };
+
+                //UPDATE/PUT METODA
                 if(_apartman==null)
                 {
                     var apartman = await _serviceApartmani.Insert<Apartman>(request);
                     await SaveSlike(apartman);
                     MessageBox.Show($"Apartman {apartman.Naziv} dodan!");
                 }
+
+                //INSERT/POST METODA
                 else
                 {
                     var apartman = await _serviceApartmani.Update<Apartman>(_apartman.ApartmanId, request);
@@ -197,14 +217,15 @@ namespace eApartman.WinUI.Forms.Apartmani
                     MessageBox.Show($"Apartman {apartman.Naziv} ažuriran!");
                 }
 
-                Loading(false);
                 DialogResult = DialogResult.OK;
+                this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loading(false);
             }
-                this.Close();
+
                         
         }
 
@@ -216,6 +237,7 @@ namespace eApartman.WinUI.Forms.Apartmani
             {
                 control.Enabled = state;
             }
+            CheckGalleryButtons();
         }
         private int GetAdresaTip()
         {
@@ -295,7 +317,31 @@ namespace eApartman.WinUI.Forms.Apartmani
             {
                 string[] filenames = ofdGalerija.FileNames;
                 txtGalerijaCount.Text = filenames.Count().ToString();
+                foreach(string filename in filenames)
+                {
+                    _slike.Add(Image.FromFile(filename));
+                }
+                CheckGalleryButtons();
             }
+        }
+
+        private async Task LoadSlike()
+        {
+            ApartmanSlikaSearchObject search = new ApartmanSlikaSearchObject() 
+            { 
+                ApartmanSlikaId=_apartman.ApartmanId
+            };
+            var slike=await _serviceSlike.Get<List<ApartmanSlika>>(search);
+           
+            _slike.Add(ImageBytesConverter.BytesToImage(_apartman.SlikaProfilnaFile));
+
+            foreach (var slika in slike)
+            {
+                var file = ImageBytesConverter.BytesToImage(slika.SlikaFile);
+                _slike.Add(file);
+            }
+            pbSlika.Image = _slike[slikaIndex];
+            CheckGalleryButtons();
         }
         private async Task SaveSlike(Apartman apartman)
         {
@@ -337,6 +383,31 @@ namespace eApartman.WinUI.Forms.Apartmani
                 MessageBox.Show("Server nije dostupan!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
            
+        }
+
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            slikaIndex--;
+            pbSlika.Image = _slike[slikaIndex];
+            CheckGalleryButtons();
+        }
+        private void CheckGalleryButtons()
+        {
+            btnPrev.Enabled = slikaIndex > 0;
+            btnNext.Enabled = slikaIndex < _slike.Count - 1;
+
+            if(_apartman!=null)// UPDATE - profilna je već učitana iz baze case
+                txtProfilna.Text = slikaIndex == 0? "Profilna slika" : "";
+            else // INSERT - još nije učitana profilna case
+                txtProfilna.Text = slikaIndex == 0 && ofdSlika.FileName!=""? "Profilna slika" : "";
+
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            slikaIndex++;
+            pbSlika.Image = _slike[slikaIndex];
+            CheckGalleryButtons();
         }
     }
 }
