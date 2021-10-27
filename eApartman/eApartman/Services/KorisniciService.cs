@@ -21,13 +21,15 @@ namespace eApartman.Services
         public override IEnumerable<Model.Korisnik> Get(KorisnikSearchObject search)
         {
             var set = _context.Korisniks.AsQueryable();
-            if(search!=null)
-            {
-                if(search.Ime!=null) set=set.Where(k=>k.Ime==search.Ime);
-                if(search.Prezime != null) set = set.Where(k => k.Prezime == search.Prezime);
-                if (search.Username != null) set = set.Where(k => k.Username == search.Username);
 
+            if (search?.Ime!=null) set=set.Where(k=>k.Ime==search.Ime);
+            if (search?.Prezime != null) set = set.Where(k => k.Prezime == search.Prezime);
+            if (search?.Username != null) set = set.Where(k => k.Username == search.Username);
+            foreach(string item in search?.IncludeList)
+            {
+                set = set.Include(item);
             }
+          
             var entity = _mapper.Map<List<Model.Korisnik>>(set);
             return entity;
         }

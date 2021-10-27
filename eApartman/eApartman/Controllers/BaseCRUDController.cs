@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace eApartman.Controllers
 {
+    [Authorize]
     public class BaseCRUDController<T, TDb, TInsert, TUpdate, TSearch>:BaseReadController<T, TSearch> where T:class where TDb:class where TInsert:class where TUpdate:class where TSearch:class
     {
         protected readonly new ICRUDService<T, TSearch, TInsert, TUpdate> _service;

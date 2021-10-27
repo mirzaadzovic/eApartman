@@ -68,6 +68,7 @@ namespace eApartman
             services.AddScoped<ICRUDService<Model.Apartman, ApartmanSearchObject, ApartmanUpsertRequest, ApartmanUpsertRequest>, ApartmaniService>();
             services.AddScoped<IReadService<Model.ApartmanTip, object>, BaseReadService<Model.ApartmanTip, object, ApartmanTip>>();
             services.AddScoped<ICRUDService<Model.ApartmanSlika, ApartmanSlikaSearchObject, List<ApartmanSlikaInsertRequest>, ApartmanSlikaInsertRequest>, SlikeService>();
+            services.AddScoped<ICRUDService<Model.KorisnikUloga, object, Model.KorisnikUloga, object>, BaseCRUDService<Model.KorisnikUloga, KorisnikUloga, Model.KorisnikUloga, object, object>>();
 
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);

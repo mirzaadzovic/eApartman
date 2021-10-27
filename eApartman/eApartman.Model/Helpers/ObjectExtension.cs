@@ -37,7 +37,7 @@ namespace eApartman.Model.Helpers
                 {
                     return ToKeyValue(JObject.FromObject(metaToken, JsonSerializerSettings));
                 }
-                catch (System.ArgumentException ex)
+                catch 
                 {
                     var dict = new Dictionary<string, string>();
                     dict.Add("id", metaToken.ToString());

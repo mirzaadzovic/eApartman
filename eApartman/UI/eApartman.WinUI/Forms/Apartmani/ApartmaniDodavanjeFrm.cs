@@ -164,7 +164,7 @@ namespace eApartman.WinUI.Forms.Apartmani
             }
             catch
             {
-                MessageBox.Show("Pogrešan format fajla!");
+                MessageBox.Show("Pogrešan format fajla!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ofdSlika.FileName = "";
             }
         }
@@ -313,15 +313,23 @@ namespace eApartman.WinUI.Forms.Apartmani
         private void btnGalerija_Click(object sender, EventArgs e)
         {
             var result=ofdGalerija.ShowDialog();
-            if(result==DialogResult.OK)
+            try
             {
-                string[] filenames = ofdGalerija.FileNames;
-                txtGalerijaCount.Text = filenames.Count().ToString();
-                foreach(string filename in filenames)
+                if (result == DialogResult.OK)
                 {
-                    _slike.Add(Image.FromFile(filename));
+                    string[] filenames = ofdGalerija.FileNames;
+                    txtGalerijaCount.Text = filenames.Count().ToString();
+                    foreach (string filename in filenames)
+                    {
+                        _slike.Add(Image.FromFile(filename));
+                    }
+                    CheckGalleryButtons();
                 }
-                CheckGalleryButtons();
+            }
+            catch
+            {
+                MessageBox.Show("Pogrešan format fajla!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ofdSlika.FileName = "";
             }
         }
 
