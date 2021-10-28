@@ -13,6 +13,8 @@ namespace eApartman.Database
             KorisnikUlogas = new HashSet<KorisnikUloga>();
             Rezervacijas = new HashSet<Rezervacija>();
             Utisaks = new HashSet<Utisak>();
+            VlasnikModeratorModerators = new HashSet<VlasnikModerator>();
+            VlasnikModeratorVlasniks = new HashSet<VlasnikModerator>();
         }
 
         public int KorisnikId { get; set; }
@@ -31,5 +33,7 @@ namespace eApartman.Database
         public virtual ICollection<KorisnikUloga> KorisnikUlogas { get; set; }
         public virtual ICollection<Rezervacija> Rezervacijas { get; set; }
         public virtual ICollection<Utisak> Utisaks { get; set; }
+        public virtual ICollection<VlasnikModerator> VlasnikModeratorModerators { get; set; }
+        public virtual ICollection<VlasnikModerator> VlasnikModeratorVlasniks { get; set; }
     }
 }

@@ -29,15 +29,16 @@ namespace eApartman.Database
         public virtual DbSet<Rezervacija> Rezervacijas { get; set; }
         public virtual DbSet<Uloga> Ulogas { get; set; }
         public virtual DbSet<Utisak> Utisaks { get; set; }
+        public virtual DbSet<VlasnikModerator> VlasnikModerators { get; set; }
 
-//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//        {
-//            if (!optionsBuilder.IsConfigured)
-//            {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-//                optionsBuilder.UseSqlServer("Data Source=KATARZA\\MSSQLSERVER_OLAP;Initial Catalog=eApartman;Trusted_Connection=True");
-//            }
-//        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=localhost\\MIRZA;Database=eApartman;Trusted_Connection=True;");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -206,6 +207,12 @@ namespace eApartman.Database
 
                 entity.Property(e => e.DatumCheckOut).HasColumnType("datetime");
 
+                entity.Property(e => e.DatumRezervacije).HasColumnType("datetime");
+
+                entity.Property(e => e.GostIme).HasMaxLength(25);
+
+                entity.Property(e => e.GostPrezime).HasMaxLength(25);
+
                 entity.HasOne(d => d.Apartman)
                     .WithMany(p => p.Rezervacijas)
                     .HasForeignKey(d => d.ApartmanId)
@@ -237,6 +244,8 @@ namespace eApartman.Database
             {
                 entity.ToTable("Utisak");
 
+                entity.Property(e => e.DatumKreiranja).HasColumnType("datetime");
+
                 entity.HasOne(d => d.Apartman)
                     .WithMany(p => p.Utisaks)
                     .HasForeignKey(d => d.ApartmanId)
@@ -246,6 +255,26 @@ namespace eApartman.Database
                     .WithMany(p => p.Utisaks)
                     .HasForeignKey(d => d.KorisnikId)
                     .HasConstraintName("fk_korisnikutisak");
+            });
+
+            modelBuilder.Entity<VlasnikModerator>(entity =>
+            {
+                entity.HasKey(e => new { e.VlasnikId, e.ModeratorId })
+                    .HasName("pk_vlasnikmoderator");
+
+                entity.ToTable("VlasnikModerator");
+
+                entity.HasOne(d => d.Moderator)
+                    .WithMany(p => p.VlasnikModeratorModerators)
+                    .HasForeignKey(d => d.ModeratorId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_moderatorkorisnik");
+
+                entity.HasOne(d => d.Vlasnik)
+                    .WithMany(p => p.VlasnikModeratorVlasniks)
+                    .HasForeignKey(d => d.VlasnikId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_vlasnikkorisnik");
             });
 
             OnModelCreatingPartial(modelBuilder);

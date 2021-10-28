@@ -15,6 +15,7 @@ namespace eApartman.Database
         public int? OcjenaLokacija { get; set; }
         public int? OcjenaCistoca { get; set; }
         public int? OcjenaVlasnik { get; set; }
+        public DateTime? DatumKreiranja { get; set; }
 
         public virtual Apartman Apartman { get; set; }
         public virtual Korisnik Korisnik { get; set; }

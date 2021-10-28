@@ -32,7 +32,8 @@ namespace eApartman.WinUI.Forms
             this.components = new System.ComponentModel.Container();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.zatvoriSveProzoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.apartmaniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledApartmanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodavanjeApartmanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,10 +44,9 @@ namespace eApartman.WinUI.Forms
             this.mojNalogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodavanjeModeratoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.izvještajiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnRegister = new System.Windows.Forms.Button();
             this.txtUsername = new System.Windows.Forms.Label();
-            this.zatvoriSveProzoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,10 +80,19 @@ namespace eApartman.WinUI.Forms
             this.fileMenu.Text = "&File";
             this.fileMenu.CheckedChanged += new System.EventHandler(this.checked_Change);
             // 
-            // toolTip
+            // zatvoriSveProzoreToolStripMenuItem
             // 
-            this.toolTip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.toolTip.ForeColor = System.Drawing.SystemColors.Control;
+            this.zatvoriSveProzoreToolStripMenuItem.Name = "zatvoriSveProzoreToolStripMenuItem";
+            this.zatvoriSveProzoreToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.zatvoriSveProzoreToolStripMenuItem.Text = "Zatvori sve prozore";
+            this.zatvoriSveProzoreToolStripMenuItem.Click += new System.EventHandler(this.CloseAllToolStripMenuItem_Click);
+            // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.logOutToolStripMenuItem.Text = "Log out";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
             // 
             // apartmaniToolStripMenuItem
             // 
@@ -163,12 +172,10 @@ namespace eApartman.WinUI.Forms
             this.izvještajiToolStripMenuItem.Size = new System.Drawing.Size(71, 21);
             this.izvještajiToolStripMenuItem.Text = "Izvještaji";
             // 
-            // logOutToolStripMenuItem
+            // toolTip
             // 
-            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.logOutToolStripMenuItem.Text = "Log out";
-            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
+            this.toolTip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.toolTip.ForeColor = System.Drawing.SystemColors.Control;
             // 
             // btnRegister
             // 
@@ -200,13 +207,6 @@ namespace eApartman.WinUI.Forms
             this.txtUsername.TabIndex = 14;
             this.txtUsername.Text = "Username";
             this.txtUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // zatvoriSveProzoreToolStripMenuItem
-            // 
-            this.zatvoriSveProzoreToolStripMenuItem.Name = "zatvoriSveProzoreToolStripMenuItem";
-            this.zatvoriSveProzoreToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.zatvoriSveProzoreToolStripMenuItem.Text = "Zatvori sve prozore";
-            this.zatvoriSveProzoreToolStripMenuItem.Click += new System.EventHandler(this.CloseAllToolStripMenuItem_Click);
             // 
             // PocetnaMDIFrm
             // 

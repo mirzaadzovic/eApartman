@@ -12,7 +12,6 @@ namespace eApartman.Database
         public int? ApartmanId { get; set; }
         public string Poruka { get; set; }
         public int BrojOsoba { get; set; }
-        public bool ParkingMjesto { get; set; }
         public DateTime DatumCheckIn { get; set; }
         public DateTime DatumCheckOut { get; set; }
         public int? BrojDana { get; set; }
@@ -20,6 +19,10 @@ namespace eApartman.Database
         public bool Otkazana { get; set; }
         public decimal? Cijena { get; set; }
         public int? PopustId { get; set; }
+        public string GostIme { get; set; }
+        public string GostPrezime { get; set; }
+        public DateTime? DatumRezervacije { get; set; }
+
         public virtual Apartman Apartman { get; set; }
         public virtual Korisnik Gost { get; set; }
         public virtual Popust Popust { get; set; }
