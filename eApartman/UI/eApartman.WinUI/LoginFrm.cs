@@ -26,7 +26,6 @@ namespace eApartman.WinUI
             InitializeComponent();
            
         }
-
         private void linkRegisster_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Form register = new RegisterFrm();
@@ -41,17 +40,14 @@ namespace eApartman.WinUI
                 this.Show();
             }
         }
-
         private void LoginFrm_Load(object sender, EventArgs e)
         {
 
         }
-
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private async void loginBtn_Click(object sender, EventArgs e)
         {
             APIService.Username = txtUsername.Text;

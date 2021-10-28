@@ -17,14 +17,14 @@ namespace eApartman.Controllers
         {
         }
 
-        [Authorize(Roles = "Vlasnik,Developer")]
+        [Authorize(Roles = "Vlasnik,Developer,ModeratorApartmani")]
         [HttpPost]
         public override Model.Apartman Insert([FromBody] ApartmanUpsertRequest request)
         {
             return _service.Insert(request);
         }
 
-        [Authorize(Roles = "Vlasnik,Developer")]
+        [Authorize(Roles = "Vlasnik,Developer,ModeratorApartmani")]
         [HttpPut("{id}")]
         public override Model.Apartman Update(int id, [FromBody] ApartmanUpsertRequest request)
         {
