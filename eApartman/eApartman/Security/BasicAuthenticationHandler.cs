@@ -37,7 +37,7 @@ namespace eApartman.Security
                 var password = credentials[1];
                 user = await _korisniciService.Login(username, password);
             }
-            catch(Exception ex)
+            catch
             {
                 return AuthenticateResult.Fail("Wrong username or password");
             }

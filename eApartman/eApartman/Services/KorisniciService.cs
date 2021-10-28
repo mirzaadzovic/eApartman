@@ -63,7 +63,46 @@ namespace eApartman.Services
         
             return _mapper.Map<Model.Korisnik>(entity);
         }
- 
+        public override Model.Korisnik Update(int id, KorisnikUpdateRequest request)
+        {
+            Korisnik korisnik = _context.Set<Korisnik>().Find(id);
+            MapirajKorisnikaUpdate(korisnik, request);
+
+            foreach(var uloga in request.Uloge)
+            {
+                KorisnikUloga korisnikUloga = new KorisnikUloga();
+                korisnikUloga.KorisnikId = korisnik.KorisnikId;
+                korisnikUloga.UlogaId = uloga;
+            }
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.Korisnik>(korisnik);
+        }
+
+        private void MapirajKorisnikaUpdate(Korisnik korisnik, KorisnikUpdateRequest request)
+        {
+            var password = GenerateHash(korisnik.PasswordSalt, request.OldPassword);
+
+            if (password != korisnik.PasswordHash)
+                throw new UserException("Neispravan stari password");
+            if (request.Password != request.PasswordPotvrda)
+                throw new Exception("Lozinka nije ispravna");
+
+            korisnik.Ime = request.Ime;
+            korisnik.Prezime = request.Prezime;
+            korisnik.Telefon = request.Telefon;
+            korisnik.Slika = request.Slika;
+            korisnik.Status = request.Status;
+
+            if (request.Password != "")
+            {
+                string salt = GenerateSalt();
+                string hash = GenerateHash(salt, request.Password);
+                korisnik.PasswordSalt = salt;
+                korisnik.PasswordHash = hash;
+            }
+        }
+
         public static string GenerateSalt()
         {
             var buf = new byte[16];

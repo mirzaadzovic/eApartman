@@ -1,4 +1,5 @@
 ﻿using eApartman.WinUI.Forms.Apartmani;
+using eApartman.WinUI.Forms.Korisnici;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -134,6 +135,13 @@ namespace eApartman.WinUI.Forms
         private void checked_Change(object sender, EventArgs e)
         {
             this.BackColor = Color.FromArgb(63, 81, 181);
+        }
+
+        private void mojNalogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MojNalogFrm frm = new MojNalogFrm();
+            frm.MdiParent = this;
+            frm.Show();
         }
     }
 }

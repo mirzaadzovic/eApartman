@@ -8,12 +8,12 @@ namespace eApartman.Model.Requests
     {
         public string Ime { get; set; }
         public string Prezime { get; set; }
-        public string Username { get; set; }
-        public string Email { get; set; }
         public string Telefon { get; set; }
+        public string OldPassword { get; set; }
         public string Password { get; set; }
         public string PasswordPotvrda { get; set; }
-        public bool? Status { get; set; }
         public byte[] Slika { get; set; }
+        public bool? Status { get; set; }
+        public List<int> Uloge { get; set; } = new List<int>();
     }
 }

@@ -158,6 +158,7 @@ namespace eApartman.WinUI.Forms
             this.mojNalogToolStripMenuItem.Name = "mojNalogToolStripMenuItem";
             this.mojNalogToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.mojNalogToolStripMenuItem.Text = "Moj nalog";
+            this.mojNalogToolStripMenuItem.Click += new System.EventHandler(this.mojNalogToolStripMenuItem_Click);
             // 
             // dodavanjeModeratoraToolStripMenuItem
             // 
