@@ -46,7 +46,7 @@ namespace eApartman.WinUI.Forms.Apartmani
         {
             ApartmanSearchObject request = new ApartmanSearchObject()
             {
-                VlasnikId = APIService.Korisnik.KorisnikId,
+                VlasnikId = APIService.Korisnik.GetVlasnikId()
             };
 
             if (txtNaziv.Text != "") request.Naziv = txtNaziv.Text;

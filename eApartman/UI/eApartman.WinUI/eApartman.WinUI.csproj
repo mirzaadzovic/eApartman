@@ -96,11 +96,23 @@
     <Compile Include="Forms\Apartmani\ApartmaniPregledFrm.Designer.cs">
       <DependentUpon>ApartmaniPregledFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Korisnici\ModeratoriDodavanjeFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Korisnici\ModeratoriDodavanjeFrm.Designer.cs">
+      <DependentUpon>ModeratoriDodavanjeFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Korisnici\MojNalogFrm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Korisnici\MojNalogFrm.Designer.cs">
       <DependentUpon>MojNalogFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Korisnici\ModeratoriPregledFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Korisnici\ModeratoriPregledFrm.Designer.cs">
+      <DependentUpon>ModeratoriPregledFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PocetnaMDIFrm.cs">
       <SubType>Form</SubType>
@@ -120,6 +132,7 @@
     <Compile Include="Forms\Rezervacije\RezervacijePregledFrm.Designer.cs">
       <DependentUpon>RezervacijePregledFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Helpers\ImageBytesConverter.cs" />
     <Compile Include="LoginFrm.cs">
       <SubType>Form</SubType>
@@ -139,8 +152,14 @@
     <EmbeddedResource Include="Forms\Apartmani\ApartmaniPregledFrm.resx">
       <DependentUpon>ApartmaniPregledFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Korisnici\ModeratoriDodavanjeFrm.resx">
+      <DependentUpon>ModeratoriDodavanjeFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Korisnici\MojNalogFrm.resx">
       <DependentUpon>MojNalogFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Korisnici\ModeratoriPregledFrm.resx">
+      <DependentUpon>ModeratoriPregledFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PocetnaMDIFrm.resx">
       <DependentUpon>PocetnaMDIFrm.cs</DependentUpon>

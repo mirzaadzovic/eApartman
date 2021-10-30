@@ -41,7 +41,6 @@ namespace eApartman.WinUI.Forms.Korisnici
             this.btnSlika = new System.Windows.Forms.Button();
             this.ofdSlika = new System.Windows.Forms.OpenFileDialog();
             this.ttPassword = new System.Windows.Forms.ToolTip(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +48,7 @@ namespace eApartman.WinUI.Forms.Korisnici
             // 
             this.txtTelefon.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTelefon.Depth = 0;
-            this.txtTelefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtTelefon.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtTelefon.Hint = "Telefon";
             this.txtTelefon.LeadingIcon = null;
             this.txtTelefon.Location = new System.Drawing.Point(463, 226);
@@ -84,7 +83,7 @@ namespace eApartman.WinUI.Forms.Korisnici
             // 
             this.txtPotvrdaPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPotvrdaPassword.Depth = 0;
-            this.txtPotvrdaPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtPotvrdaPassword.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtPotvrdaPassword.Hint = "Potvrda lozinke";
             this.txtPotvrdaPassword.LeadingIcon = null;
             this.txtPotvrdaPassword.Location = new System.Drawing.Point(463, 291);
@@ -104,7 +103,7 @@ namespace eApartman.WinUI.Forms.Korisnici
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Depth = 0;
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtPassword.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtPassword.Hint = "Nova lozinka";
             this.txtPassword.LeadingIcon = null;
             this.txtPassword.Location = new System.Drawing.Point(253, 291);
@@ -124,7 +123,7 @@ namespace eApartman.WinUI.Forms.Korisnici
             // 
             this.txtOldPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtOldPassword.Depth = 0;
-            this.txtOldPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtOldPassword.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtOldPassword.Hint = "Stara lozinka";
             this.txtOldPassword.LeadingIcon = null;
             this.txtOldPassword.Location = new System.Drawing.Point(43, 291);
@@ -143,7 +142,7 @@ namespace eApartman.WinUI.Forms.Korisnici
             // 
             this.txtPrezime.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrezime.Depth = 0;
-            this.txtPrezime.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtPrezime.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtPrezime.Hint = "Prezime";
             this.txtPrezime.LeadingIcon = null;
             this.txtPrezime.Location = new System.Drawing.Point(253, 226);
@@ -161,7 +160,7 @@ namespace eApartman.WinUI.Forms.Korisnici
             // 
             this.txtIme.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtIme.Depth = 0;
-            this.txtIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtIme.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtIme.Hint = "Ime";
             this.txtIme.LeadingIcon = null;
             this.txtIme.Location = new System.Drawing.Point(43, 226);
@@ -210,24 +209,11 @@ namespace eApartman.WinUI.Forms.Korisnici
             this.ttPassword.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ttPassword.ToolTipTitle = "Info";
             // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F);
-            this.textBox1.Location = new System.Drawing.Point(463, 163);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(194, 41);
-            this.textBox1.TabIndex = 24;
-            this.textBox1.Text = "FSFSFSF";
-            this.textBox1.UseSystemPasswordChar = true;
-            this.textBox1.Visible = false;
-            // 
             // MojNalogFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 450);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnSlika);
             this.Controls.Add(this.pbSlika);
             this.Controls.Add(this.txtTelefon);
@@ -246,7 +232,6 @@ namespace eApartman.WinUI.Forms.Korisnici
             this.Load += new System.EventHandler(this.MojNalogFrm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -263,6 +248,5 @@ namespace eApartman.WinUI.Forms.Korisnici
         private System.Windows.Forms.Button btnSlika;
         private System.Windows.Forms.OpenFileDialog ofdSlika;
         private System.Windows.Forms.ToolTip ttPassword;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }

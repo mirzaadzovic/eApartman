@@ -107,9 +107,15 @@ namespace eApartman.WinUI.Forms
 
         private void pregledApartmanaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ApartmaniPregledFrm frm = new ApartmaniPregledFrm();
-            frm.MdiParent = this;
-            frm.Show();
+            if(APIService.Korisnik.IsVlasnik==true || APIService.Korisnik.IsModeratorApartmani==true)
+            {
+                ApartmaniPregledFrm frm = new ApartmaniPregledFrm();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+                MessageBox.Show("Nemate pravo pristupa ovoj funkcionalnosti!", "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
         }
 
         private void PocetnaMDIFrm_Load(object sender, EventArgs e)
@@ -127,9 +133,14 @@ namespace eApartman.WinUI.Forms
 
         private void dodavanjeApartmanaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ApartmaniDodavanjeFrm frm = new ApartmaniDodavanjeFrm();
-            frm.MdiParent = this;
-            frm.Show();
+            if(APIService.Korisnik.IsVlasnik == true || APIService.Korisnik.IsModeratorApartmani==true)
+            {
+                ApartmaniDodavanjeFrm frm = new ApartmaniDodavanjeFrm();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+                MessageBox.Show("Nemate pravo pristupa ovoj funkcionalnosti!", "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void checked_Change(object sender, EventArgs e)
@@ -142,6 +153,32 @@ namespace eApartman.WinUI.Forms
             MojNalogFrm frm = new MojNalogFrm();
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        private void dodavanjeModeratoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Da li korisnik ima ulogu "Vlasnik"
+            if (APIService.Korisnik.IsVlasnik==true)
+            {
+                ModeratoriDodavanjeFrm frm = new ModeratoriDodavanjeFrm();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+                MessageBox.Show("Nemate pravo pristupa ovoj funkcionalnosti!", "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void pregledModeratoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Da li korisnik ima ulogu "Vlasnik"
+            if (APIService.Korisnik.IsVlasnik==true)
+            {
+                ModeratoriPregledFrm frm = new ModeratoriPregledFrm();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+                MessageBox.Show("Nemate pravo pristupa ovoj funkcionalnosti!", "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
     }
 }

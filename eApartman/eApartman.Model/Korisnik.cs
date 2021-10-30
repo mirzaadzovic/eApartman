@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using eApartman.Model.DataAttributes;
+using System.Linq;
 
 namespace eApartman.Model
 {
@@ -27,10 +28,20 @@ namespace eApartman.Model
 
         public virtual ICollection<Apartman> Apartmen { get; set; }
         public virtual ICollection<KorisnikUloga> KorisnikUlogas { get; set; }
+        public virtual ICollection<VlasnikModerator> VlasnikModeratorModerators { get; set; }
+        public int? VlasnikId => VlasnikModeratorModerators?.FirstOrDefault()?.VlasnikId;
+        public bool? IsVlasnik => KorisnikUlogas?.Any(u => u.UlogaId == 2);
+        public bool? IsModeratorApartmani => KorisnikUlogas?.Any(u => u.UlogaId == 4);
+        public bool? IsModeratorRezervacije => KorisnikUlogas?.Any(u => u.UlogaId == 5);
+
         //public virtual ICollection<Rezervacija> Rezervacijas { get; set; }
         //public virtual ICollection<Utisak> Utisaks
         //{
         //    get; set;
         //}
+        public int GetVlasnikId()
+        {   //Vraća VlasnikId u zavisnosti je li korisnik moderator ili nije
+            return IsModeratorApartmani == true ? int.Parse(VlasnikId.ToString()) : KorisnikId;
+        }
     }
 }

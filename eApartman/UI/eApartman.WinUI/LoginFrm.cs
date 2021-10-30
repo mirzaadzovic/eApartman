@@ -58,7 +58,7 @@ namespace eApartman.WinUI
                 KorisnikSearchObject search = new KorisnikSearchObject()
                 {
                     Username = APIService.Username,
-                    IncludeList = new string[] { "KorisnikUlogas"}
+                    IncludeList = new string[] { "KorisnikUlogas", "VlasnikModeratorModerators" }
                 };
 
                 EnableTextBoxes(false);
@@ -88,8 +88,12 @@ namespace eApartman.WinUI
         }
         private async Task ProvjeriUlogu()
         {
-            //Ako postojeći korisnik nema ulogu VLASNIKA apartmana, dodaje mu se ta uloga
-            if(!(APIService.Korisnik.KorisnikUlogas.Any(u=>u.UlogaId==2)))
+            var korisnik = APIService.Korisnik;
+            //Ako je korisnik moderator, ne dajemo mu ulogu vlasnika, prekidamo ovu funkciju
+            if (korisnik.IsModeratorApartmani==true || korisnik.IsModeratorRezervacije==true)
+                return;
+            //Ako postojeći korisnik GOST nema ulogu VLASNIKA apartmana, pri prvom logiranju mu se dodjeljuje ta uloga
+            else if (korisnik.IsVlasnik==false)
             {
                 KorisnikUloga request = new KorisnikUloga()
                 {

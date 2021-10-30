@@ -99,12 +99,20 @@ namespace eApartman.WinUI.Forms.Korisnici
 
         private void btnSlika_Click(object sender, EventArgs e)
         {
-            var result = ofdSlika.ShowDialog();
-            if(result==DialogResult.OK)
+            try
             {
-                string filename = ofdSlika.FileName;
-                pbSlika.Image = Image.FromFile(filename);
+                var result = ofdSlika.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    string filename = ofdSlika.FileName;
+                    pbSlika.Image = Image.FromFile(filename);
+                }
             }
+            catch
+            {
+                MessageBox.Show("Pogrešan format!");
+            }
+           
         }
     }
 }

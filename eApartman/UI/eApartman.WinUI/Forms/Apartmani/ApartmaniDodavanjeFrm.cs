@@ -186,9 +186,10 @@ namespace eApartman.WinUI.Forms.Apartmani
                 else
                     throw new Exception("Obavezno dodavanje profilne slike!");
 
+
                 ApartmanUpsertRequest request = new ApartmanUpsertRequest()
                 {
-                    VlasnikId = APIService.Korisnik.KorisnikId,
+                    VlasnikId = APIService.Korisnik.GetVlasnikId(),
                     Naziv = txtNaziv.Text,
                     AdresaId = adresa.AdresaId,
                     ApartmanTipId=apartmanTipId,

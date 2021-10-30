@@ -47,6 +47,7 @@ namespace eApartman.WinUI.Forms
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnRegister = new System.Windows.Forms.Button();
             this.txtUsername = new System.Windows.Forms.Label();
+            this.pregledModeratoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,6 +148,7 @@ namespace eApartman.WinUI.Forms
             // 
             this.korisniciToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mojNalogToolStripMenuItem,
+            this.pregledModeratoraToolStripMenuItem,
             this.dodavanjeModeratoraToolStripMenuItem});
             this.korisniciToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.korisniciToolStripMenuItem.Name = "korisniciToolStripMenuItem";
@@ -165,6 +167,7 @@ namespace eApartman.WinUI.Forms
             this.dodavanjeModeratoraToolStripMenuItem.Name = "dodavanjeModeratoraToolStripMenuItem";
             this.dodavanjeModeratoraToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.dodavanjeModeratoraToolStripMenuItem.Text = "Dodavanje moderatora";
+            this.dodavanjeModeratoraToolStripMenuItem.Click += new System.EventHandler(this.dodavanjeModeratoraToolStripMenuItem_Click);
             // 
             // izvještajiToolStripMenuItem
             // 
@@ -208,6 +211,13 @@ namespace eApartman.WinUI.Forms
             this.txtUsername.TabIndex = 14;
             this.txtUsername.Text = "Username";
             this.txtUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pregledModeratoraToolStripMenuItem
+            // 
+            this.pregledModeratoraToolStripMenuItem.Name = "pregledModeratoraToolStripMenuItem";
+            this.pregledModeratoraToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.pregledModeratoraToolStripMenuItem.Text = "Pregled moderatora";
+            this.pregledModeratoraToolStripMenuItem.Click += new System.EventHandler(this.pregledModeratoraToolStripMenuItem_Click);
             // 
             // PocetnaMDIFrm
             // 
@@ -254,6 +264,7 @@ namespace eApartman.WinUI.Forms
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Label txtUsername;
         private System.Windows.Forms.ToolStripMenuItem zatvoriSveProzoreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pregledModeratoraToolStripMenuItem;
     }
 }
 

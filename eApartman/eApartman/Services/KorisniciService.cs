@@ -33,6 +33,7 @@ namespace eApartman.Services
             var entity = _mapper.Map<List<Model.Korisnik>>(set);
             return entity;
         }
+
         public override Model.Korisnik Insert(KorisnikInsertRequest request)
         {
             var entity = _mapper.Map<Database.Korisnik>(request);
@@ -102,6 +103,7 @@ namespace eApartman.Services
                 korisnik.PasswordHash = hash;
             }
         }
+        
 
         public static string GenerateSalt()
         {
