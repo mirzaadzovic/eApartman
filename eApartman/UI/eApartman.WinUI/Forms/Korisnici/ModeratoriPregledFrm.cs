@@ -32,7 +32,7 @@ namespace eApartman.WinUI.Forms.Korisnici
         }
         private async Task LoadData()
         {
-            VlasnikModerator request = new VlasnikModerator()
+            Moderator request = new Moderator()
             {
                 VlasnikId = APIService.Korisnik.KorisnikId
             };

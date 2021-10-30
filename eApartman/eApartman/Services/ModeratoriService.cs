@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace eApartman.Services
 {
-    public class ModeratoriService : BaseCRUDService<Model.Korisnik, VlasnikModerator, Model.VlasnikModerator, Model.VlasnikModerator, Model.VlasnikModerator>
+    public class ModeratoriService : BaseCRUDService<Model.Korisnik, Moderator, Model.Moderator, Model.Moderator, Model.Moderator>
     {
         public ModeratoriService(eApartmanContext context, IMapper mapper) : base(context, mapper)
         {
           
         }
-        public override IEnumerable<Model.Korisnik> Get(Model.VlasnikModerator search)
+        public override IEnumerable<Model.Korisnik> Get(Model.Moderator search)
         {
             var set = _context
-                .Set<VlasnikModerator>()
+                .Set<Moderator>()
                 .AsQueryable();
             //Ako moderator traži vlasnika kojem moderira apartmane ili rezervacje
             if (search?.ModeratorId>0)
@@ -42,10 +42,10 @@ namespace eApartman.Services
             
             return _mapper.Map<List<Model.Korisnik>>(moderatori);
         }
-        public override Model.Korisnik Insert(Model.VlasnikModerator request)
+        public override Model.Korisnik Insert(Model.Moderator request)
         {
-            var entity = _mapper.Map<VlasnikModerator>(request);
-            _context.Set<VlasnikModerator>().Add(entity);
+            var entity = _mapper.Map<Moderator>(request);
+            _context.Set<Moderator>().Add(entity);
             _context.SaveChanges();
 
             var moderator = _context.Set<Korisnik>().Find(entity.ModeratorId);

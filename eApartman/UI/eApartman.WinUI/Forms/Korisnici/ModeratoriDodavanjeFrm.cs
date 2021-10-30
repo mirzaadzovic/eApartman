@@ -60,13 +60,13 @@ namespace eApartman.WinUI.Forms.Korisnici
 
                 Korisnik moderator = await _apiKorisnici.Insert<Korisnik>(request);
 
-                VlasnikModerator requestModerator = new VlasnikModerator()
+                Moderator requestModerator = new Moderator()
                 {
                     ModeratorId = moderator.KorisnikId,
                     VlasnikId = APIService.Korisnik.KorisnikId
                 };
 
-                await _apiModeratori.Insert<VlasnikModerator>(requestModerator);
+                await _apiModeratori.Insert<Moderator>(requestModerator);
 
                 MessageBox.Show($"Moderator {moderator.Username} dodan!");
             }

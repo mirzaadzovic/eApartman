@@ -98,10 +98,17 @@ namespace eApartman.WinUI.Forms.Apartmani
             byte[] imgStream = (dgvApartmani.SelectedRows[0].DataBoundItem as Apartman).SlikaProfilnaFile;
             Image img = ImageBytesConverter.BytesToImage(imgStream);
             pbApartman.Image = img;
-            
-            if(e.ColumnIndex==dgvApartmani.ColumnCount-1)
+
+            if (e.ColumnIndex == dgvApartmani.ColumnCount - 1)
             {
-                await DeleteApartman();
+                try
+                {
+                    await DeleteApartman();
+                }
+                catch (Exception ex) 
+                { 
+                    MessageBox.Show(ex.Message, "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
         public async Task DeleteApartman()

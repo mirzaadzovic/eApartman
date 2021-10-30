@@ -58,7 +58,7 @@ namespace eApartman.WinUI
                 KorisnikSearchObject search = new KorisnikSearchObject()
                 {
                     Username = APIService.Username,
-                    IncludeList = new string[] { "KorisnikUlogas", "VlasnikModeratorModerators" }
+                    IncludeList = new string[] { "KorisnikUlogas", "ModeratorModeratorNavigation" }
                 };
 
                 EnableTextBoxes(false);

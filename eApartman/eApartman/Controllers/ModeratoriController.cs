@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace eApartman.Controllers
 {
-    public class ModeratoriController : BaseCRUDController<Model.Korisnik, VlasnikModerator, Model.VlasnikModerator, Model.VlasnikModerator, Model.VlasnikModerator>
+    public class ModeratoriController : BaseCRUDController<Model.Korisnik, Moderator, Model.Moderator, Model.Moderator, Model.Moderator>
     {
-        public ModeratoriController(ICRUDService<Model.Korisnik, Model.VlasnikModerator, Model.VlasnikModerator, Model.VlasnikModerator> service) : base(service)
+        public ModeratoriController(ICRUDService<Model.Korisnik, Model.Moderator, Model.Moderator, Model.Moderator> service) : base(service)
         {
         }
     }

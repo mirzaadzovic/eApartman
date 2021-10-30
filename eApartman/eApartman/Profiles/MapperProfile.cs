@@ -33,7 +33,7 @@ namespace eApartman.Profiles
             CreateMap<Utisak, Model.Utisak>().ReverseMap();
             CreateMap<ApartmanSlika, Model.ApartmanSlika>().ReverseMap();
             CreateMap<ApartmanSlikaInsertRequest, ApartmanSlika>().ReverseMap();
-            CreateMap<VlasnikModerator, Model.VlasnikModerator>().ReverseMap();
+            CreateMap<Moderator, Model.Moderator>().ReverseMap();
         }
     }
 }

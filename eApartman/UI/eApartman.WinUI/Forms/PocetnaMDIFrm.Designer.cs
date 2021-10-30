@@ -42,12 +42,12 @@ namespace eApartman.WinUI.Forms
             this.dodavanjeRezervacijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.korisniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mojNalogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pregledModeratoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodavanjeModeratoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.izvještajiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnRegister = new System.Windows.Forms.Button();
             this.txtUsername = new System.Windows.Forms.Label();
-            this.pregledModeratoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -162,6 +162,13 @@ namespace eApartman.WinUI.Forms
             this.mojNalogToolStripMenuItem.Text = "Moj nalog";
             this.mojNalogToolStripMenuItem.Click += new System.EventHandler(this.mojNalogToolStripMenuItem_Click);
             // 
+            // pregledModeratoraToolStripMenuItem
+            // 
+            this.pregledModeratoraToolStripMenuItem.Name = "pregledModeratoraToolStripMenuItem";
+            this.pregledModeratoraToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.pregledModeratoraToolStripMenuItem.Text = "Pregled moderatora";
+            this.pregledModeratoraToolStripMenuItem.Click += new System.EventHandler(this.pregledModeratoraToolStripMenuItem_Click);
+            // 
             // dodavanjeModeratoraToolStripMenuItem
             // 
             this.dodavanjeModeratoraToolStripMenuItem.Name = "dodavanjeModeratoraToolStripMenuItem";
@@ -190,7 +197,7 @@ namespace eApartman.WinUI.Forms
             this.btnRegister.ForeColor = System.Drawing.SystemColors.Control;
             this.btnRegister.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRegister.ImageKey = "(none)";
-            this.btnRegister.Location = new System.Drawing.Point(1195, 58);
+            this.btnRegister.Location = new System.Drawing.Point(1100, 58);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(74, 31);
             this.btnRegister.TabIndex = 13;
@@ -205,19 +212,13 @@ namespace eApartman.WinUI.Forms
             this.txtUsername.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, System.Drawing.FontStyle.Bold);
             this.txtUsername.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtUsername.Location = new System.Drawing.Point(1081, 59);
+            this.txtUsername.Location = new System.Drawing.Point(1105, 30);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(96, 25);
             this.txtUsername.TabIndex = 14;
             this.txtUsername.Text = "Username";
             this.txtUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // pregledModeratoraToolStripMenuItem
-            // 
-            this.pregledModeratoraToolStripMenuItem.Name = "pregledModeratoraToolStripMenuItem";
-            this.pregledModeratoraToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.pregledModeratoraToolStripMenuItem.Text = "Pregled moderatora";
-            this.pregledModeratoraToolStripMenuItem.Click += new System.EventHandler(this.pregledModeratoraToolStripMenuItem_Click);
+            this.txtUsername.Click += new System.EventHandler(this.txtUsername_Click);
             // 
             // PocetnaMDIFrm
             // 

@@ -180,5 +180,10 @@ namespace eApartman.WinUI.Forms
             else
                 MessageBox.Show("Nemate pravo pristupa ovoj funkcionalnosti!", "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
+
+        private void txtUsername_Click(object sender, EventArgs e)
+        {
+            mojNalogToolStripMenuItem_Click(sender, e);
+        }
     }
 }

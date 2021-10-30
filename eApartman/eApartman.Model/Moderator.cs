@@ -4,7 +4,7 @@ using System.Text;
 
 namespace eApartman.Model
 {
-    public class VlasnikModerator
+    public class Moderator
     {
         public int VlasnikId { get; set; }
         public int ModeratorId { get; set; }

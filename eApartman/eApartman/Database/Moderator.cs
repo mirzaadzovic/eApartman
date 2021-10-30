@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 namespace eApartman.Database
 {
-    public partial class VlasnikModerator
+    public partial class Moderator
     {
         public int VlasnikId { get; set; }
         public int ModeratorId { get; set; }
 
-        public virtual Korisnik Moderator { get; set; }
+        public virtual Korisnik ModeratorNavigation { get; set; }
         public virtual Korisnik Vlasnik { get; set; }
     }
 }

@@ -25,11 +25,11 @@ namespace eApartman.Database
         public virtual DbSet<Grad> Grads { get; set; }
         public virtual DbSet<Korisnik> Korisniks { get; set; }
         public virtual DbSet<KorisnikUloga> KorisnikUlogas { get; set; }
+        public virtual DbSet<Moderator> Moderators { get; set; }
         public virtual DbSet<Popust> Popusts { get; set; }
         public virtual DbSet<Rezervacija> Rezervacijas { get; set; }
         public virtual DbSet<Uloga> Ulogas { get; set; }
         public virtual DbSet<Utisak> Utisaks { get; set; }
-        public virtual DbSet<VlasnikModerator> VlasnikModerators { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -184,6 +184,25 @@ namespace eApartman.Database
                     .HasConstraintName("fk_uloga");
             });
 
+            modelBuilder.Entity<Moderator>(entity =>
+            {
+                entity.ToTable("Moderator");
+
+                entity.Property(e => e.ModeratorId).ValueGeneratedNever();
+
+                entity.HasOne(d => d.ModeratorNavigation)
+                    .WithOne(p => p.ModeratorModeratorNavigation)
+                    .HasForeignKey<Moderator>(d => d.ModeratorId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_moderatorkorisnik");
+
+                entity.HasOne(d => d.Vlasnik)
+                    .WithMany(p => p.ModeratorVlasniks)
+                    .HasForeignKey(d => d.VlasnikId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_vlasnikkorisnik");
+            });
+
             modelBuilder.Entity<Popust>(entity =>
             {
                 entity.ToTable("Popust");
@@ -255,26 +274,6 @@ namespace eApartman.Database
                     .WithMany(p => p.Utisaks)
                     .HasForeignKey(d => d.KorisnikId)
                     .HasConstraintName("fk_korisnikutisak");
-            });
-
-            modelBuilder.Entity<VlasnikModerator>(entity =>
-            {
-                entity.HasKey(e => new { e.VlasnikId, e.ModeratorId })
-                    .HasName("pk_vlasnikmoderator");
-
-                entity.ToTable("VlasnikModerator");
-
-                entity.HasOne(d => d.Moderator)
-                    .WithMany(p => p.VlasnikModeratorModerators)
-                    .HasForeignKey(d => d.ModeratorId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_moderatorkorisnik");
-
-                entity.HasOne(d => d.Vlasnik)
-                    .WithMany(p => p.VlasnikModeratorVlasniks)
-                    .HasForeignKey(d => d.VlasnikId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_vlasnikkorisnik");
             });
 
             OnModelCreatingPartial(modelBuilder);

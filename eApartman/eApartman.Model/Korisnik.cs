@@ -28,8 +28,8 @@ namespace eApartman.Model
 
         public virtual ICollection<Apartman> Apartmen { get; set; }
         public virtual ICollection<KorisnikUloga> KorisnikUlogas { get; set; }
-        public virtual ICollection<VlasnikModerator> VlasnikModeratorModerators { get; set; }
-        public int? VlasnikId => VlasnikModeratorModerators?.FirstOrDefault()?.VlasnikId;
+        public virtual Moderator ModeratorModeratorNavigation { get; set; }
+        public int? VlasnikId => ModeratorModeratorNavigation?.VlasnikId;
         public bool? IsVlasnik => KorisnikUlogas?.Any(u => u.UlogaId == 2);
         public bool? IsModeratorApartmani => KorisnikUlogas?.Any(u => u.UlogaId == 4);
         public bool? IsModeratorRezervacije => KorisnikUlogas?.Any(u => u.UlogaId == 5);
