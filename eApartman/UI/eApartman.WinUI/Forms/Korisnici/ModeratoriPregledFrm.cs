@@ -39,5 +39,10 @@ namespace eApartman.WinUI.Forms.Korisnici
             List<Korisnik> moderatori = await _api.Get<List<Korisnik>>(request);
             dgvModeratori.DataSource = moderatori;
         }
+
+        private void btnPretrazi_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

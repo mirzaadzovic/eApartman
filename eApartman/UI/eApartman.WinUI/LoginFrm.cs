@@ -78,11 +78,12 @@ namespace eApartman.WinUI
                 ResetujKorisnika();
                 this.Show();
             }
-            catch
+            catch(Exception error)
             {
                 EnableTextBoxes(true);
                 txtPassword.Text = "";
-                MessageBox.Show("Pogrešan username ili password!", "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(error.Message,"Poruka", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Show();
             }
 
         }

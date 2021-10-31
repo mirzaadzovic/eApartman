@@ -30,7 +30,6 @@ namespace eApartman.WinUI.Forms.Apartmani
         private void InitializeComponent()
         {
             this.pbUser = new System.Windows.Forms.PictureBox();
-            this.txtUsername = new MaterialSkin.Controls.MaterialLabel();
             this.txtNaziv = new MaterialSkin.Controls.MaterialTextBox();
             this.txtAdresa = new MaterialSkin.Controls.MaterialTextBox();
             this.cmbDrzava = new MaterialSkin.Controls.MaterialComboBox();
@@ -66,21 +65,6 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.pbUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbUser.TabIndex = 4;
             this.pbUser.TabStop = false;
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.AutoSize = true;
-            this.txtUsername.Depth = 0;
-            this.txtUsername.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.txtUsername.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            this.txtUsername.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.txtUsername.Location = new System.Drawing.Point(400, 195);
-            this.txtUsername.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(92, 24);
-            this.txtUsername.TabIndex = 3;
-            this.txtUsername.Text = "Username";
-            this.txtUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtNaziv
             // 
@@ -322,7 +306,7 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.txtNaslov.AutoSize = true;
             this.txtNaslov.Depth = 0;
             this.txtNaslov.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNaslov.Location = new System.Drawing.Point(370, 233);
+            this.txtNaslov.Location = new System.Drawing.Point(370, 203);
             this.txtNaslov.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtNaslov.Name = "txtNaslov";
             this.txtNaslov.Size = new System.Drawing.Size(159, 19);
@@ -458,7 +442,6 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.Controls.Add(this.txtAdresa);
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.pbUser);
-            this.Controls.Add(this.txtUsername);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
             this.Name = "ApartmaniDodavanjeFrm";
             this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
@@ -477,7 +460,6 @@ namespace eApartman.WinUI.Forms.Apartmani
         #endregion
 
         private System.Windows.Forms.PictureBox pbUser;
-        private MaterialSkin.Controls.MaterialLabel txtUsername;
         private MaterialSkin.Controls.MaterialTextBox txtNaziv;
         private MaterialSkin.Controls.MaterialTextBox txtAdresa;
         private MaterialSkin.Controls.MaterialComboBox cmbDrzava;

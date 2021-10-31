@@ -143,6 +143,7 @@ namespace eApartman.WinUI.Forms
             this.dodavanjeRezervacijaToolStripMenuItem.Name = "dodavanjeRezervacijaToolStripMenuItem";
             this.dodavanjeRezervacijaToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.dodavanjeRezervacijaToolStripMenuItem.Text = "Dodavanje rezervacija";
+            this.dodavanjeRezervacijaToolStripMenuItem.Click += new System.EventHandler(this.dodavanjeRezervacijaToolStripMenuItem_Click);
             // 
             // korisniciToolStripMenuItem
             // 

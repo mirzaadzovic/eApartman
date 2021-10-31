@@ -70,6 +70,7 @@ namespace eApartman
             services.AddScoped<ICRUDService<Model.ApartmanSlika, ApartmanSlikaSearchObject, List<ApartmanSlikaInsertRequest>, ApartmanSlikaInsertRequest>, SlikeService>();
             services.AddScoped<ICRUDService<Model.KorisnikUloga, object, Model.KorisnikUloga, object>, BaseCRUDService<Model.KorisnikUloga, KorisnikUloga, Model.KorisnikUloga, object, object>>();
             services.AddScoped<ICRUDService<Model.Korisnik, Model.Moderator, Model.Moderator, Model.Moderator>, ModeratoriService>();
+            services.AddScoped<ICRUDService<Model.Rezervacija, RezervacijaSearchObject, RezervacijaInsertRequest, RezervacijaUpdateRequest>, RezervacijeService>();
 
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);

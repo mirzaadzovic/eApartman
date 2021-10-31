@@ -1,4 +1,5 @@
 ﻿using eApartman.Database;
+using eApartman.Model.Requests;
 using eApartman.Services;
 using System;
 using System.Collections.Generic;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace eApartman.Controllers
 {
-    public class RezervacijeController:BaseCRUDController<Model.Rezervacija, Rezervacija, object, object, object>
+    public class RezervacijeController:BaseCRUDController<Model.Rezervacija, Rezervacija, RezervacijaInsertRequest, RezervacijaUpdateRequest, RezervacijaSearchObject>
     {
-        public RezervacijeController(ICRUDService<Model.Rezervacija, object, object, object> service)
+        public RezervacijeController(ICRUDService<Model.Rezervacija, RezervacijaSearchObject, RezervacijaInsertRequest, RezervacijaUpdateRequest> service)
             :base(service)
         {
         }

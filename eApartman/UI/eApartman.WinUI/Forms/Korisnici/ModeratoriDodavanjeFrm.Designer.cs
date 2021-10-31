@@ -183,9 +183,9 @@ namespace eApartman.WinUI.Forms.Korisnici
             this.btnDodaj.ForeColor = System.Drawing.SystemColors.Control;
             this.btnDodaj.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDodaj.ImageKey = "(none)";
-            this.btnDodaj.Location = new System.Drawing.Point(255, 290);
+            this.btnDodaj.Location = new System.Drawing.Point(191, 296);
             this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(207, 46);
+            this.btnDodaj.Size = new System.Drawing.Size(339, 40);
             this.btnDodaj.TabIndex = 22;
             this.btnDodaj.Text = "DODAJ";
             this.btnDodaj.UseVisualStyleBackColor = false;
@@ -227,8 +227,9 @@ namespace eApartman.WinUI.Forms.Korisnici
             this.txtPasswordPotvrda.TrailingIcon = null;
             this.txtPasswordPotvrda.UseAccent = false;
             // 
-            // DodajModeratoraFrm
+            // ModeratoriDodavanjeFrm
             // 
+            this.AcceptButton = this.btnDodaj;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(747, 382);
@@ -242,7 +243,7 @@ namespace eApartman.WinUI.Forms.Korisnici
             this.Controls.Add(this.txtPrezime);
             this.Controls.Add(this.txtIme);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
-            this.Name = "DodajModeratoraFrm";
+            this.Name = "ModeratoriDodavanjeFrm";
             this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
             this.Text = "DodajModeratoraFrm";
             this.Load += new System.EventHandler(this.DodajModeratoraFrm_Load);

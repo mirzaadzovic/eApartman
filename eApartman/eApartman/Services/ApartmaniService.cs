@@ -22,10 +22,7 @@ namespace eApartman.Services
                 .Include("Vlasnik")
                 .AsQueryable();
 
-            if (search != null)
-            {
-                set=FiltrirajListu(set, search);             
-            }
+            if (search != null) set=FiltrirajListu(set, search);
 
             return _mapper.Map<List<Model.Apartman>>(set);
         }
@@ -40,7 +37,7 @@ namespace eApartman.Services
             return _mapper.Map<Model.Apartman>(entity);
         }
 
-        IQueryable<Apartman> GetSlobodniApartmani(IQueryable<Apartman> set, DateTime checkin, DateTime checkout)
+       public IQueryable<Apartman> GetSlobodniApartmani(IQueryable<Apartman> set, DateTime checkin, DateTime checkout)
         {
             if(checkin>=DateTime.Today && checkout > DateTime.Today)
             {
@@ -48,7 +45,6 @@ namespace eApartman.Services
                     .Where(r => r.DatumCheckIn >= checkin && r.DatumCheckIn < checkout)
                     .Select(r => r.ApartmanId)
                     .Distinct();
-                    //.ToArray();
 
                 set = set.Where(a => !rezervacije.Contains(a.ApartmanId));
             }
@@ -58,16 +54,6 @@ namespace eApartman.Services
 
         IQueryable<Apartman> FiltrirajListu(IQueryable<Apartman> set, ApartmanSearchObject search)
         {
-            set = GetSlobodniApartmani(set, search.CheckIn, search.CheckOut);
-
-            if (search.IncludeRezervacije)
-                set=set.Include("Rezervacijas.Gost");
-
-            if (search.IncludeSlike)
-                set=set.Include("Slikas");
-
-            set=set.Include("ApartmanTip");
-
             if (!string.IsNullOrWhiteSpace(search.Grad) && search.Grad != "")
             {
                 set = set.Where(a => a.Adresa.Grad.Naziv.Contains(search.Grad));
@@ -83,6 +69,17 @@ namespace eApartman.Services
 
             if (search.Parking)
                 set = set.Where(a => a.ImaParking);
+
+            //Ima li slobodnih
+            set = GetSlobodniApartmani(set, search.CheckIn, search.CheckOut);
+
+            if (search?.IncludeRezervacije==true)
+                set=set.Include("Rezervacijas.Gost");
+
+            if (search?.IncludeSlike==true)
+                set=set.Include("Slikas");
+
+            set=set.Include("ApartmanTip");
 
             if (search?.VlasnikId > 0)
                 set = set.Where(a => a.VlasnikId == search.VlasnikId);

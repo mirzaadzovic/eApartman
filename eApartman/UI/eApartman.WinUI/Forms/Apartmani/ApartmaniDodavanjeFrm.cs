@@ -48,14 +48,11 @@ namespace eApartman.WinUI.Forms.Apartmani
         {
             try
             {
-                txtUsername.Text = APIService.Korisnik.Username;
-
                 SwitchComboBoxes(false);
 
                 await LoadData();
                 
                 SwitchComboBoxes(true);
-
             }
             catch
             {

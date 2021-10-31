@@ -1,5 +1,6 @@
 ﻿using eApartman.WinUI.Forms.Apartmani;
 using eApartman.WinUI.Forms.Korisnici;
+using eApartman.WinUI.Forms.Rezervacije;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,6 @@ namespace eApartman.WinUI.Forms
         {
             InitializeComponent();
         }
-
         private void ShowNewForm(object sender, EventArgs e)
         {
             Form childForm = new Form();
@@ -29,7 +29,6 @@ namespace eApartman.WinUI.Forms
             childForm.Text = "Window " + childFormNumber++;
             childForm.Show();
         }
-
         private void OpenFile(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -40,7 +39,6 @@ namespace eApartman.WinUI.Forms
                 string FileName = openFileDialog.FileName;
             }
         }
-
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -64,18 +62,13 @@ namespace eApartman.WinUI.Forms
         private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
-
         private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
-
-       
-
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.Cascade);
         }
-
         private void TileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.TileVertical);
@@ -104,7 +97,6 @@ namespace eApartman.WinUI.Forms
                 }
             }
         }
-
         private void pregledApartmanaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(APIService.Korisnik.IsVlasnik==true || APIService.Korisnik.IsModeratorApartmani==true)
@@ -115,9 +107,7 @@ namespace eApartman.WinUI.Forms
             }
             else
                 MessageBox.Show("Nemate pravo pristupa ovoj funkcionalnosti!", "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
         }
-
         private void PocetnaMDIFrm_Load(object sender, EventArgs e)
         {
             try
@@ -128,9 +118,7 @@ namespace eApartman.WinUI.Forms
             {
                 MessageBox.Show("Potrebno se ponovo logirati!");
             }
-
         }
-
         private void dodavanjeApartmanaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(APIService.Korisnik.IsVlasnik == true || APIService.Korisnik.IsModeratorApartmani==true)
@@ -184,6 +172,18 @@ namespace eApartman.WinUI.Forms
         private void txtUsername_Click(object sender, EventArgs e)
         {
             mojNalogToolStripMenuItem_Click(sender, e);
+        }
+
+        private void dodavanjeRezervacijaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (APIService.Korisnik.IsVlasnik == true || APIService.Korisnik.IsModeratorRezervacije == true)
+            {
+                RezervacijeDodavanjeFrm frm = new RezervacijeDodavanjeFrm();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+                MessageBox.Show("Nemate pravo pristupa ovoj funkcionalnosti!", "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
     }
 }
