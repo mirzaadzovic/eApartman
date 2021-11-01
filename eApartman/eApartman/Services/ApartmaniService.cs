@@ -42,7 +42,19 @@ namespace eApartman.Services
             if(checkin>=DateTime.Today && checkout > DateTime.Today)
             {
                 var rezervacije = _context.Set<Rezervacija>()
-                    .Where(r => r.DatumCheckIn >= checkin && r.DatumCheckIn < checkout)
+                    .Where(r =>
+                    (r.DatumCheckIn >= checkin && r.DatumCheckOut <= checkout)
+                    ||
+                    (r.DatumCheckIn <= checkin && r.DatumCheckOut >= checkout
+                    &&
+                    r.DatumCheckOut > checkin && r.DatumCheckIn < checkout)
+                    ||
+                    (r.DatumCheckIn <= checkin && r.DatumCheckOut <= checkout
+                    && r.DatumCheckOut > checkin)
+                    ||
+                    (r.DatumCheckIn >= checkin && r.DatumCheckOut >= checkout
+                    && r.DatumCheckIn < checkout))
+                    .Where(r => r.Otkazana == false)                    
                     .Select(r => r.ApartmanId)
                     .Distinct();
 

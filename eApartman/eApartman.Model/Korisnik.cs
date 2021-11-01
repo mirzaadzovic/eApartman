@@ -41,7 +41,7 @@ namespace eApartman.Model
         //}
         public int GetVlasnikId()
         {   //Vraća VlasnikId u zavisnosti je li korisnik moderator ili nije
-            return IsModeratorApartmani == true ? int.Parse(VlasnikId.ToString()) : KorisnikId;
+            return IsVlasnik == true ? KorisnikId : int.Parse(VlasnikId.ToString());
         }
     }
 }

@@ -19,24 +19,38 @@ namespace eApartman.Services
         public override IEnumerable<Model.Rezervacija> Get(RezervacijaSearchObject search)
         {
             var set = _context.Set<Rezervacija>().AsQueryable();
-            if(search!=null)
+            set=FiltirirajListu(set, search);
+            
+            return _mapper.Map<List<Model.Rezervacija>>(set);
+        }
+
+        private IQueryable<Rezervacija> FiltirirajListu(IQueryable<Rezervacija> set, RezervacijaSearchObject search)
+        {
+            if (search != null)
             {
-                foreach(string item in search.IncludeList)
+                foreach (string item in search.IncludeList)
                 {
                     set = set.Include(item);
                 }
             }
-            if(search?.IncludeList.Contains("Apartman") == true)
+
+            if (search?.VlasnikId > 0)
+                set = set.Where(r => r.Apartman.VlasnikId == search.VlasnikId);
+            if (search?.ApartmanId > 0)
+                set = set.Where(r => r.Apartman.ApartmanId == search.ApartmanId);
+            if (!string.IsNullOrWhiteSpace(search.ApartmanNaziv))
+                set = set.Where(r => r.Apartman.Naziv == search.ApartmanNaziv);
+  
+            if(search?.Datum>DateTime.MinValue)
             {
-                if (search.VlasnikId > 0) 
-                    set = set.Where(r => r.Apartman.VlasnikId == search.VlasnikId);
-                if (search.ApartmanId > 0) 
-                    set = set.Where(r => r.Apartman.ApartmanId == search.ApartmanId);
-                if (string.IsNullOrWhiteSpace(search.ApartmanNaziv)) 
-                    set = set.Where(r => r.Apartman.Naziv == search.ApartmanNaziv);
+                set = set.Where(r =>
+                  r.Otkazana==search.Otkazana && 
+                  r.DatumCheckIn<=search.Datum.Date && r.DatumCheckOut>search.Datum.Date
+                );
             }
-            return _mapper.Map<List<Model.Rezervacija>>(set);
+            return set;
         }
+
         public override Model.Rezervacija Insert(RezervacijaInsertRequest request)
         {
             var entity = _mapper.Map<Rezervacija>(request);
@@ -48,7 +62,7 @@ namespace eApartman.Services
         }
         public override Model.Rezervacija Update(int id, RezervacijaUpdateRequest request)
         {
-            var entity = _context.Set<Rezervacija>().Find(request);
+            var entity = _context.Set<Rezervacija>().Find(id);
             _mapper.Map(request, entity);
             _context.SaveChanges();
 

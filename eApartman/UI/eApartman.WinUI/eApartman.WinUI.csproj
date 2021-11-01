@@ -176,6 +176,9 @@
     <EmbeddedResource Include="Forms\Rezervacije\RezervacijeDodavanjeFrm.resx">
       <DependentUpon>RezervacijeDodavanjeFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Rezervacije\RezervacijePregledFrm.resx">
+      <DependentUpon>RezervacijePregledFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginFrm.resx">
       <DependentUpon>LoginFrm.cs</DependentUpon>
     </EmbeddedResource>

@@ -20,8 +20,11 @@ namespace eApartman.Model
         public int? PopustId { get; set; }
         public string GostIme { get; set; }
         public string GostPrezime { get; set; }
+        public string Adresa => Apartman?.Adresa?.Naziv + " " + Apartman?.Adresa?.Broj;
+        public string ApartmanNaziv => Apartman?.Naziv;
+        public string CheckIn => DatumCheckIn.ToString("d.M.yyyy");
+        public string CheckOut => DatumCheckOut.ToString("d.M.yyyy");
         public DateTime? DatumRezervacije { get; set; }
-
         public virtual Apartman Apartman { get; set; }
         public virtual Korisnik Gost { get; set; }
         public virtual Popust Popust { get; set; }

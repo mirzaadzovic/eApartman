@@ -52,7 +52,7 @@ namespace eApartman.WinUI.Forms.Rezervacije
             dtOd.MinDate = DateTime.Today;
             dtDo.MinDate = dtOd.Value.AddDays(1);
             dtOd.Value = DateTime.Today;
-            dtDo.Value = DateTime.Today.AddDays(1);
+            //dtDo.Value = DateTime.Today.AddDays(1);
         }
         private async Task LoadData()
         {
@@ -121,7 +121,7 @@ namespace eApartman.WinUI.Forms.Rezervacije
         private void dtOd_ValueChanged(object sender, EventArgs e)
         {
             //Check-out datum uvijek mora biti makar dan nakon check-in datuma
-            if (dtOd.Value > dtDo.Value)
+            if (dtOd.Value >= dtDo.Value)
                 dtDo.Value = dtOd.Value.AddDays(1);
 
             var apartman = cmbApartman.Items[cmbApartman.SelectedIndex] as Apartman;
@@ -137,7 +137,7 @@ namespace eApartman.WinUI.Forms.Rezervacije
                 var obj = cmbApartman.SelectedValue;
                 int id=int.Parse(obj.ToString());
                 var apartman = cmbApartman.Items[cmbApartman.SelectedIndex] as Apartman;
-                int dana = int.Parse((dtDo.Value - dtOd.Value).TotalDays.ToString());
+                int dana = int.Parse((dtDo.Value.Date - dtOd.Value.Date).TotalDays.ToString());
                 decimal cijena = apartman.Cijena * dana;
                 RezervacijaInsertRequest request = new RezervacijaInsertRequest()
                 {

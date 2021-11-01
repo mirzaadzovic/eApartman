@@ -185,5 +185,17 @@ namespace eApartman.WinUI.Forms
             else
                 MessageBox.Show("Nemate pravo pristupa ovoj funkcionalnosti!", "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
+
+        private void pregledRezervacijaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (APIService.Korisnik.IsVlasnik == true || APIService.Korisnik.IsModeratorRezervacije == true)
+            {
+                RezervacijePregledFrm frm = new RezervacijePregledFrm();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+                MessageBox.Show("Nemate pravo pristupa ovoj funkcionalnosti!", "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
     }
 }
