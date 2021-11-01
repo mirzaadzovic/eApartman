@@ -50,6 +50,7 @@ namespace eApartman.WinUI.Forms.Rezervacije
         private void LoadDatumi()
         {
             dtOd.MinDate = DateTime.Today;
+            dtDo.MinDate = dtOd.Value.AddDays(1);
             dtOd.Value = DateTime.Today;
             dtDo.Value = DateTime.Today.AddDays(1);
         }

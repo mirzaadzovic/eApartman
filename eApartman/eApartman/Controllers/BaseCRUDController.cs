@@ -30,6 +30,7 @@ namespace eApartman.Controllers
         {
             return _service.Update(id, request);
         }
+        [Authorize(Roles="Vlasnik,Developer")]
         [HttpDelete("{id}")]
         public virtual T Delete(int id)
         {
