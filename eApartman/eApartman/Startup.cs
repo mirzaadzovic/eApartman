@@ -33,8 +33,13 @@ namespace eApartman
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(Startup));
+
+            //Update odredjenih podataka periodicno
+            services.AddHostedService<DataUpdateService>();
+
             services.AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+           
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "eProdaja API", Version = "v1" });
@@ -71,9 +76,12 @@ namespace eApartman
             services.AddScoped<ICRUDService<Model.KorisnikUloga, object, Model.KorisnikUloga, object>, BaseCRUDService<Model.KorisnikUloga, KorisnikUloga, Model.KorisnikUloga, object, object>>();
             services.AddScoped<ICRUDService<Model.Korisnik, Model.Moderator, Model.Moderator, Model.Moderator>, ModeratoriService>();
             services.AddScoped<ICRUDService<Model.Rezervacija, RezervacijaSearchObject, RezervacijaInsertRequest, RezervacijaUpdateRequest>, RezervacijeService>();
+            services.AddScoped<IRezervacijeService, RezervacijeService>();
 
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -9,12 +9,11 @@ using System.Threading.Tasks;
 
 namespace eApartman.Services
 {
-    public class RezervacijeService:BaseCRUDService<Model.Rezervacija, Rezervacija, RezervacijaInsertRequest, RezervacijaUpdateRequest, RezervacijaSearchObject>
+    public class RezervacijeService:BaseCRUDService<Model.Rezervacija, Rezervacija, RezervacijaInsertRequest, RezervacijaUpdateRequest, RezervacijaSearchObject>, IRezervacijeService
     {
         public RezervacijeService(eApartmanContext context, IMapper mapper)
             :base(context, mapper)
-        {
-            
+        {          
         }
         public override IEnumerable<Model.Rezervacija> Get(RezervacijaSearchObject search)
         {
@@ -67,6 +66,18 @@ namespace eApartman.Services
             _context.SaveChanges();
 
             return _mapper.Map<Model.Rezervacija>(entity);
+        }
+        public async Task UpdateStatus()
+        {
+            var set = _context
+                .Set<Rezervacija>()
+                .AsQueryable()
+                .Where(r=>r.Otkazana==false)
+                .Where(r => r.DatumCheckOut.Date == DateTime.Today.Date);
+           
+            await set.ForEachAsync(r => r.Izvrsena = true);
+
+            _context.SaveChanges();
         }
     }
 }
