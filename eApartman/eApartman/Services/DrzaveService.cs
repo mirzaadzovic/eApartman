@@ -17,11 +17,8 @@ namespace eApartman.Services
         public override IEnumerable<Model.Drzava> Get(DrzavaSearchObject search)
         {
             IQueryable<Drzava>set= _context.Set<Drzava>();
-            if(search!=null)
-            {
-                if (search.IncludeGradovi)
-                   set= set.Include(d => d.Grads);
-            }
+            if (search?.IncludeGradovi==true)
+                set= set.Include(d => d.Grads);
 
             return _mapper.Map<List<Model.Drzava>>(set.OrderBy(d=>d.Naziv));
         }

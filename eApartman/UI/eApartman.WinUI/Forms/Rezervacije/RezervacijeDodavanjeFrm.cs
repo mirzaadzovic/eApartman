@@ -52,7 +52,6 @@ namespace eApartman.WinUI.Forms.Rezervacije
             dtOd.MinDate = DateTime.Today;
             dtDo.MinDate = dtOd.Value.AddDays(1);
             dtOd.Value = DateTime.Today;
-            //dtDo.Value = DateTime.Today.AddDays(1);
         }
         private async Task LoadData()
         {
@@ -129,7 +128,7 @@ namespace eApartman.WinUI.Forms.Rezervacije
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
-        {
+        {   
             Loading(true);
             try
             {
@@ -143,8 +142,8 @@ namespace eApartman.WinUI.Forms.Rezervacije
                 {
                     ApartmanId = id,
                     BrojDana = dana,
-                    DatumCheckIn = dtOd.Value,
-                    DatumCheckOut = dtDo.Value,
+                    DatumCheckIn = dtOd.Value.Date,
+                    DatumCheckOut = dtDo.Value.Date,
                     BrojOsoba = sldOsoba.Value,
                     Poruka = $"Rezervaciju dodao stanodavac.",
                     Cijena = cijena,
