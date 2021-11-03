@@ -59,10 +59,11 @@ namespace eApartman.WinUI.Forms.Apartmani
             // pbUser
             // 
             this.pbUser.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.pbUser.Location = new System.Drawing.Point(379, 62);
+            this.pbUser.Location = new System.Drawing.Point(505, 76);
+            this.pbUser.Margin = new System.Windows.Forms.Padding(4);
             this.pbUser.Name = "pbUser";
-            this.pbUser.Size = new System.Drawing.Size(132, 117);
-            this.pbUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbUser.Size = new System.Drawing.Size(176, 144);
+            this.pbUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbUser.TabIndex = 4;
             this.pbUser.TabStop = false;
             // 
@@ -73,12 +74,13 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.txtNaziv.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtNaziv.Hint = "Naziv apartmana";
             this.txtNaziv.LeadingIcon = null;
-            this.txtNaziv.Location = new System.Drawing.Point(72, 287);
+            this.txtNaziv.Location = new System.Drawing.Point(96, 353);
+            this.txtNaziv.Margin = new System.Windows.Forms.Padding(4);
             this.txtNaziv.MaxLength = 50;
             this.txtNaziv.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNaziv.Multiline = false;
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(302, 50);
+            this.txtNaziv.Size = new System.Drawing.Size(403, 50);
             this.txtNaziv.TabIndex = 5;
             this.txtNaziv.Text = "";
             this.txtNaziv.TrailingIcon = null;
@@ -91,12 +93,13 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.txtAdresa.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtAdresa.Hint = "Adresa";
             this.txtAdresa.LeadingIcon = null;
-            this.txtAdresa.Location = new System.Drawing.Point(72, 449);
+            this.txtAdresa.Location = new System.Drawing.Point(96, 553);
+            this.txtAdresa.Margin = new System.Windows.Forms.Padding(4);
             this.txtAdresa.MaxLength = 50;
             this.txtAdresa.MouseState = MaterialSkin.MouseState.OUT;
             this.txtAdresa.Multiline = false;
             this.txtAdresa.Name = "txtAdresa";
-            this.txtAdresa.Size = new System.Drawing.Size(218, 50);
+            this.txtAdresa.Size = new System.Drawing.Size(291, 50);
             this.txtAdresa.TabIndex = 6;
             this.txtAdresa.Text = "";
             this.txtAdresa.TrailingIcon = null;
@@ -117,11 +120,12 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.cmbDrzava.Hint = "Država";
             this.cmbDrzava.IntegralHeight = false;
             this.cmbDrzava.ItemHeight = 29;
-            this.cmbDrzava.Location = new System.Drawing.Point(72, 356);
+            this.cmbDrzava.Location = new System.Drawing.Point(96, 438);
+            this.cmbDrzava.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDrzava.MaxDropDownItems = 4;
             this.cmbDrzava.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbDrzava.Name = "cmbDrzava";
-            this.cmbDrzava.Size = new System.Drawing.Size(302, 35);
+            this.cmbDrzava.Size = new System.Drawing.Size(401, 35);
             this.cmbDrzava.StartIndex = 0;
             this.cmbDrzava.TabIndex = 7;
             this.cmbDrzava.UseAccent = false;
@@ -143,11 +147,12 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.cmbGrad.Hint = "Grad";
             this.cmbGrad.IntegralHeight = false;
             this.cmbGrad.ItemHeight = 29;
-            this.cmbGrad.Location = new System.Drawing.Point(72, 397);
+            this.cmbGrad.Location = new System.Drawing.Point(96, 489);
+            this.cmbGrad.Margin = new System.Windows.Forms.Padding(4);
             this.cmbGrad.MaxDropDownItems = 4;
             this.cmbGrad.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbGrad.Name = "cmbGrad";
-            this.cmbGrad.Size = new System.Drawing.Size(218, 35);
+            this.cmbGrad.Size = new System.Drawing.Size(289, 35);
             this.cmbGrad.StartIndex = 0;
             this.cmbGrad.TabIndex = 8;
             this.cmbGrad.UseAccent = false;
@@ -160,12 +165,13 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.txtBroj.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtBroj.Hint = "Broj";
             this.txtBroj.LeadingIcon = null;
-            this.txtBroj.Location = new System.Drawing.Point(306, 449);
+            this.txtBroj.Location = new System.Drawing.Point(408, 553);
+            this.txtBroj.Margin = new System.Windows.Forms.Padding(4);
             this.txtBroj.MaxLength = 3;
             this.txtBroj.MouseState = MaterialSkin.MouseState.OUT;
             this.txtBroj.Multiline = false;
             this.txtBroj.Name = "txtBroj";
-            this.txtBroj.Size = new System.Drawing.Size(68, 50);
+            this.txtBroj.Size = new System.Drawing.Size(91, 50);
             this.txtBroj.TabIndex = 9;
             this.txtBroj.Text = "";
             this.txtBroj.TrailingIcon = null;
@@ -179,12 +185,13 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.txtCijena.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtCijena.Hint = "Cijena(€)";
             this.txtCijena.LeadingIcon = null;
-            this.txtCijena.Location = new System.Drawing.Point(432, 287);
+            this.txtCijena.Location = new System.Drawing.Point(576, 353);
+            this.txtCijena.Margin = new System.Windows.Forms.Padding(4);
             this.txtCijena.MaxLength = 50;
             this.txtCijena.MouseState = MaterialSkin.MouseState.OUT;
             this.txtCijena.Multiline = false;
             this.txtCijena.Name = "txtCijena";
-            this.txtCijena.Size = new System.Drawing.Size(97, 50);
+            this.txtCijena.Size = new System.Drawing.Size(129, 50);
             this.txtCijena.TabIndex = 10;
             this.txtCijena.Text = "";
             this.txtCijena.TrailingIcon = null;
@@ -198,12 +205,13 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.txtOsoba.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtOsoba.Hint = "Osoba";
             this.txtOsoba.LeadingIcon = null;
-            this.txtOsoba.Location = new System.Drawing.Point(432, 355);
+            this.txtOsoba.Location = new System.Drawing.Point(576, 437);
+            this.txtOsoba.Margin = new System.Windows.Forms.Padding(4);
             this.txtOsoba.MaxLength = 50;
             this.txtOsoba.MouseState = MaterialSkin.MouseState.OUT;
             this.txtOsoba.Multiline = false;
             this.txtOsoba.Name = "txtOsoba";
-            this.txtOsoba.Size = new System.Drawing.Size(97, 50);
+            this.txtOsoba.Size = new System.Drawing.Size(129, 50);
             this.txtOsoba.TabIndex = 11;
             this.txtOsoba.Text = "";
             this.txtOsoba.TrailingIcon = null;
@@ -214,7 +222,7 @@ namespace eApartman.WinUI.Forms.Apartmani
             // 
             this.cbParking.AutoSize = true;
             this.cbParking.Depth = 0;
-            this.cbParking.Location = new System.Drawing.Point(404, 420);
+            this.cbParking.Location = new System.Drawing.Point(539, 517);
             this.cbParking.Margin = new System.Windows.Forms.Padding(0);
             this.cbParking.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cbParking.MouseState = MaterialSkin.MouseState.HOVER;
@@ -229,7 +237,7 @@ namespace eApartman.WinUI.Forms.Apartmani
             // 
             this.cbBalkon.AutoSize = true;
             this.cbBalkon.Depth = 0;
-            this.cbBalkon.Location = new System.Drawing.Point(404, 473);
+            this.cbBalkon.Location = new System.Drawing.Point(539, 582);
             this.cbBalkon.Margin = new System.Windows.Forms.Padding(0);
             this.cbBalkon.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cbBalkon.MouseState = MaterialSkin.MouseState.HOVER;
@@ -249,9 +257,10 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.btnSacuvaj.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSacuvaj.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSacuvaj.ImageKey = "(none)";
-            this.btnSacuvaj.Location = new System.Drawing.Point(252, 581);
+            this.btnSacuvaj.Location = new System.Drawing.Point(336, 715);
+            this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(4);
             this.btnSacuvaj.Name = "btnSacuvaj";
-            this.btnSacuvaj.Size = new System.Drawing.Size(441, 36);
+            this.btnSacuvaj.Size = new System.Drawing.Size(588, 44);
             this.btnSacuvaj.TabIndex = 19;
             this.btnSacuvaj.Text = "SAČUVAJ";
             this.btnSacuvaj.UseVisualStyleBackColor = false;
@@ -260,9 +269,10 @@ namespace eApartman.WinUI.Forms.Apartmani
             // pbSlika
             // 
             this.pbSlika.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.pbSlika.Location = new System.Drawing.Point(584, 287);
+            this.pbSlika.Location = new System.Drawing.Point(779, 353);
+            this.pbSlika.Margin = new System.Windows.Forms.Padding(4);
             this.pbSlika.Name = "pbSlika";
-            this.pbSlika.Size = new System.Drawing.Size(266, 157);
+            this.pbSlika.Size = new System.Drawing.Size(355, 193);
             this.pbSlika.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbSlika.TabIndex = 20;
             this.pbSlika.TabStop = false;
@@ -276,9 +286,10 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.btnSlika.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSlika.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSlika.ImageKey = "(none)";
-            this.btnSlika.Location = new System.Drawing.Point(617, 463);
+            this.btnSlika.Location = new System.Drawing.Point(823, 570);
+            this.btnSlika.Margin = new System.Windows.Forms.Padding(4);
             this.btnSlika.Name = "btnSlika";
-            this.btnSlika.Size = new System.Drawing.Size(203, 36);
+            this.btnSlika.Size = new System.Drawing.Size(271, 44);
             this.btnSlika.TabIndex = 22;
             this.btnSlika.Text = "DODAJ PROFILNU...";
             this.btnSlika.UseVisualStyleBackColor = false;
@@ -293,9 +304,10 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.btnGalerija.ForeColor = System.Drawing.SystemColors.Control;
             this.btnGalerija.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGalerija.ImageKey = "(none)";
-            this.btnGalerija.Location = new System.Drawing.Point(617, 513);
+            this.btnGalerija.Location = new System.Drawing.Point(823, 631);
+            this.btnGalerija.Margin = new System.Windows.Forms.Padding(4);
             this.btnGalerija.Name = "btnGalerija";
-            this.btnGalerija.Size = new System.Drawing.Size(203, 36);
+            this.btnGalerija.Size = new System.Drawing.Size(271, 44);
             this.btnGalerija.TabIndex = 23;
             this.btnGalerija.Text = "DODAJ GALERIJU...";
             this.btnGalerija.UseVisualStyleBackColor = false;
@@ -306,7 +318,8 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.txtNaslov.AutoSize = true;
             this.txtNaslov.Depth = 0;
             this.txtNaslov.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNaslov.Location = new System.Drawing.Point(370, 203);
+            this.txtNaslov.Location = new System.Drawing.Point(511, 253);
+            this.txtNaslov.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtNaslov.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtNaslov.Name = "txtNaslov";
             this.txtNaslov.Size = new System.Drawing.Size(159, 19);
@@ -328,11 +341,12 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.cmbTipApartmana.Hint = "Tip apartmana";
             this.cmbTipApartmana.IntegralHeight = false;
             this.cmbTipApartmana.ItemHeight = 29;
-            this.cmbTipApartmana.Location = new System.Drawing.Point(72, 518);
+            this.cmbTipApartmana.Location = new System.Drawing.Point(96, 638);
+            this.cmbTipApartmana.Margin = new System.Windows.Forms.Padding(4);
             this.cmbTipApartmana.MaxDropDownItems = 4;
             this.cmbTipApartmana.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbTipApartmana.Name = "cmbTipApartmana";
-            this.cmbTipApartmana.Size = new System.Drawing.Size(302, 35);
+            this.cmbTipApartmana.Size = new System.Drawing.Size(401, 35);
             this.cmbTipApartmana.StartIndex = 0;
             this.cmbTipApartmana.TabIndex = 25;
             this.cmbTipApartmana.UseAccent = false;
@@ -347,9 +361,10 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.btnDodajGrad.ForeColor = System.Drawing.SystemColors.Control;
             this.btnDodajGrad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDodajGrad.ImageKey = "(none)";
-            this.btnDodajGrad.Location = new System.Drawing.Point(306, 399);
+            this.btnDodajGrad.Location = new System.Drawing.Point(408, 491);
+            this.btnDodajGrad.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodajGrad.Name = "btnDodajGrad";
-            this.btnDodajGrad.Size = new System.Drawing.Size(68, 33);
+            this.btnDodajGrad.Size = new System.Drawing.Size(91, 41);
             this.btnDodajGrad.TabIndex = 26;
             this.btnDodajGrad.Text = "...";
             this.btnDodajGrad.UseVisualStyleBackColor = false;
@@ -361,7 +376,8 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.txtGalerijaCount.Depth = 0;
             this.txtGalerijaCount.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtGalerijaCount.FontType = MaterialSkin.MaterialSkinManager.fontType.Body2;
-            this.txtGalerijaCount.Location = new System.Drawing.Point(825, 526);
+            this.txtGalerijaCount.Location = new System.Drawing.Point(1100, 647);
+            this.txtGalerijaCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtGalerijaCount.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtGalerijaCount.Name = "txtGalerijaCount";
             this.txtGalerijaCount.Size = new System.Drawing.Size(12, 17);
@@ -377,9 +393,10 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.btnPrev.ForeColor = System.Drawing.SystemColors.Control;
             this.btnPrev.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPrev.ImageKey = "(none)";
-            this.btnPrev.Location = new System.Drawing.Point(548, 346);
+            this.btnPrev.Location = new System.Drawing.Point(731, 426);
+            this.btnPrev.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(30, 36);
+            this.btnPrev.Size = new System.Drawing.Size(40, 44);
             this.btnPrev.TabIndex = 28;
             this.btnPrev.Text = "<";
             this.btnPrev.UseVisualStyleBackColor = false;
@@ -394,9 +411,10 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.btnNext.ForeColor = System.Drawing.SystemColors.Control;
             this.btnNext.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNext.ImageKey = "(none)";
-            this.btnNext.Location = new System.Drawing.Point(856, 349);
+            this.btnNext.Location = new System.Drawing.Point(1141, 430);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(4);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(30, 36);
+            this.btnNext.Size = new System.Drawing.Size(40, 44);
             this.btnNext.TabIndex = 29;
             this.btnNext.Text = ">";
             this.btnNext.UseVisualStyleBackColor = false;
@@ -407,7 +425,8 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.txtProfilna.AutoSize = true;
             this.txtProfilna.Depth = 0;
             this.txtProfilna.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtProfilna.Location = new System.Drawing.Point(666, 265);
+            this.txtProfilna.Location = new System.Drawing.Point(888, 326);
+            this.txtProfilna.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtProfilna.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtProfilna.Name = "txtProfilna";
             this.txtProfilna.Size = new System.Drawing.Size(94, 19);
@@ -417,10 +436,10 @@ namespace eApartman.WinUI.Forms.Apartmani
             // ApartmaniDodavanjeFrm
             // 
             this.AcceptButton = this.btnSacuvaj;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(914, 648);
+            this.ClientSize = new System.Drawing.Size(1219, 798);
             this.Controls.Add(this.txtProfilna);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrev);
@@ -443,8 +462,9 @@ namespace eApartman.WinUI.Forms.Apartmani
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.pbUser);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ApartmaniDodavanjeFrm";
-            this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
+            this.Padding = new System.Windows.Forms.Padding(4, 30, 4, 4);
             this.ShowIcon = false;
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

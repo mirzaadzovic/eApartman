@@ -1,5 +1,6 @@
 ﻿using eApartman.Model;
 using eApartman.Model.Requests;
+using eApartman.WinUI.Helpers;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,6 @@ namespace eApartman.WinUI.Forms.Rezervacije
             {
 
                 await LoadData();
-                LoadDatumi();
             }
             catch(Exception error)
             {
@@ -56,6 +56,14 @@ namespace eApartman.WinUI.Forms.Rezervacije
         private async Task LoadData()
         {
             await LoadApartmani();
+            LoadDatumi();
+            LoadKorisnik();
+        }
+        private void LoadKorisnik()
+        {
+            var korisnik = APIService.Korisnik;
+            if (korisnik.Slika.Count() != 0)
+                pbUser.Image = ImageBytesConverter.BytesToImage(korisnik.Slika);
         }
         private async Task LoadApartmani()
         {

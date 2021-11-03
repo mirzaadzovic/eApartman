@@ -122,11 +122,18 @@ namespace eApartman.WinUI.Forms.Apartmani
 
             await LoadApartmaniTip();
             await LoadDrzave();
+            LoadKorisnik();
             if (_apartman != null)
             {
                 LoadApartman();
                 await LoadSlike();
             }
+        }
+        private void LoadKorisnik()
+        {
+            var korisnik = APIService.Korisnik;
+            if (korisnik.Slika.Count() != 0)
+                pbUser.Image = ImageBytesConverter.BytesToImage(korisnik.Slika);
         }
         private void LoadApartman()
         {
@@ -354,16 +361,16 @@ namespace eApartman.WinUI.Forms.Apartmani
             List<ApartmanSlikaInsertRequest> slike=new List<ApartmanSlikaInsertRequest>();
 
             //Dodavanje profilne slike u listu
-            if(ofdSlika.FileName!="")
-            {
-                byte[] fileProfilna = File.ReadAllBytes(ofdSlika.FileName);
-                ApartmanSlikaInsertRequest profilna = new ApartmanSlikaInsertRequest()
-                {
-                    SlikaFile = fileProfilna,
-                    ApartmanId = apartman.ApartmanId
-                };
-                slike.Add(profilna);
-            }
+            //if(ofdSlika.FileName!="")
+            //{
+            //    byte[] fileProfilna = File.ReadAllBytes(ofdSlika.FileName);
+            //    ApartmanSlikaInsertRequest profilna = new ApartmanSlikaInsertRequest()
+            //    {
+            //        SlikaFile = fileProfilna,
+            //        ApartmanId = apartman.ApartmanId
+            //    };
+            //    slike.Add(profilna);
+            //}
 
 
             //Dodavanje galerije slika u listu 

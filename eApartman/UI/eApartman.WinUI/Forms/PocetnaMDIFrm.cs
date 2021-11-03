@@ -1,6 +1,7 @@
 ﻿using eApartman.WinUI.Forms.Apartmani;
 using eApartman.WinUI.Forms.Korisnici;
 using eApartman.WinUI.Forms.Rezervacije;
+using eApartman.WinUI.Helpers;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -112,12 +113,19 @@ namespace eApartman.WinUI.Forms
         {
             try
             {
-                txtUsername.Text = APIService.Korisnik.Username;
+                LoadKorisnik();               
             }
             catch
             {
                 MessageBox.Show("Potrebno se ponovo logirati!");
             }
+        }
+        private void LoadKorisnik()
+        {
+            var korisnik = APIService.Korisnik;
+            txtUsername.Text = korisnik.Username;
+            if (korisnik.Slika.Count() != 0)
+                pbSlika.Image = ImageBytesConverter.BytesToImage(korisnik.Slika);
         }
         private void dodavanjeApartmanaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -196,6 +204,16 @@ namespace eApartman.WinUI.Forms
             }
             else
                 MessageBox.Show("Nemate pravo pristupa ovoj funkcionalnosti!", "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void pbSlika_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

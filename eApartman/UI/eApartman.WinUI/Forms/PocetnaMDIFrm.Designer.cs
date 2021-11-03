@@ -48,7 +48,9 @@ namespace eApartman.WinUI.Forms
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnRegister = new System.Windows.Forms.Button();
             this.txtUsername = new System.Windows.Forms.Label();
+            this.pbSlika = new System.Windows.Forms.PictureBox();
             this.menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -56,6 +58,7 @@ namespace eApartman.WinUI.Forms
             this.menuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.menuStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.menuStrip.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
             this.apartmaniToolStripMenuItem,
@@ -65,9 +68,10 @@ namespace eApartman.WinUI.Forms
             this.menuStrip.Location = new System.Drawing.Point(3, 64);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.menuStrip.Size = new System.Drawing.Size(1311, 25);
+            this.menuStrip.Size = new System.Drawing.Size(1448, 31);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
+            this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
             // 
             // fileMenu
             // 
@@ -77,21 +81,21 @@ namespace eApartman.WinUI.Forms
             this.fileMenu.ForeColor = System.Drawing.SystemColors.Control;
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(40, 21);
+            this.fileMenu.Size = new System.Drawing.Size(50, 27);
             this.fileMenu.Text = "&File";
             this.fileMenu.CheckedChanged += new System.EventHandler(this.checked_Change);
             // 
             // zatvoriSveProzoreToolStripMenuItem
             // 
             this.zatvoriSveProzoreToolStripMenuItem.Name = "zatvoriSveProzoreToolStripMenuItem";
-            this.zatvoriSveProzoreToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.zatvoriSveProzoreToolStripMenuItem.Size = new System.Drawing.Size(242, 28);
             this.zatvoriSveProzoreToolStripMenuItem.Text = "Zatvori sve prozore";
             this.zatvoriSveProzoreToolStripMenuItem.Click += new System.EventHandler(this.CloseAllToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(242, 28);
             this.logOutToolStripMenuItem.Text = "Log out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
             // 
@@ -103,7 +107,7 @@ namespace eApartman.WinUI.Forms
             this.apartmaniToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.apartmaniToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.apartmaniToolStripMenuItem.Name = "apartmaniToolStripMenuItem";
-            this.apartmaniToolStripMenuItem.Size = new System.Drawing.Size(84, 21);
+            this.apartmaniToolStripMenuItem.Size = new System.Drawing.Size(104, 27);
             this.apartmaniToolStripMenuItem.Text = "Apartmani";
             this.apartmaniToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.apartmaniToolStripMenuItem.CheckedChanged += new System.EventHandler(this.checked_Change);
@@ -111,14 +115,14 @@ namespace eApartman.WinUI.Forms
             // pregledApartmanaToolStripMenuItem
             // 
             this.pregledApartmanaToolStripMenuItem.Name = "pregledApartmanaToolStripMenuItem";
-            this.pregledApartmanaToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.pregledApartmanaToolStripMenuItem.Size = new System.Drawing.Size(264, 28);
             this.pregledApartmanaToolStripMenuItem.Text = "Pregled apartmana";
             this.pregledApartmanaToolStripMenuItem.Click += new System.EventHandler(this.pregledApartmanaToolStripMenuItem_Click);
             // 
             // dodavanjeApartmanaToolStripMenuItem
             // 
             this.dodavanjeApartmanaToolStripMenuItem.Name = "dodavanjeApartmanaToolStripMenuItem";
-            this.dodavanjeApartmanaToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.dodavanjeApartmanaToolStripMenuItem.Size = new System.Drawing.Size(264, 28);
             this.dodavanjeApartmanaToolStripMenuItem.Text = "Dodavanje apartmana";
             this.dodavanjeApartmanaToolStripMenuItem.Click += new System.EventHandler(this.dodavanjeApartmanaToolStripMenuItem_Click);
             // 
@@ -129,20 +133,20 @@ namespace eApartman.WinUI.Forms
             this.dodavanjeRezervacijaToolStripMenuItem});
             this.rezervacijeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.rezervacijeToolStripMenuItem.Name = "rezervacijeToolStripMenuItem";
-            this.rezervacijeToolStripMenuItem.Size = new System.Drawing.Size(87, 21);
+            this.rezervacijeToolStripMenuItem.Size = new System.Drawing.Size(111, 27);
             this.rezervacijeToolStripMenuItem.Text = "Rezervacije";
             // 
             // pregledRezervacijaToolStripMenuItem
             // 
             this.pregledRezervacijaToolStripMenuItem.Name = "pregledRezervacijaToolStripMenuItem";
-            this.pregledRezervacijaToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.pregledRezervacijaToolStripMenuItem.Size = new System.Drawing.Size(263, 28);
             this.pregledRezervacijaToolStripMenuItem.Text = "Pregled rezervacija";
             this.pregledRezervacijaToolStripMenuItem.Click += new System.EventHandler(this.pregledRezervacijaToolStripMenuItem_Click);
             // 
             // dodavanjeRezervacijaToolStripMenuItem
             // 
             this.dodavanjeRezervacijaToolStripMenuItem.Name = "dodavanjeRezervacijaToolStripMenuItem";
-            this.dodavanjeRezervacijaToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.dodavanjeRezervacijaToolStripMenuItem.Size = new System.Drawing.Size(263, 28);
             this.dodavanjeRezervacijaToolStripMenuItem.Text = "Dodavanje rezervacija";
             this.dodavanjeRezervacijaToolStripMenuItem.Click += new System.EventHandler(this.dodavanjeRezervacijaToolStripMenuItem_Click);
             // 
@@ -154,27 +158,27 @@ namespace eApartman.WinUI.Forms
             this.dodavanjeModeratoraToolStripMenuItem});
             this.korisniciToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.korisniciToolStripMenuItem.Name = "korisniciToolStripMenuItem";
-            this.korisniciToolStripMenuItem.Size = new System.Drawing.Size(70, 21);
+            this.korisniciToolStripMenuItem.Size = new System.Drawing.Size(87, 27);
             this.korisniciToolStripMenuItem.Text = "Korisnici";
             // 
             // mojNalogToolStripMenuItem
             // 
             this.mojNalogToolStripMenuItem.Name = "mojNalogToolStripMenuItem";
-            this.mojNalogToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.mojNalogToolStripMenuItem.Size = new System.Drawing.Size(271, 28);
             this.mojNalogToolStripMenuItem.Text = "Moj nalog";
             this.mojNalogToolStripMenuItem.Click += new System.EventHandler(this.mojNalogToolStripMenuItem_Click);
             // 
             // pregledModeratoraToolStripMenuItem
             // 
             this.pregledModeratoraToolStripMenuItem.Name = "pregledModeratoraToolStripMenuItem";
-            this.pregledModeratoraToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.pregledModeratoraToolStripMenuItem.Size = new System.Drawing.Size(271, 28);
             this.pregledModeratoraToolStripMenuItem.Text = "Pregled moderatora";
             this.pregledModeratoraToolStripMenuItem.Click += new System.EventHandler(this.pregledModeratoraToolStripMenuItem_Click);
             // 
             // dodavanjeModeratoraToolStripMenuItem
             // 
             this.dodavanjeModeratoraToolStripMenuItem.Name = "dodavanjeModeratoraToolStripMenuItem";
-            this.dodavanjeModeratoraToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.dodavanjeModeratoraToolStripMenuItem.Size = new System.Drawing.Size(271, 28);
             this.dodavanjeModeratoraToolStripMenuItem.Text = "Dodavanje moderatora";
             this.dodavanjeModeratoraToolStripMenuItem.Click += new System.EventHandler(this.dodavanjeModeratoraToolStripMenuItem_Click);
             // 
@@ -182,7 +186,7 @@ namespace eApartman.WinUI.Forms
             // 
             this.izvještajiToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.izvještajiToolStripMenuItem.Name = "izvještajiToolStripMenuItem";
-            this.izvještajiToolStripMenuItem.Size = new System.Drawing.Size(71, 21);
+            this.izvještajiToolStripMenuItem.Size = new System.Drawing.Size(89, 27);
             this.izvještajiToolStripMenuItem.Text = "Izvještaji";
             // 
             // toolTip
@@ -195,13 +199,13 @@ namespace eApartman.WinUI.Forms
             this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.btnRegister.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegister.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.btnRegister.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.btnRegister.ForeColor = System.Drawing.SystemColors.Control;
             this.btnRegister.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRegister.ImageKey = "(none)";
-            this.btnRegister.Location = new System.Drawing.Point(1100, 58);
+            this.btnRegister.Location = new System.Drawing.Point(1313, 58);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(74, 31);
+            this.btnRegister.Size = new System.Drawing.Size(79, 32);
             this.btnRegister.TabIndex = 13;
             this.btnRegister.Text = "Logout";
             this.btnRegister.UseVisualStyleBackColor = false;
@@ -214,20 +218,32 @@ namespace eApartman.WinUI.Forms
             this.txtUsername.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, System.Drawing.FontStyle.Bold);
             this.txtUsername.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtUsername.Location = new System.Drawing.Point(1105, 30);
+            this.txtUsername.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtUsername.Location = new System.Drawing.Point(1323, 24);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(96, 25);
+            this.txtUsername.Size = new System.Drawing.Size(112, 30);
             this.txtUsername.TabIndex = 14;
             this.txtUsername.Text = "Username";
             this.txtUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.txtUsername.Click += new System.EventHandler(this.txtUsername_Click);
             // 
+            // pbSlika
+            // 
+            this.pbSlika.Location = new System.Drawing.Point(1228, 24);
+            this.pbSlika.Name = "pbSlika";
+            this.pbSlika.Size = new System.Drawing.Size(69, 66);
+            this.pbSlika.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSlika.TabIndex = 16;
+            this.pbSlika.TabStop = false;
+            this.pbSlika.Click += new System.EventHandler(this.pbSlika_Click);
+            // 
             // PocetnaMDIFrm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1317, 650);
+            this.ClientSize = new System.Drawing.Size(1454, 650);
+            this.Controls.Add(this.pbSlika);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.menuStrip);
@@ -243,6 +259,7 @@ namespace eApartman.WinUI.Forms
             this.Load += new System.EventHandler(this.PocetnaMDIFrm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,6 +285,7 @@ namespace eApartman.WinUI.Forms
         private System.Windows.Forms.Label txtUsername;
         private System.Windows.Forms.ToolStripMenuItem zatvoriSveProzoreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledModeratoraToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pbSlika;
     }
 }
 

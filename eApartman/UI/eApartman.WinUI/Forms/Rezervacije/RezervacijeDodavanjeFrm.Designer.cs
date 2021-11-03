@@ -50,7 +50,8 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.txtNaslov.AutoSize = true;
             this.txtNaslov.Depth = 0;
             this.txtNaslov.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNaslov.Location = new System.Drawing.Point(243, 180);
+            this.txtNaslov.Location = new System.Drawing.Point(343, 221);
+            this.txtNaslov.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtNaslov.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtNaslov.Name = "txtNaslov";
             this.txtNaslov.Size = new System.Drawing.Size(157, 19);
@@ -66,9 +67,10 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.btnSacuvaj.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSacuvaj.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSacuvaj.ImageKey = "(none)";
-            this.btnSacuvaj.Location = new System.Drawing.Point(315, 558);
+            this.btnSacuvaj.Location = new System.Drawing.Point(420, 687);
+            this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSacuvaj.Name = "btnSacuvaj";
-            this.btnSacuvaj.Size = new System.Drawing.Size(441, 36);
+            this.btnSacuvaj.Size = new System.Drawing.Size(588, 44);
             this.btnSacuvaj.TabIndex = 29;
             this.btnSacuvaj.Text = "SAČUVAJ";
             this.btnSacuvaj.UseVisualStyleBackColor = false;
@@ -77,15 +79,16 @@ namespace eApartman.WinUI.Forms.Rezervacije
             // 
             this.txtIme.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtIme.Depth = 0;
-            this.txtIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtIme.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtIme.Hint = "Ime";
             this.txtIme.LeadingIcon = null;
-            this.txtIme.Location = new System.Drawing.Point(60, 282);
+            this.txtIme.Location = new System.Drawing.Point(80, 347);
+            this.txtIme.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtIme.MaxLength = 50;
             this.txtIme.MouseState = MaterialSkin.MouseState.OUT;
             this.txtIme.Multiline = false;
             this.txtIme.Name = "txtIme";
-            this.txtIme.Size = new System.Drawing.Size(238, 50);
+            this.txtIme.Size = new System.Drawing.Size(317, 50);
             this.txtIme.TabIndex = 27;
             this.txtIme.Text = "";
             this.txtIme.TrailingIcon = null;
@@ -106,11 +109,12 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.cmbApartman.Hint = "Apartmani loading...";
             this.cmbApartman.IntegralHeight = false;
             this.cmbApartman.ItemHeight = 29;
-            this.cmbApartman.Location = new System.Drawing.Point(60, 228);
+            this.cmbApartman.Location = new System.Drawing.Point(80, 281);
+            this.cmbApartman.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbApartman.MaxDropDownItems = 4;
             this.cmbApartman.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbApartman.Name = "cmbApartman";
-            this.cmbApartman.Size = new System.Drawing.Size(238, 35);
+            this.cmbApartman.Size = new System.Drawing.Size(316, 35);
             this.cmbApartman.StartIndex = 0;
             this.cmbApartman.TabIndex = 26;
             this.cmbApartman.UseAccent = false;
@@ -120,10 +124,11 @@ namespace eApartman.WinUI.Forms.Rezervacije
             // pbUser
             // 
             this.pbUser.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.pbUser.Location = new System.Drawing.Point(252, 39);
+            this.pbUser.Location = new System.Drawing.Point(336, 48);
+            this.pbUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbUser.Name = "pbUser";
-            this.pbUser.Size = new System.Drawing.Size(133, 117);
-            this.pbUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbUser.Size = new System.Drawing.Size(177, 144);
+            this.pbUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbUser.TabIndex = 25;
             this.pbUser.TabStop = false;
             // 
@@ -136,9 +141,10 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.btnSave.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSave.ImageKey = "(none)";
-            this.btnSave.Location = new System.Drawing.Point(85, 451);
+            this.btnSave.Location = new System.Drawing.Point(113, 555);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(442, 36);
+            this.btnSave.Size = new System.Drawing.Size(589, 44);
             this.btnSave.TabIndex = 31;
             this.btnSave.Text = "SAČUVAJ";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -148,11 +154,12 @@ namespace eApartman.WinUI.Forms.Rezervacije
             // 
             this.sldOsoba.Depth = 0;
             this.sldOsoba.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.sldOsoba.Location = new System.Drawing.Point(356, 228);
+            this.sldOsoba.Location = new System.Drawing.Point(475, 281);
+            this.sldOsoba.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sldOsoba.MouseState = MaterialSkin.MouseState.HOVER;
             this.sldOsoba.Name = "sldOsoba";
             this.sldOsoba.RangeMax = 5;
-            this.sldOsoba.Size = new System.Drawing.Size(171, 40);
+            this.sldOsoba.Size = new System.Drawing.Size(228, 40);
             this.sldOsoba.TabIndex = 32;
             this.sldOsoba.Text = "Osoba";
             this.sldOsoba.Value = 0;
@@ -161,15 +168,16 @@ namespace eApartman.WinUI.Forms.Rezervacije
             // 
             this.txtPrezime.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrezime.Depth = 0;
-            this.txtPrezime.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtPrezime.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtPrezime.Hint = "Prezime";
             this.txtPrezime.LeadingIcon = null;
-            this.txtPrezime.Location = new System.Drawing.Point(60, 354);
+            this.txtPrezime.Location = new System.Drawing.Point(80, 436);
+            this.txtPrezime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPrezime.MaxLength = 50;
             this.txtPrezime.MouseState = MaterialSkin.MouseState.OUT;
             this.txtPrezime.Multiline = false;
             this.txtPrezime.Name = "txtPrezime";
-            this.txtPrezime.Size = new System.Drawing.Size(238, 50);
+            this.txtPrezime.Size = new System.Drawing.Size(317, 50);
             this.txtPrezime.TabIndex = 33;
             this.txtPrezime.Text = "";
             this.txtPrezime.TrailingIcon = null;
@@ -180,9 +188,10 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.dtOd.CalendarMonthBackground = System.Drawing.SystemColors.ButtonFace;
             this.dtOd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtOd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtOd.Location = new System.Drawing.Point(350, 303);
+            this.dtOd.Location = new System.Drawing.Point(467, 373);
+            this.dtOd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtOd.Name = "dtOd";
-            this.dtOd.Size = new System.Drawing.Size(201, 29);
+            this.dtOd.Size = new System.Drawing.Size(267, 34);
             this.dtOd.TabIndex = 34;
             this.dtOd.ValueChanged += new System.EventHandler(this.dtOd_ValueChanged);
             // 
@@ -191,9 +200,10 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.dtDo.CalendarMonthBackground = System.Drawing.SystemColors.ButtonFace;
             this.dtDo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtDo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtDo.Location = new System.Drawing.Point(350, 375);
+            this.dtDo.Location = new System.Drawing.Point(467, 462);
+            this.dtDo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtDo.Name = "dtDo";
-            this.dtDo.Size = new System.Drawing.Size(201, 29);
+            this.dtDo.Size = new System.Drawing.Size(267, 34);
             this.dtDo.TabIndex = 35;
             this.dtDo.ValueChanged += new System.EventHandler(this.dtOd_ValueChanged);
             // 
@@ -202,7 +212,8 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.Location = new System.Drawing.Point(353, 282);
+            this.materialLabel1.Location = new System.Drawing.Point(471, 347);
+            this.materialLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(61, 19);
@@ -214,7 +225,8 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.materialLabel2.AutoSize = true;
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.Location = new System.Drawing.Point(353, 353);
+            this.materialLabel2.Location = new System.Drawing.Point(471, 434);
+            this.materialLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(73, 19);
@@ -225,17 +237,18 @@ namespace eApartman.WinUI.Forms.Rezervacije
             // 
             this.txtStatus.AutoSize = true;
             this.txtStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStatus.Location = new System.Drawing.Point(476, 407);
+            this.txtStatus.Location = new System.Drawing.Point(635, 501);
+            this.txtStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtStatus.Name = "txtStatus";
-            this.txtStatus.Size = new System.Drawing.Size(0, 20);
+            this.txtStatus.Size = new System.Drawing.Size(0, 25);
             this.txtStatus.TabIndex = 38;
             // 
             // RezervacijeDodavanjeFrm
             // 
             this.AcceptButton = this.btnSacuvaj;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(614, 493);
+            this.ClientSize = new System.Drawing.Size(819, 607);
             this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);
@@ -250,8 +263,9 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.Controls.Add(this.cmbApartman);
             this.Controls.Add(this.pbUser);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "RezervacijeDodavanjeFrm";
-            this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
+            this.Padding = new System.Windows.Forms.Padding(4, 30, 4, 4);
             this.Sizable = false;
             this.Text = "RezervacijeDodavanjeFr";
             this.Load += new System.EventHandler(this.RezervacijeDodavanjeFrm_Load);

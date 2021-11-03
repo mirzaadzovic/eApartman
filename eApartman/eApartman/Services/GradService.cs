@@ -18,7 +18,7 @@ namespace eApartman.Services
         public override IEnumerable<Model.Grad> Get(GradSearchObject search)
         {
             var set = _context.Set<Grad>().AsQueryable();
-            set = set.Include(g => g.Drzava);
+            //set = set.Include(g => g.Drzava);
 
             if (!string.IsNullOrEmpty(search?.Naziv))
             {
