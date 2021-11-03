@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet" targetNamespace="http://tempuri.org/DataSet.xsd" xmlns:mstns="http://tempuri.org/DataSet.xsd" xmlns="http://tempuri.org/DataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet" msprop:Generator_UserDSName="DataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ZaradaApartmani" msprop:Generator_TableClassName="ZaradaApartmaniDataTable" msprop:Generator_TableVarName="tableZaradaApartmani" msprop:Generator_RowChangedName="ZaradaApartmaniRowChanged" msprop:Generator_TablePropName="ZaradaApartmani" msprop:Generator_RowDeletingName="ZaradaApartmaniRowDeleting" msprop:Generator_RowChangingName="ZaradaApartmaniRowChanging" msprop:Generator_RowEvHandlerName="ZaradaApartmaniRowChangeEventHandler" msprop:Generator_RowDeletedName="ZaradaApartmaniRowDeleted" msprop:Generator_RowClassName="ZaradaApartmaniRow" msprop:Generator_UserTableName="ZaradaApartmani" msprop:Generator_RowEvArgName="ZaradaApartmaniRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Apartman" msprop:Generator_ColumnVarNameInTable="columnApartman" msprop:Generator_ColumnPropNameInRow="Apartman" msprop:Generator_ColumnPropNameInTable="ApartmanColumn" msprop:Generator_UserColumnName="Apartman" type="xs:string" minOccurs="0" />
+              <xs:element name="Adresa" msprop:Generator_ColumnVarNameInTable="columnAdresa" msprop:Generator_ColumnPropNameInRow="Adresa" msprop:Generator_ColumnPropNameInTable="AdresaColumn" msprop:Generator_UserColumnName="Adresa" type="xs:string" minOccurs="0" />
+              <xs:element name="Zarada" msprop:Generator_ColumnVarNameInTable="columnZarada" msprop:Generator_ColumnPropNameInRow="Zarada" msprop:Generator_ColumnPropNameInTable="ZaradaColumn" msprop:Generator_UserColumnName="Zarada" type="xs:string" minOccurs="0" />
+              <xs:element name="BrojRezervacija" msprop:Generator_ColumnVarNameInTable="columnBrojRezervacija" msprop:Generator_ColumnPropNameInRow="BrojRezervacija" msprop:Generator_ColumnPropNameInTable="BrojRezervacijaColumn" msprop:Generator_UserColumnName="BrojRezervacija" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

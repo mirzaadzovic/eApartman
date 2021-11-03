@@ -43,5 +43,9 @@ namespace eApartman.Model
         {   //Vraća VlasnikId u zavisnosti je li korisnik moderator ili nije
             return IsVlasnik == true ? KorisnikId : int.Parse(VlasnikId.ToString());
         }
+        public string GetFullName()
+        {
+            return $"{Ime} {Prezime}";
+        }
     }
 }

@@ -49,6 +49,7 @@ namespace eApartman.WinUI.Forms
             this.btnRegister = new System.Windows.Forms.Button();
             this.txtUsername = new System.Windows.Forms.Label();
             this.pbSlika = new System.Windows.Forms.PictureBox();
+            this.zaradaPoApartmanimaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             this.SuspendLayout();
@@ -184,6 +185,8 @@ namespace eApartman.WinUI.Forms
             // 
             // izvještajiToolStripMenuItem
             // 
+            this.izvještajiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.zaradaPoApartmanimaToolStripMenuItem});
             this.izvještajiToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.izvještajiToolStripMenuItem.Name = "izvještajiToolStripMenuItem";
             this.izvještajiToolStripMenuItem.Size = new System.Drawing.Size(89, 27);
@@ -237,6 +240,13 @@ namespace eApartman.WinUI.Forms
             this.pbSlika.TabStop = false;
             this.pbSlika.Click += new System.EventHandler(this.pbSlika_Click);
             // 
+            // zaradaPoApartmanimaToolStripMenuItem
+            // 
+            this.zaradaPoApartmanimaToolStripMenuItem.Name = "zaradaPoApartmanimaToolStripMenuItem";
+            this.zaradaPoApartmanimaToolStripMenuItem.Size = new System.Drawing.Size(279, 28);
+            this.zaradaPoApartmanimaToolStripMenuItem.Text = "Zarada po apartmanima";
+            this.zaradaPoApartmanimaToolStripMenuItem.Click += new System.EventHandler(this.zaradaPoApartmanimaToolStripMenuItem_Click);
+            // 
             // PocetnaMDIFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -286,6 +296,7 @@ namespace eApartman.WinUI.Forms
         private System.Windows.Forms.ToolStripMenuItem zatvoriSveProzoreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledModeratoraToolStripMenuItem;
         private System.Windows.Forms.PictureBox pbSlika;
+        private System.Windows.Forms.ToolStripMenuItem zaradaPoApartmanimaToolStripMenuItem;
     }
 }
 

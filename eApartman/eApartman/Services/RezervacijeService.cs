@@ -40,11 +40,11 @@ namespace eApartman.Services
             if (!string.IsNullOrWhiteSpace(search.ApartmanNaziv))
                 set = set.Where(r => r.Apartman.Naziv == search.ApartmanNaziv);
   
-            if(search?.Datum>DateTime.MinValue)
+            if(search?.Datum.HasValue==true)
             {
                 set = set.Where(r =>
                   r.Otkazana==search.Otkazana && 
-                  r.DatumCheckIn<=search.Datum.Date && r.DatumCheckOut>search.Datum.Date
+                  r.DatumCheckIn.Date<=search.Datum.Value.Date && r.DatumCheckOut.Date>search.Datum.Value.Date
                 );
             }
             return set;

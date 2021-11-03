@@ -1,4 +1,5 @@
 ﻿using eApartman.WinUI.Forms.Apartmani;
+using eApartman.WinUI.Forms.Izvjestaji;
 using eApartman.WinUI.Forms.Korisnici;
 using eApartman.WinUI.Forms.Rezervacije;
 using eApartman.WinUI.Helpers;
@@ -214,6 +215,16 @@ namespace eApartman.WinUI.Forms
         private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void zaradaPoApartmanimaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(APIService.Korisnik.IsVlasnik==true)
+            {
+                IzvjestajFrm frm = new IzvjestajFrm();
+                frm.MdiParent = this;
+                frm.Show();
+            }
         }
     }
 }

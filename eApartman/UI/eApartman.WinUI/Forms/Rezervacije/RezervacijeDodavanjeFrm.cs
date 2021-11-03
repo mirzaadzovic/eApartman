@@ -128,8 +128,8 @@ namespace eApartman.WinUI.Forms.Rezervacije
         private void dtOd_ValueChanged(object sender, EventArgs e)
         {
             //Check-out datum uvijek mora biti makar dan nakon check-in datuma
-            if (dtOd.Value >= dtDo.Value)
-                dtDo.Value = dtOd.Value.AddDays(1);
+            if (dtOd.Value.Date >= dtDo.Value.Date)
+                dtDo.Value = dtOd.Value.Date.AddDays(1);
 
             var apartman = cmbApartman.Items[cmbApartman.SelectedIndex] as Apartman;
             CheckApartmanStatus(apartman);
