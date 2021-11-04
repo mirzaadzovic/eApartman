@@ -51,12 +51,13 @@ namespace eApartman.WinUI.Forms.Korisnici
             this.txtTelefon.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtTelefon.Hint = "Telefon";
             this.txtTelefon.LeadingIcon = null;
-            this.txtTelefon.Location = new System.Drawing.Point(463, 226);
+            this.txtTelefon.Location = new System.Drawing.Point(617, 278);
+            this.txtTelefon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTelefon.MaxLength = 50;
             this.txtTelefon.MouseState = MaterialSkin.MouseState.OUT;
             this.txtTelefon.Multiline = false;
             this.txtTelefon.Name = "txtTelefon";
-            this.txtTelefon.Size = new System.Drawing.Size(194, 50);
+            this.txtTelefon.Size = new System.Drawing.Size(259, 50);
             this.txtTelefon.TabIndex = 21;
             this.txtTelefon.Text = "";
             this.txtTelefon.TrailingIcon = null;
@@ -71,9 +72,10 @@ namespace eApartman.WinUI.Forms.Korisnici
             this.btnRegister.ForeColor = System.Drawing.SystemColors.Control;
             this.btnRegister.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRegister.ImageKey = "(none)";
-            this.btnRegister.Location = new System.Drawing.Point(241, 372);
+            this.btnRegister.Location = new System.Drawing.Point(321, 458);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(215, 46);
+            this.btnRegister.Size = new System.Drawing.Size(287, 57);
             this.btnRegister.TabIndex = 20;
             this.btnRegister.Text = "SAČUVAJ";
             this.btnRegister.UseVisualStyleBackColor = false;
@@ -86,13 +88,14 @@ namespace eApartman.WinUI.Forms.Korisnici
             this.txtPotvrdaPassword.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtPotvrdaPassword.Hint = "Potvrda lozinke";
             this.txtPotvrdaPassword.LeadingIcon = null;
-            this.txtPotvrdaPassword.Location = new System.Drawing.Point(463, 291);
+            this.txtPotvrdaPassword.Location = new System.Drawing.Point(617, 358);
+            this.txtPotvrdaPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPotvrdaPassword.MaxLength = 50;
             this.txtPotvrdaPassword.MouseState = MaterialSkin.MouseState.OUT;
             this.txtPotvrdaPassword.Multiline = false;
             this.txtPotvrdaPassword.Name = "txtPotvrdaPassword";
             this.txtPotvrdaPassword.Password = true;
-            this.txtPotvrdaPassword.Size = new System.Drawing.Size(194, 50);
+            this.txtPotvrdaPassword.Size = new System.Drawing.Size(259, 50);
             this.txtPotvrdaPassword.TabIndex = 19;
             this.txtPotvrdaPassword.Text = "";
             this.ttPassword.SetToolTip(this.txtPotvrdaPassword, "Unosite samo ako želite promijeniti lozinku");
@@ -106,13 +109,14 @@ namespace eApartman.WinUI.Forms.Korisnici
             this.txtPassword.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtPassword.Hint = "Nova lozinka";
             this.txtPassword.LeadingIcon = null;
-            this.txtPassword.Location = new System.Drawing.Point(253, 291);
+            this.txtPassword.Location = new System.Drawing.Point(337, 358);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPassword.MaxLength = 50;
             this.txtPassword.MouseState = MaterialSkin.MouseState.OUT;
             this.txtPassword.Multiline = false;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Password = true;
-            this.txtPassword.Size = new System.Drawing.Size(194, 50);
+            this.txtPassword.Size = new System.Drawing.Size(259, 50);
             this.txtPassword.TabIndex = 18;
             this.txtPassword.Text = "";
             this.ttPassword.SetToolTip(this.txtPassword, "Unosite samo ako želite promijeniti lozinku");
@@ -126,13 +130,14 @@ namespace eApartman.WinUI.Forms.Korisnici
             this.txtOldPassword.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtOldPassword.Hint = "Stara lozinka";
             this.txtOldPassword.LeadingIcon = null;
-            this.txtOldPassword.Location = new System.Drawing.Point(43, 291);
+            this.txtOldPassword.Location = new System.Drawing.Point(57, 358);
+            this.txtOldPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtOldPassword.MaxLength = 50;
             this.txtOldPassword.MouseState = MaterialSkin.MouseState.OUT;
             this.txtOldPassword.Multiline = false;
             this.txtOldPassword.Name = "txtOldPassword";
             this.txtOldPassword.Password = true;
-            this.txtOldPassword.Size = new System.Drawing.Size(194, 50);
+            this.txtOldPassword.Size = new System.Drawing.Size(259, 50);
             this.txtOldPassword.TabIndex = 17;
             this.txtOldPassword.Text = "";
             this.txtOldPassword.TrailingIcon = null;
@@ -145,12 +150,13 @@ namespace eApartman.WinUI.Forms.Korisnici
             this.txtPrezime.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtPrezime.Hint = "Prezime";
             this.txtPrezime.LeadingIcon = null;
-            this.txtPrezime.Location = new System.Drawing.Point(253, 226);
+            this.txtPrezime.Location = new System.Drawing.Point(337, 278);
+            this.txtPrezime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPrezime.MaxLength = 50;
             this.txtPrezime.MouseState = MaterialSkin.MouseState.OUT;
             this.txtPrezime.Multiline = false;
             this.txtPrezime.Name = "txtPrezime";
-            this.txtPrezime.Size = new System.Drawing.Size(194, 50);
+            this.txtPrezime.Size = new System.Drawing.Size(259, 50);
             this.txtPrezime.TabIndex = 15;
             this.txtPrezime.Text = "";
             this.txtPrezime.TrailingIcon = null;
@@ -163,12 +169,13 @@ namespace eApartman.WinUI.Forms.Korisnici
             this.txtIme.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtIme.Hint = "Ime";
             this.txtIme.LeadingIcon = null;
-            this.txtIme.Location = new System.Drawing.Point(43, 226);
+            this.txtIme.Location = new System.Drawing.Point(57, 278);
+            this.txtIme.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtIme.MaxLength = 50;
             this.txtIme.MouseState = MaterialSkin.MouseState.OUT;
             this.txtIme.Multiline = false;
             this.txtIme.Name = "txtIme";
-            this.txtIme.Size = new System.Drawing.Size(194, 50);
+            this.txtIme.Size = new System.Drawing.Size(259, 50);
             this.txtIme.TabIndex = 14;
             this.txtIme.Text = "";
             this.txtIme.TrailingIcon = null;
@@ -177,9 +184,10 @@ namespace eApartman.WinUI.Forms.Korisnici
             // pbSlika
             // 
             this.pbSlika.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.pbSlika.Location = new System.Drawing.Point(284, 44);
+            this.pbSlika.Location = new System.Drawing.Point(379, 54);
+            this.pbSlika.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbSlika.Name = "pbSlika";
-            this.pbSlika.Size = new System.Drawing.Size(134, 122);
+            this.pbSlika.Size = new System.Drawing.Size(179, 150);
             this.pbSlika.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbSlika.TabIndex = 22;
             this.pbSlika.TabStop = false;
@@ -193,9 +201,10 @@ namespace eApartman.WinUI.Forms.Korisnici
             this.btnSlika.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSlika.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSlika.ImageKey = "(none)";
-            this.btnSlika.Location = new System.Drawing.Point(310, 172);
+            this.btnSlika.Location = new System.Drawing.Point(413, 212);
+            this.btnSlika.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSlika.Name = "btnSlika";
-            this.btnSlika.Size = new System.Drawing.Size(78, 32);
+            this.btnSlika.Size = new System.Drawing.Size(104, 39);
             this.btnSlika.TabIndex = 23;
             this.btnSlika.Text = "...";
             this.btnSlika.UseVisualStyleBackColor = false;
@@ -211,9 +220,9 @@ namespace eApartman.WinUI.Forms.Korisnici
             // 
             // MojNalogFrm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 450);
+            this.ClientSize = new System.Drawing.Size(944, 554);
             this.Controls.Add(this.btnSlika);
             this.Controls.Add(this.pbSlika);
             this.Controls.Add(this.txtTelefon);
@@ -224,8 +233,9 @@ namespace eApartman.WinUI.Forms.Korisnici
             this.Controls.Add(this.txtPrezime);
             this.Controls.Add(this.txtIme);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MojNalogFrm";
-            this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
+            this.Padding = new System.Windows.Forms.Padding(4, 30, 4, 4);
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MojNalogFrm";

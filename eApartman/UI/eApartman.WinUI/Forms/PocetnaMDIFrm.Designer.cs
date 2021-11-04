@@ -45,11 +45,11 @@ namespace eApartman.WinUI.Forms
             this.pregledModeratoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodavanjeModeratoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.izvještajiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zaradaPoApartmanimaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnRegister = new System.Windows.Forms.Button();
             this.txtUsername = new System.Windows.Forms.Label();
             this.pbSlika = new System.Windows.Forms.PictureBox();
-            this.zaradaPoApartmanimaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             this.SuspendLayout();
@@ -192,6 +192,13 @@ namespace eApartman.WinUI.Forms
             this.izvještajiToolStripMenuItem.Size = new System.Drawing.Size(89, 27);
             this.izvještajiToolStripMenuItem.Text = "Izvještaji";
             // 
+            // zaradaPoApartmanimaToolStripMenuItem
+            // 
+            this.zaradaPoApartmanimaToolStripMenuItem.Name = "zaradaPoApartmanimaToolStripMenuItem";
+            this.zaradaPoApartmanimaToolStripMenuItem.Size = new System.Drawing.Size(279, 28);
+            this.zaradaPoApartmanimaToolStripMenuItem.Text = "Zarada po apartmanima";
+            this.zaradaPoApartmanimaToolStripMenuItem.Click += new System.EventHandler(this.zaradaPoApartmanimaToolStripMenuItem_Click);
+            // 
             // toolTip
             // 
             this.toolTip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
@@ -206,7 +213,7 @@ namespace eApartman.WinUI.Forms
             this.btnRegister.ForeColor = System.Drawing.SystemColors.Control;
             this.btnRegister.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRegister.ImageKey = "(none)";
-            this.btnRegister.Location = new System.Drawing.Point(1313, 58);
+            this.btnRegister.Location = new System.Drawing.Point(1195, 58);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(79, 32);
             this.btnRegister.TabIndex = 13;
@@ -222,7 +229,7 @@ namespace eApartman.WinUI.Forms
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, System.Drawing.FontStyle.Bold);
             this.txtUsername.ForeColor = System.Drawing.SystemColors.Control;
             this.txtUsername.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txtUsername.Location = new System.Drawing.Point(1323, 24);
+            this.txtUsername.Location = new System.Drawing.Point(1205, 24);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(112, 30);
             this.txtUsername.TabIndex = 14;
@@ -232,20 +239,13 @@ namespace eApartman.WinUI.Forms
             // 
             // pbSlika
             // 
-            this.pbSlika.Location = new System.Drawing.Point(1228, 24);
+            this.pbSlika.Location = new System.Drawing.Point(1110, 24);
             this.pbSlika.Name = "pbSlika";
             this.pbSlika.Size = new System.Drawing.Size(69, 66);
             this.pbSlika.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbSlika.TabIndex = 16;
             this.pbSlika.TabStop = false;
             this.pbSlika.Click += new System.EventHandler(this.pbSlika_Click);
-            // 
-            // zaradaPoApartmanimaToolStripMenuItem
-            // 
-            this.zaradaPoApartmanimaToolStripMenuItem.Name = "zaradaPoApartmanimaToolStripMenuItem";
-            this.zaradaPoApartmanimaToolStripMenuItem.Size = new System.Drawing.Size(279, 28);
-            this.zaradaPoApartmanimaToolStripMenuItem.Text = "Zarada po apartmanima";
-            this.zaradaPoApartmanimaToolStripMenuItem.Click += new System.EventHandler(this.zaradaPoApartmanimaToolStripMenuItem_Click);
             // 
             // PocetnaMDIFrm
             // 

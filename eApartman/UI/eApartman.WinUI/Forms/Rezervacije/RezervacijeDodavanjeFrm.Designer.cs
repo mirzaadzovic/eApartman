@@ -68,7 +68,7 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.btnSacuvaj.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSacuvaj.ImageKey = "(none)";
             this.btnSacuvaj.Location = new System.Drawing.Point(420, 687);
-            this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSacuvaj.Margin = new System.Windows.Forms.Padding(4);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(588, 44);
             this.btnSacuvaj.TabIndex = 29;
@@ -83,7 +83,7 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.txtIme.Hint = "Ime";
             this.txtIme.LeadingIcon = null;
             this.txtIme.Location = new System.Drawing.Point(80, 347);
-            this.txtIme.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIme.Margin = new System.Windows.Forms.Padding(4);
             this.txtIme.MaxLength = 50;
             this.txtIme.MouseState = MaterialSkin.MouseState.OUT;
             this.txtIme.Multiline = false;
@@ -110,7 +110,7 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.cmbApartman.IntegralHeight = false;
             this.cmbApartman.ItemHeight = 29;
             this.cmbApartman.Location = new System.Drawing.Point(80, 281);
-            this.cmbApartman.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbApartman.Margin = new System.Windows.Forms.Padding(4);
             this.cmbApartman.MaxDropDownItems = 4;
             this.cmbApartman.MouseState = MaterialSkin.MouseState.OUT;
             this.cmbApartman.Name = "cmbApartman";
@@ -125,7 +125,7 @@ namespace eApartman.WinUI.Forms.Rezervacije
             // 
             this.pbUser.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.pbUser.Location = new System.Drawing.Point(336, 48);
-            this.pbUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbUser.Margin = new System.Windows.Forms.Padding(4);
             this.pbUser.Name = "pbUser";
             this.pbUser.Size = new System.Drawing.Size(177, 144);
             this.pbUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -141,8 +141,8 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.btnSave.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSave.ImageKey = "(none)";
-            this.btnSave.Location = new System.Drawing.Point(113, 555);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Location = new System.Drawing.Point(114, 541);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(589, 44);
             this.btnSave.TabIndex = 31;
@@ -155,7 +155,7 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.sldOsoba.Depth = 0;
             this.sldOsoba.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.sldOsoba.Location = new System.Drawing.Point(475, 281);
-            this.sldOsoba.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sldOsoba.Margin = new System.Windows.Forms.Padding(4);
             this.sldOsoba.MouseState = MaterialSkin.MouseState.HOVER;
             this.sldOsoba.Name = "sldOsoba";
             this.sldOsoba.RangeMax = 5;
@@ -172,7 +172,7 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.txtPrezime.Hint = "Prezime";
             this.txtPrezime.LeadingIcon = null;
             this.txtPrezime.Location = new System.Drawing.Point(80, 436);
-            this.txtPrezime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPrezime.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrezime.MaxLength = 50;
             this.txtPrezime.MouseState = MaterialSkin.MouseState.OUT;
             this.txtPrezime.Multiline = false;
@@ -189,7 +189,7 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.dtOd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtOd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtOd.Location = new System.Drawing.Point(467, 373);
-            this.dtOd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtOd.Margin = new System.Windows.Forms.Padding(4);
             this.dtOd.Name = "dtOd";
             this.dtOd.Size = new System.Drawing.Size(267, 34);
             this.dtOd.TabIndex = 34;
@@ -201,7 +201,7 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.dtDo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtDo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtDo.Location = new System.Drawing.Point(467, 462);
-            this.dtDo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtDo.Margin = new System.Windows.Forms.Padding(4);
             this.dtDo.Name = "dtDo";
             this.dtDo.Size = new System.Drawing.Size(267, 34);
             this.dtDo.TabIndex = 35;
@@ -263,7 +263,7 @@ namespace eApartman.WinUI.Forms.Rezervacije
             this.Controls.Add(this.cmbApartman);
             this.Controls.Add(this.pbUser);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RezervacijeDodavanjeFrm";
             this.Padding = new System.Windows.Forms.Padding(4, 30, 4, 4);
             this.Sizable = false;

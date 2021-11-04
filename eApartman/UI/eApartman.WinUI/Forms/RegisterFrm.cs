@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,6 +51,7 @@ namespace eApartman.UI.Forms
                     Uloge = new List<int>() { 2 },
                     DatumRegistracije = DateTime.Now
                 };
+                if (ofdSlika.FileName != "") noviKorisnik.Slika = File.ReadAllBytes(ofdSlika.FileName);
 
                 APIService.Username = txtUsername.Text;
                 APIService.Password = txtPassword.Text;
@@ -80,6 +82,23 @@ namespace eApartman.UI.Forms
                 control.Enabled = state;
             }
             txtLoading.Text = txtLoading.Text == "" ? "Loading..." : "";
+        }
+        private void btnSlika_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = ofdSlika.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    string filename = ofdSlika.FileName;
+                    pbSlika.Image = Image.FromFile(filename);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Pogrešan format!");
+            }
+
         }
     }
 }

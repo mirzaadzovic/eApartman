@@ -32,9 +32,11 @@ namespace eApartman.WinUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginFrm));
             this.loginBtn = new System.Windows.Forms.Button();
             this.linkRegisster = new System.Windows.Forms.LinkLabel();
-            this.txtUsername = new MaterialSkin.Controls.MaterialTextBox();
-            this.txtPassword = new MaterialSkin.Controls.MaterialTextBox();
-            this.txtLoading = new MaterialSkin.Controls.MaterialLabel();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtLoading = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // loginBtn
@@ -49,7 +51,7 @@ namespace eApartman.WinUI
             this.loginBtn.Location = new System.Drawing.Point(50, 260);
             this.loginBtn.Name = "loginBtn";
             this.loginBtn.Size = new System.Drawing.Size(233, 46);
-            this.loginBtn.TabIndex = 0;
+            this.loginBtn.TabIndex = 3;
             this.loginBtn.Text = "LOGIN";
             this.loginBtn.UseVisualStyleBackColor = false;
             this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
@@ -61,71 +63,72 @@ namespace eApartman.WinUI
             this.linkRegisster.LinkColor = System.Drawing.SystemColors.HotTrack;
             this.linkRegisster.Location = new System.Drawing.Point(118, 324);
             this.linkRegisster.Name = "linkRegisster";
-            this.linkRegisster.Size = new System.Drawing.Size(97, 14);
+            this.linkRegisster.Size = new System.Drawing.Size(125, 16);
             this.linkRegisster.TabIndex = 6;
             this.linkRegisster.TabStop = true;
             this.linkRegisster.Text = "Niste registrovani?";
             this.linkRegisster.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkRegisster_LinkClicked);
             // 
-            // txtUsername
-            // 
-            this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtUsername.Depth = 0;
-            this.txtUsername.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtUsername.Hint = "Username";
-            this.txtUsername.LeadingIcon = null;
-            this.txtUsername.Location = new System.Drawing.Point(50, 117);
-            this.txtUsername.MaxLength = 50;
-            this.txtUsername.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtUsername.Multiline = false;
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(233, 50);
-            this.txtUsername.TabIndex = 7;
-            this.txtUsername.Text = "";
-            this.txtUsername.TrailingIcon = null;
-            this.txtUsername.UseAccent = false;
-            // 
             // txtPassword
             // 
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.Depth = 0;
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtPassword.Hint = "Password";
-            this.txtPassword.LeadingIcon = null;
-            this.txtPassword.Location = new System.Drawing.Point(50, 183);
-            this.txtPassword.MaxLength = 32;
-            this.txtPassword.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtPassword.Multiline = false;
+            this.txtPassword.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(50, 199);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Password = true;
-            this.txtPassword.Size = new System.Drawing.Size(233, 50);
-            this.txtPassword.TabIndex = 8;
-            this.txtPassword.Text = "";
-            this.txtPassword.TrailingIcon = null;
-            this.txtPassword.UseAccent = false;
+            this.txtPassword.Size = new System.Drawing.Size(233, 38);
+            this.txtPassword.TabIndex = 2;
+            this.txtPassword.UseSystemPasswordChar = true;
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.Location = new System.Drawing.Point(50, 124);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(233, 38);
+            this.txtUsername.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(52, 100);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 20);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Username";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(51, 175);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 20);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Password";
             // 
             // txtLoading
             // 
             this.txtLoading.AutoSize = true;
-            this.txtLoading.Depth = 0;
-            this.txtLoading.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtLoading.Location = new System.Drawing.Point(134, 85);
-            this.txtLoading.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtLoading.Font = new System.Drawing.Font("Arial", 10F);
+            this.txtLoading.Location = new System.Drawing.Point(129, 77);
             this.txtLoading.Name = "txtLoading";
-            this.txtLoading.Size = new System.Drawing.Size(1, 0);
-            this.txtLoading.TabIndex = 9;
-            this.txtLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtLoading.Size = new System.Drawing.Size(0, 19);
+            this.txtLoading.TabIndex = 15;
             // 
             // LoginFrm
             // 
             this.AcceptButton = this.loginBtn;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(345, 388);
             this.Controls.Add(this.txtLoading);
-            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.linkRegisster);
             this.Controls.Add(this.loginBtn);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -147,9 +150,11 @@ namespace eApartman.WinUI
 
         private System.Windows.Forms.Button loginBtn;
         private System.Windows.Forms.LinkLabel linkRegisster;
-        private MaterialSkin.Controls.MaterialTextBox txtUsername;
-        private MaterialSkin.Controls.MaterialTextBox txtPassword;
-        private MaterialSkin.Controls.MaterialLabel txtLoading;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label txtLoading;
     }
 }
 

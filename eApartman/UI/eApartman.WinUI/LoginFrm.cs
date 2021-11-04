@@ -82,7 +82,7 @@ namespace eApartman.WinUI
             {
                 EnableTextBoxes(true);
                 txtPassword.Text = "";
-                MessageBox.Show(error.Message,"Poruka", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Pogrešan unos!","Poruka", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 this.Show();
             }
 
