@@ -1,3 +1,4 @@
+import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -8,8 +9,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String username = APIService.username;
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(title: Text("eApartman")),
+      drawer: Drawer(),
+      body: Padding(
+        padding: const EdgeInsets.all(50),
+        child: Container(
+          child: Text(
+            "Dobrodošo $username",
+            style: TextStyle(fontSize: 30),
+          ),
+        ),
+      ),
+    );
   }
 }

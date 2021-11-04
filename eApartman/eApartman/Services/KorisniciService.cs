@@ -25,10 +25,15 @@ namespace eApartman.Services
             if (search?.Ime!=null) set=set.Where(k=>k.Ime==search.Ime);
             if (search?.Prezime != null) set = set.Where(k => k.Prezime == search.Prezime);
             if (search?.Username != null) set = set.Where(k => k.Username == search.Username);
-            foreach(string item in search?.IncludeList)
+
+            if(search?.IncludeList!=null)
             {
-                set = set.Include(item);
+                foreach (string item in search.IncludeList)
+                {
+                    set = set.Include(item);
+                }
             }
+
           
             var entity = _mapper.Map<List<Model.Korisnik>>(set);
             return entity;

@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:eapartman_mobile/pages/home.dart';
+import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:flutter/material.dart';
+import '../main.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -10,11 +13,18 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  void handleClick() => print("Clicked");
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  void handleClick() async {
+    APIService.username = usernameController.text;
+    APIService.password = passwordController.text;
+    var korisnici = await APIService.Get("Korisnici");
+    if (korisnici != null) Navigator.of(context).pushReplacementNamed('/');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(),
       appBar: AppBar(
         title: const Text("eApartman"),
       ),
@@ -28,6 +38,7 @@ class _LoginState extends State<Login> {
                 height: 40,
               ),
               TextField(
+                controller: usernameController,
                 decoration: InputDecoration(
                   hintText: "Username",
                 ),
@@ -39,6 +50,7 @@ class _LoginState extends State<Login> {
                 height: 20,
               ),
               TextField(
+                controller: passwordController,
                 decoration: InputDecoration(
                   hintText: "Password",
                 ),
