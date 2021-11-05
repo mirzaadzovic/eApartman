@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 
 class Input extends StatelessWidget {
-  final TextEditingController? _controller;
-  final String _hint;
-  bool _passwordField;
+  final TextEditingController? controller;
+  final String hint;
+  bool passwordField;
 
-  Input(this._controller, this._hint, this._passwordField);
+  Input(this.controller, this.hint, this.passwordField);
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: _controller,
+    return TextFormField(
+      controller: controller,
       decoration: InputDecoration(
-        hintText: _hint,
+        labelText: hint,
+        border: UnderlineInputBorder(),
       ),
-      obscureText: _passwordField,
+      obscureText: passwordField,
       style: TextStyle(
         fontSize: 20,
       ),

@@ -8,6 +8,13 @@ const String FontNameDefault = 'Segoe UI';
 
 const NaslovTextStyle = TextStyle(
   fontFamily: FontNameDefault,
+  color: Colors.black,
+  fontSize: LargeTextSize,
+  //fontWeight: FontWeight.bold,
+);
+
+const PaleTextStyle = TextStyle(
+  fontFamily: FontNameDefault,
   color: Colors.black26,
   fontSize: LargeTextSize,
   fontWeight: FontWeight.w300,

@@ -43,7 +43,7 @@ class _LoginState extends State<Login> {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(60, 0, 80, 0),
+          padding: const EdgeInsets.fromLTRB(60, 0, 60, 0),
           child: SingleChildScrollView(
             child: Column(
               children: [
