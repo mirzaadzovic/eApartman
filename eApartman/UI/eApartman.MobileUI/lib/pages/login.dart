@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:eapartman_mobile/models/korisnik.dart';
 import 'package:eapartman_mobile/pages/home.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
+import 'package:eapartman_mobile/widgets/button.dart';
+import 'package:eapartman_mobile/widgets/input.dart';
 import 'package:flutter/material.dart';
 import '../main.dart';
 
@@ -15,11 +18,15 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
   void handleClick() async {
     APIService.username = usernameController.text;
     APIService.password = passwordController.text;
     var korisnici = await APIService.Get("Korisnici");
-    if (korisnici != null) Navigator.of(context).pushReplacementNamed('/');
+
+    if (korisnici != null) {
+      Navigator.of(context).pushReplacementNamed('/');
+    }
   }
 
   @override
@@ -37,40 +44,13 @@ class _LoginState extends State<Login> {
               SizedBox(
                 height: 40,
               ),
-              TextField(
-                controller: usernameController,
-                decoration: InputDecoration(
-                  hintText: "Username",
-                ),
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
+              Input(usernameController, "Username", false),
               SizedBox(
                 height: 20,
               ),
-              TextField(
-                controller: passwordController,
-                decoration: InputDecoration(
-                  hintText: "Password",
-                ),
-                obscureText: true,
-                style: TextStyle(
-                  fontSize: 22,
-                ),
-              ),
+              Input(passwordController, "Password", true),
               SizedBox(height: 20),
-              Container(
-                width: double.infinity,
-                height: 40,
-                child: ElevatedButton(
-                  onPressed: handleClick,
-                  child: const Text(
-                    "Login",
-                    style: TextStyle(color: Colors.white, fontSize: 22),
-                  ),
-                ),
-              ),
+              Button("Login", handleClick),
             ],
           ),
         ),

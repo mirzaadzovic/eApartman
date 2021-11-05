@@ -1,13 +1,17 @@
 // ignore_for_file: file_names
 import 'dart:convert';
 import 'dart:core';
+import 'dart:html';
 import 'dart:io';
+import 'package:eapartman_mobile/models/korisnik.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class APIService {
   static String username = "";
   static String password = "";
+  static String apiUrl = "http://10.0.2.2:5000/api/";
+  static Korisnik? korisnik;
   String route;
 
   APIService({this.route = ""});
@@ -18,8 +22,7 @@ class APIService {
   }
 
   static Future<dynamic> Get(String route) async {
-    String baseUrl =
-        "http://10.0.2.2:5000/api/" + route + "?username=$username";
+    String baseUrl = apiUrl + route;
     final String basicAuth =
         "basic " + base64Encode(utf8.encode("$username:$password"));
 
@@ -27,13 +30,12 @@ class APIService {
       final response = await http.get(Uri.parse(baseUrl),
           headers: {HttpHeaders.authorizationHeader: basicAuth});
 
-      if (response.statusCode == 200) {
-        print(response.body);
-        return JsonDecoder().convert(response.body);
-      }
+      if (response.statusCode == 200)
+        return const JsonDecoder().convert(response.body);
+      else
+        return null;
     } catch (e) {
       return null;
     }
-    return null;
   }
 }
