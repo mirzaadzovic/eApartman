@@ -11,7 +11,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'eApartman',
-      home: Home(),
+      home: Login(),
       routes: {
         '/home': (context) => const Home(),
       },
