@@ -2,18 +2,18 @@ import 'package:eapartman_mobile/widgets/input.dart';
 import 'package:flutter/material.dart';
 
 class IconInput extends Input {
-  IconData _icon;
-  IconInput(TextEditingController controller, String hint, bool passwordField,
-      this._icon)
-      : super(controller, hint, passwordField);
+  IconData icon;
+  IconInput(TextEditingController controller, String text, bool passwordField,
+      this.icon)
+      : super(controller, text, passwordField);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: this.controller,
       decoration: InputDecoration(
-        icon: Icon(_icon),
-        labelText: this.hint,
+        icon: Icon(icon),
+        labelText: this.text,
         border: UnderlineInputBorder(),
       ),
       obscureText: this.passwordField,

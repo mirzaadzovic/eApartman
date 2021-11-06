@@ -11,8 +11,8 @@ class Button extends StatelessWidget {
       height: 40,
       child: ElevatedButton(
         onPressed: () => handleClick(),
-        child: const Text(
-          "Login",
+        child: Text(
+          text,
           style: TextStyle(color: Colors.white, fontSize: 22),
         ),
       ),

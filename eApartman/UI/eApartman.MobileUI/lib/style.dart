@@ -15,15 +15,15 @@ const NaslovTextStyle = TextStyle(
 
 const PaleTextStyle = TextStyle(
   fontFamily: FontNameDefault,
-  color: Colors.black26,
+  color: Colors.black54,
   fontSize: LargeTextSize,
   fontWeight: FontWeight.w300,
 );
 
 const BodyTextStyle = TextStyle(
   fontFamily: FontNameDefault,
-  color: Colors.black26,
-  fontSize: SmallTextSize,
+  color: Colors.black54,
+  fontSize: MediumTextSize,
 );
 
 const ErrorTextStyle = TextStyle(
