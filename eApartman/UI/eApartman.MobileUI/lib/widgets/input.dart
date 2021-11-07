@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Input extends StatelessWidget {
-  final TextEditingController? controller;
+  final TextEditingController controller;
   final String text;
   bool passwordField;
 
-  Input(this.controller, this.text, this.passwordField);
+  Input({this.controller, this.text, this.passwordField});
 
   @override
   Widget build(BuildContext context) {

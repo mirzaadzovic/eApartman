@@ -10,5 +10,6 @@ namespace eApartman.Model.Requests
         public bool IncludeAdrese { get; set; }
         public string Drzava { get; set; }
         public int DrzavaId { get; set; }
+        public string Query { get; set; }
     }
 }

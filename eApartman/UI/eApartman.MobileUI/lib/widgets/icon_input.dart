@@ -5,7 +5,7 @@ class IconInput extends Input {
   IconData icon;
   IconInput(TextEditingController controller, String text, bool passwordField,
       this.icon)
-      : super(controller, text, passwordField);
+      : super(controller: controller, text: text, passwordField: passwordField);
 
   @override
   Widget build(BuildContext context) {

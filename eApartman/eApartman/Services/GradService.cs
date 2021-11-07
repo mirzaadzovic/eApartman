@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace eApartman.Services
@@ -16,15 +17,30 @@ namespace eApartman.Services
         {
         }
         public override IEnumerable<Model.Grad> Get(GradSearchObject search)
-        {
+       {
             var set = _context.Set<Grad>().AsQueryable();
-            //set = set.Include(g => g.Drzava);
+            set = set.Include(g => g.Drzava);
 
             if (!string.IsNullOrEmpty(search?.Naziv))
             {
-                set=set.Where(g => g.Naziv == search.Naziv);
+                set =set.Where(g => g.Naziv.ToLower().Contains(search.Naziv.ToLower()));
             }
-            if(search?.DrzavaId>0)
+            if (!string.IsNullOrEmpty(search?.Drzava))
+            {
+                set = set.Where(g => g.Drzava.Naziv.ToLower().Contains(search.Drzava.ToLower()));
+            }
+
+            if (!string.IsNullOrWhiteSpace(search?.Query))
+            {
+                set = set
+                    .Where(g => 
+                    g.Naziv.ToLower().Contains(search.Query.ToLower())
+                    ||
+                    g.Drzava.Naziv.ToLower().Contains(search.Query.ToLower()
+                    ));
+            }
+
+            if (search?.DrzavaId>0)
             {
                 set = set.Where(g => g.DrzavaId == search.DrzavaId);
             }

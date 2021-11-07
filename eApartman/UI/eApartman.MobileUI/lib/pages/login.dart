@@ -1,16 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:eapartman_mobile/models/korisnik.dart';
-import 'package:eapartman_mobile/pages/home.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
 import 'package:eapartman_mobile/widgets/error_text.dart';
 import 'package:eapartman_mobile/widgets/input.dart';
 import 'package:flutter/material.dart';
-import '../main.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({Key key}) : super(key: key);
 
   @override
   _LoginState createState() => _LoginState();
@@ -26,13 +24,15 @@ class _LoginState extends State<Login> {
     setState(() => _loading = true);
     APIService.username = usernameController.text;
     APIService.password = passwordController.text;
-    var korisnici = await APIService.Get("Korisnici");
+    var korisnici = await APIService.Get("Korisnici", null);
 
     if (korisnici != null) {
       Navigator.of(context).pushReplacementNamed('/home');
+    } else {
+      setState(() => error = "Pogrešan username ili password.");
+      passwordController.text = "";
     }
     setState(() => _loading = false);
-    setState(() => error = "Pogrešan username ili password.");
   }
 
   @override
@@ -55,11 +55,17 @@ class _LoginState extends State<Login> {
                 SizedBox(
                   height: 40,
                 ),
-                Input(usernameController, "Username", false),
+                Input(
+                    controller: usernameController,
+                    text: "Username",
+                    passwordField: false),
                 SizedBox(
                   height: 20,
                 ),
-                Input(passwordController, "Password", true),
+                Input(
+                    controller: passwordController,
+                    text: "Password",
+                    passwordField: true),
                 SizedBox(height: 20),
                 Button("Login", _loading ? () => {} : handleClick),
                 ErrorText(error),

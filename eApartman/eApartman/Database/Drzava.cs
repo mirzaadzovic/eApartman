@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Text;
 
 #nullable disable
 
@@ -17,5 +19,6 @@ namespace eApartman.Database
         public string Sifra { get; set; }
 
         public virtual ICollection<Grad> Grads { get; set; }
+       
     }
 }
