@@ -1,15 +1,18 @@
+import 'package:eapartman_mobile/models/apartman.dart';
+import 'package:eapartman_mobile/models/search_objects/apartman_search.dart';
+import 'package:eapartman_mobile/services/apiservice.dart';
+import 'package:eapartman_mobile/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
 
-class Apartmani extends StatefulWidget {
-  const Apartmani({Key key}) : super(key: key);
+class Apartmani extends StatelessWidget {
+  ApartmanSearch search;
+  Apartmani({this.search});
 
-  @override
-  _ApartmaniState createState() => _ApartmaniState();
-}
-
-class _ApartmaniState extends State<Apartmani> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(),
+      drawer: MyDrawer(),
+    );
   }
 }

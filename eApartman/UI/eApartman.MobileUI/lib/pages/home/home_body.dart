@@ -1,4 +1,6 @@
 import 'package:eapartman_mobile/models/grad.dart';
+import 'package:eapartman_mobile/models/search_objects/apartman_search.dart';
+import 'package:eapartman_mobile/pages/apartmani/apartmani.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
 import 'package:eapartman_mobile/widgets/date_input.dart';
@@ -45,6 +47,25 @@ class _HomeBodyState extends State<HomeBody> {
     });
   }
 
+  void handleTrazi() {
+    try {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Apartmani(
+                  search: ApartmanSearch(
+                    checkIn: checkin,
+                    checkOut: checkout,
+                    grad: _lokacijaController.text,
+                    osoba: int.parse(_osobaController.text),
+                  ),
+                )),
+      );
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -70,14 +91,9 @@ class _HomeBodyState extends State<HomeBody> {
           SizedBox(height: 20),
           DateInput(checkout, "Check-Out", handleCheckout),
           SizedBox(height: 20),
-          Button("Traži", () {})
+          Button("Traži", handleTrazi)
         ]),
       ),
     );
-  }
-
-  Future<List<Grad>> GetGradovi() async {
-    var gradovi = await APIService.Get("Gradovi", _lokacija);
-    return gradovi.map((g) => Grad.fromJson(g)).toList();
   }
 }

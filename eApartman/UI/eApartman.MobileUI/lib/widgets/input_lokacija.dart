@@ -1,4 +1,5 @@
 import 'package:eapartman_mobile/models/grad.dart';
+import 'package:eapartman_mobile/models/search_objects/grad_search.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/style.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,8 @@ class InputLokacija extends StatelessWidget {
           )),
       debounceDuration: Duration(milliseconds: 500),
       suggestionsCallback: (pattern) async {
-        var gradovi = await Grad.Get(pattern);
+        GradSearch search = GradSearch(query: pattern);
+        var gradovi = await APIService.Get("gradovi", search);
         setLokacija(pattern);
         return gradovi;
       },

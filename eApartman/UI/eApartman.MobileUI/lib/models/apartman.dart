@@ -3,6 +3,9 @@ import 'dart:core';
 import 'dart:core';
 import 'dart:ffi';
 
+import 'package:eapartman_mobile/models/search_objects/apartman_search.dart';
+import 'package:eapartman_mobile/services/apiservice.dart';
+
 class Apartman {
   int apartmanId;
   String naziv;
@@ -15,6 +18,7 @@ class Apartman {
   bool petFriendly;
   double cijena;
   List<int> slikaProfilnaFile;
+
   Apartman({
     this.apartmanId,
     this.naziv,
@@ -61,5 +65,9 @@ class Apartman {
       "cijena": cijena,
       "slikaProfilnaFile": slikaProfilnaFile,
     };
+  }
+
+  static Future<dynamic> get(ApartmanSearch search) {
+    var baseUrl = APIService.apiUrl + "apartmani";
   }
 }

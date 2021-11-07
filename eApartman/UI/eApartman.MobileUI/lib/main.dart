@@ -1,3 +1,4 @@
+import 'package:eapartman_mobile/models/search_objects/apartman_search.dart';
 import 'package:eapartman_mobile/pages/apartmani/apartmani.dart';
 import 'package:flutter/material.dart';
 import 'pages/home/home.dart';
@@ -15,7 +16,7 @@ class App extends StatelessWidget {
       home: Login(),
       routes: {
         '/home': (context) => const Home(),
-        '/apartmani': (context) => const Apartmani(),
+        '/apartmani': (context) => Apartmani(search: ApartmanSearch()),
       },
     );
   }
