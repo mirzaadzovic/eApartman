@@ -1,23 +1,89 @@
+import 'dart:io';
+
+import 'package:eapartman_mobile/models/apartman.dart';
+import 'package:eapartman_mobile/models/search_objects/apartman_search.dart';
+import 'package:eapartman_mobile/pages/apartmani/apartman_widget.dart';
+import 'package:eapartman_mobile/services/apiservice.dart';
+import 'package:eapartman_mobile/style.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ApartmaniBody extends StatefulWidget {
-  const ApartmaniBody();
+  final ApartmanSearch search;
+  ApartmaniBody({this.search});
 
   @override
-  _ApartmaniBodyState createState() => _ApartmaniBodyState();
+  _ApartmaniBodyState createState() => _ApartmaniBodyState(search: search);
 }
 
 class _ApartmaniBodyState extends State<ApartmaniBody> {
+  final ApartmanSearch search;
+  String _naslov;
+  final DateFormat formatter = DateFormat('d.M.yyyy.');
+  String grad;
+
+  _ApartmaniBodyState({this.search, this.grad = ""}) {
+    this.grad = search.grad != "" ? search.grad : "sve gradove";
+    this._naslov =
+        "Pretraga za ${grad} u periodu \n${formatter.format(search.checkIn)} - ${formatter.format(search.checkOut)}";
+  }
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(10),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Text("Apartmani"),
+              Center(
+                  child: Text(
+                _naslov,
+                style: PaleTextStyle,
+                textAlign: TextAlign.center,
+              )),
+              bodyWidget(search),
             ],
           )),
     );
+  }
+
+  Widget bodyWidget(ApartmanSearch search) {
+    return FutureBuilder(
+        future: GetApartmani(search),
+        builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
+          try {
+            if (snapshot.connectionState == ConnectionState.waiting)
+              return Center(child: Text("Loading..."));
+            else if (snapshot.hasError)
+              return Center(child: Text("${snapshot.error}"));
+            else if (snapshot.hasData) {
+              print(snapshot.data);
+              return SingleChildScrollView(
+                child: ListView(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  physics: ClampingScrollPhysics(),
+                  children: snapshot.data
+                      .map((a) => ApartmanWidget(Apartman.fromJson(a)))
+                      .toList(),
+                ),
+              );
+            } else
+              return (Text("No data"));
+          } catch (e) {
+            return (Text(e.toString()));
+          }
+        });
+  }
+
+  Future<List<dynamic>> GetApartmani(ApartmanSearch search) async {
+    try {
+      var apartmani = await APIService.Get("apartmani", search);
+      print(apartmani);
+      return apartmani;
+    } catch (e) {
+      print(e);
+      return null;
+    }
   }
 }

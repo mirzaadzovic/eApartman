@@ -58,16 +58,20 @@ class _LoginState extends State<Login> {
                 Input(
                     controller: usernameController,
                     text: "Username",
-                    passwordField: false),
+                    passwordField: false,
+                    icon: Icons.person),
                 SizedBox(
                   height: 20,
                 ),
                 Input(
                     controller: passwordController,
                     text: "Password",
-                    passwordField: true),
+                    passwordField: true,
+                    icon: Icons.lock),
                 SizedBox(height: 20),
-                Button("Login", _loading ? () => {} : handleClick),
+                Button(
+                    text: "Login",
+                    handleClick: _loading ? () => {} : handleClick),
                 ErrorText(error),
               ],
             ),

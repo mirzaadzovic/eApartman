@@ -19,11 +19,11 @@ class ApartmanSearch implements ISearchObject {
   Map<String, dynamic> toJson() {
     return {
       'grad': grad,
-      'checkin': checkIn,
-      'checkout': checkOut,
-      'includeSlike': includeSlike,
-      'includeUtisci': includeUtisci,
-      'osoba': osoba,
+      'checkin': checkIn.toString(),
+      'checkout': checkOut.toString(),
+      'includeSlike': includeSlike.toString(),
+      'includeUtisci': includeUtisci.toString(),
+      'osoba': osoba.toString(),
     };
   }
 }

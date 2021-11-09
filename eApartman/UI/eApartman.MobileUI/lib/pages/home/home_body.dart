@@ -4,7 +4,7 @@ import 'package:eapartman_mobile/pages/apartmani/apartmani.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
 import 'package:eapartman_mobile/widgets/date_input.dart';
-import 'package:eapartman_mobile/widgets/icon_input.dart';
+import 'package:eapartman_mobile/widgets/input.dart';
 import 'package:eapartman_mobile/widgets/icon_input_numbers.dart';
 import 'package:eapartman_mobile/widgets/input_lokacija.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,6 @@ class _HomeBodyState extends State<HomeBody> {
   void setLokacija(String grad) {
     setState(() {
       _lokacija = grad;
-      print("----->" + _lokacija);
     });
   }
 
@@ -49,18 +48,22 @@ class _HomeBodyState extends State<HomeBody> {
 
   void handleTrazi() {
     try {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => Apartmani(
-                  search: ApartmanSearch(
-                    checkIn: checkin,
-                    checkOut: checkout,
-                    grad: _lokacijaController.text,
-                    osoba: int.parse(_osobaController.text),
-                  ),
-                )),
-      );
+      if (_osobaController.text != "") {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Apartmani(
+                    search: ApartmanSearch(
+                      checkIn: checkin,
+                      checkOut: checkout,
+                      grad: _lokacijaController.text,
+                      osoba: int.parse(_osobaController.text),
+                      includeSlike: true,
+                      includeUtisci: true,
+                    ),
+                  )),
+        );
+      }
     } catch (e) {
       print(e);
     }
@@ -91,7 +94,7 @@ class _HomeBodyState extends State<HomeBody> {
           SizedBox(height: 20),
           DateInput(checkout, "Check-Out", handleCheckout),
           SizedBox(height: 20),
-          Button("Traži", handleTrazi)
+          Button(text: "Traži", handleClick: handleTrazi)
         ]),
       ),
     );

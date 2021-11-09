@@ -89,7 +89,7 @@ namespace eApartman.Services
                 set=set.Include("Rezervacijas.Gost");
 
             if (search?.IncludeSlike==true)
-                set=set.Include("Slikas");
+                set=set.Include("ApartmanSlikas");
 
             set=set.Include("ApartmanTip");
 

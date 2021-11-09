@@ -7,7 +7,7 @@ class DateInput extends StatelessWidget {
   DateTime _date;
   String _text;
   Function setState;
-  DateFormat formatter = DateFormat('yyyy-MM-dd');
+  DateFormat formatter = DateFormat('d.M.yyyy.');
 
   DateInput(this._date, this._text, this.setState);
   @override

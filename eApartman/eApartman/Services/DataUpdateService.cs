@@ -34,7 +34,7 @@ namespace eApartman.Services
 
             while (!stoppingToken.IsCancellationRequested)
             {
-                if (DateTime.Now.Hour == 12 && DateTime.Now.Minute == 0)
+                if (DateTime.Now.Hour == 12 && DateTime.Now.Minute == 0 && DateTime.Now.Second==0)
                 {
                     using (IServiceScope scope = _serviceProvider.CreateScope())
                     {

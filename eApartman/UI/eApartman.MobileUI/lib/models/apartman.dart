@@ -10,7 +10,7 @@ class Apartman {
   int apartmanId;
   String naziv;
   int vlasnikId;
-  int adresaNaziv;
+  String adresaNaziv;
   String gradNaziv;
   int maxOsoba;
   bool imaBalkon;
@@ -65,9 +65,5 @@ class Apartman {
       "cijena": cijena,
       "slikaProfilnaFile": slikaProfilnaFile,
     };
-  }
-
-  static Future<dynamic> get(ApartmanSearch search) {
-    var baseUrl = APIService.apiUrl + "apartmani";
   }
 }
