@@ -1,9 +1,8 @@
 import 'package:eapartman_mobile/models/apartman.dart';
-import 'package:eapartman_mobile/models/apartman_slika.dart';
 import 'package:eapartman_mobile/style.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
+import 'package:eapartman_mobile/widgets/slike_carousel.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class ApartmanDetaljiBody extends StatefulWidget {
   Apartman apartman;
@@ -17,15 +16,18 @@ class ApartmanDetaljiBody extends StatefulWidget {
 
 class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
   Apartman apartman;
-  int slikaIndex = 0;
   List<List<int>> slike = [];
 
   _ApartmanDetaljiBodyState({this.apartman}) {
+    loadSlike();
+  }
+  void loadSlike() {
     slike.add(apartman.slikaProfilnaFile);
     apartman.apartmanSlikas.forEach((element) {
       slike.add(element.slikaFile);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -36,27 +38,7 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(apartman.naziv, style: NaslovTextStyle),
-                CarouselSlider.builder(
-                  options: CarouselOptions(
-                    enlargeCenterPage: true,
-                    enableInfiniteScroll: false,
-                    height: 250,
-                  ),
-                  itemCount: slike.length,
-                  itemBuilder: (BuildContext context, int itemIndex,
-                          int pageViewIndex) =>
-                      Container(
-                    child: Image(
-                      image: MemoryImage(slike[pageViewIndex]),
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                    ),
-                  ),
-                ),
-                // Image(
-                //   fit: BoxFit.cover,
-                //   image: MemoryImage(apartman.slikaProfilnaFile),
-                // ),
+                SlikeCarousel(slike: slike),
                 Column(
                   children: [
                     Text("Grad: " + apartman.gradNaziv, style: BodyTextStyle),
