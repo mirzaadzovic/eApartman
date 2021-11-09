@@ -31,7 +31,8 @@ class _HomeBodyState extends State<HomeBody> {
   }
 
   void handleCheckin(DateTime value) {
-    DateTime date = value;
+    //ako se ode cancel na datePickeru, da vrijednost ne ostane null
+    DateTime date = value != null ? value : checkin;
     setState(() {
       checkin = date;
       if (date.isAfter(checkout)) checkout = date.add(Duration(days: 1));
@@ -39,7 +40,8 @@ class _HomeBodyState extends State<HomeBody> {
   }
 
   void handleCheckout(DateTime value) {
-    DateTime date = value;
+    //ako se ode cancel na datePickeru, da vrijednost ne ostane null
+    DateTime date = value != null ? value : checkout;
     setState(() {
       checkout = value;
       if (date.isBefore(checkin)) checkin = date.add(Duration(days: -1));

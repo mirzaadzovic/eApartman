@@ -1,9 +1,17 @@
 import 'package:eapartman_mobile/models/apartman.dart';
+import 'package:eapartman_mobile/pages/apartman_detalji/apartman_detalji.dart';
 import 'package:eapartman_mobile/style.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
 import 'package:flutter/material.dart';
 
-Widget ApartmanWidget(Apartman apartman) {
+Widget ApartmanWidget(Apartman apartman, BuildContext context) {
+  void handlePogledaj() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ApartmanDetalji(apartman: apartman)));
+  }
+
   return Card(
     child: Padding(
       padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
@@ -44,7 +52,7 @@ Widget ApartmanWidget(Apartman apartman) {
                       padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                       child: Button(
                         text: "Pogledaj",
-                        handleClick: () {},
+                        handleClick: handlePogledaj,
                       ),
                     ),
                   ]),

@@ -8,7 +8,7 @@ class Input extends StatelessWidget {
   Input({
     this.controller,
     this.text,
-    this.passwordField,
+    this.passwordField = false,
     this.icon = null,
   });
 

@@ -12,7 +12,7 @@ class Apartmani extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("eApartman > Apartmani")),
+      appBar: AppBar(title: Text("Apartmani")),
       body: ApartmaniBody(search: search),
     );
   }

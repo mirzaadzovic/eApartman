@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:eapartman_mobile/models/korisnik.dart';
+import 'package:eapartman_mobile/pages/loading/loading.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
 import 'package:eapartman_mobile/widgets/error_text.dart';
@@ -47,10 +48,7 @@ class _LoginState extends State<Login> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                _loading
-                    ? Padding(
-                        padding: EdgeInsets.all(20), child: Text("Loading..."))
-                    : SizedBox(height: 20),
+                _loading ? Loading() : SizedBox(height: 20),
                 Text("Login", style: TextStyle(fontSize: 30)),
                 SizedBox(
                   height: 40,

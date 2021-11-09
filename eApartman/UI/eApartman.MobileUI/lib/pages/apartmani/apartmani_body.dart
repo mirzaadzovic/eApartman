@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:eapartman_mobile/models/apartman.dart';
 import 'package:eapartman_mobile/models/search_objects/apartman_search.dart';
 import 'package:eapartman_mobile/pages/apartmani/apartman_widget.dart';
+import 'package:eapartman_mobile/pages/loading/loading.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/style.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,7 @@ class _ApartmaniBodyState extends State<ApartmaniBody> {
         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
           try {
             if (snapshot.connectionState == ConnectionState.waiting)
-              return Center(child: Text("Loading..."));
+              return Center(child: Loading());
             else if (snapshot.hasError)
               return Center(child: Text("${snapshot.error}"));
             else if (snapshot.hasData) {
@@ -64,7 +65,7 @@ class _ApartmaniBodyState extends State<ApartmaniBody> {
                   scrollDirection: Axis.vertical,
                   physics: ClampingScrollPhysics(),
                   children: snapshot.data
-                      .map((a) => ApartmanWidget(Apartman.fromJson(a)))
+                      .map((a) => ApartmanWidget(Apartman.fromJson(a), context))
                       .toList(),
                 ),
               );
@@ -76,6 +77,7 @@ class _ApartmaniBodyState extends State<ApartmaniBody> {
         });
   }
 
+  //Probati ispraviti povratni tip na Future<List<Apartman>>
   Future<List<dynamic>> GetApartmani(ApartmanSearch search) async {
     try {
       var apartmani = await APIService.Get("apartmani", search);

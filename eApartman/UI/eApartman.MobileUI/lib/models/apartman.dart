@@ -3,6 +3,7 @@ import 'dart:core';
 import 'dart:core';
 import 'dart:ffi';
 
+import 'package:eapartman_mobile/models/apartman_slika.dart';
 import 'package:eapartman_mobile/models/search_objects/apartman_search.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 
@@ -18,7 +19,7 @@ class Apartman {
   bool petFriendly;
   double cijena;
   List<int> slikaProfilnaFile;
-
+  List<ApartmanSlika> apartmanSlikas;
   Apartman({
     this.apartmanId,
     this.naziv,
@@ -31,11 +32,15 @@ class Apartman {
     this.petFriendly,
     this.cijena,
     this.slikaProfilnaFile,
+    this.apartmanSlikas,
   });
 
   factory Apartman.fromJson(Map<String, dynamic> json) {
     String stringByte = json["slikaProfilnaFile"] as String;
     List<int> bytes = base64.decode(stringByte);
+    List<ApartmanSlika> slike = (json["apartmanSlikas"] as List)
+        .map((s) => ApartmanSlika.fromJson(s))
+        .toList();
     return Apartman(
       apartmanId: json["apartmanId"],
       naziv: json["naziv"],
@@ -48,6 +53,7 @@ class Apartman {
       petFriendly: json["petFriendly"],
       cijena: json["cijena"],
       slikaProfilnaFile: bytes,
+      apartmanSlikas: slike,
     );
   }
 
