@@ -6,6 +6,7 @@ import 'package:eapartman_mobile/models/grad.dart';
 import 'package:eapartman_mobile/models/imodel.dart';
 import 'package:eapartman_mobile/models/korisnik.dart';
 import 'package:eapartman_mobile/models/search_objects/search_object.dart';
+import 'package:eapartman_mobile/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -68,5 +69,17 @@ class APIService {
   static String toQueryString(ISearchObject search) {
     String queryString = Uri(queryParameters: search.toJson()).query;
     return queryString;
+  }
+
+  static void clear() {
+    APIService.korisnik = null;
+    APIService.username = null;
+    APIService.password = null;
+  }
+
+  static void logout(BuildContext context) {
+    APIService.clear();
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil('/login', (Route<dynamic> route) => false);
   }
 }

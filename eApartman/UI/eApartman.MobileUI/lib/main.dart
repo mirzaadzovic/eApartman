@@ -17,6 +17,7 @@ class App extends StatelessWidget {
       routes: {
         '/home': (context) => const Home(),
         '/apartmani': (context) => Apartmani(search: ApartmanSearch()),
+        '/login': (context) => const Login(),
       },
     );
   }
