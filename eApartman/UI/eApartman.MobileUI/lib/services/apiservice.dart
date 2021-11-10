@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:core';
 import 'dart:io';
 import 'package:eapartman_mobile/models/grad.dart';
+import 'package:eapartman_mobile/models/imodel.dart';
 import 'package:eapartman_mobile/models/korisnik.dart';
 import 'package:eapartman_mobile/models/search_objects/search_object.dart';
 import 'package:flutter/material.dart';
@@ -41,15 +42,22 @@ class APIService {
     }
   }
 
-  static Future<dynamic> Insert(String route, dynamic request) async {
+  static Future<dynamic> Insert(String route, IModel request) async {
     String baseUrl = apiUrl + route;
     final String basicAuth =
         "basic " + base64Encode(utf8.encode("$username:$password"));
+    final jsn = json.encode(request.toJson());
+    print(jsn);
     try {
       final response = await http.post(Uri.parse(baseUrl),
-          headers: {HttpHeaders.authorizationHeader: basicAuth}, body: request);
+          headers: {
+            HttpHeaders.authorizationHeader: basicAuth,
+            HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8',
+          },
+          body: jsn);
 
-      if (response.statusCode == 200)
+      print(response.statusCode);
+      if (response.statusCode == 201 || response.statusCode == 200)
         return request;
       else
         return null;

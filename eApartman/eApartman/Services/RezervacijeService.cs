@@ -52,8 +52,15 @@ namespace eApartman.Services
 
         public override Model.Rezervacija Insert(RezervacijaInsertRequest request)
         {
+            if (request.DatumCheckIn.Date < DateTime.Now.Date)
+                return new Model.Rezervacija();
+
             var entity = _mapper.Map<Rezervacija>(request);
+
             entity.DatumRezervacije = DateTime.Now;
+            entity.BrojDana = GetBrojDana(request);
+            entity.Cijena = GetCijena(request);
+
             _context.Set<Rezervacija>().Add(entity);
             _context.SaveChanges();
 
@@ -78,6 +85,17 @@ namespace eApartman.Services
             await set.ForEachAsync(r => r.Izvrsena = true);
 
             _context.SaveChanges();
+        }
+        public int GetBrojDana(RezervacijaInsertRequest request)
+        {
+            var dana = request.DatumCheckOut - request.DatumCheckIn;
+            return dana.Days;
+        }
+        public decimal GetCijena(RezervacijaInsertRequest request)
+        {
+            decimal cijena = _context.Set<Apartman>().Find(request.ApartmanId).Cijena;
+            var dana = GetBrojDana(request);
+            return cijena * dana;
         }
     }
 }

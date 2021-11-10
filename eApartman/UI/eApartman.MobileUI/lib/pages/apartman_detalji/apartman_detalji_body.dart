@@ -29,10 +29,44 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
       slike.add(element.slikaFile);
     });
   }
-  // void handleRezervisi() async {
-  //   Rezervacija request=Rezervacija(apartmanId: apartman.apartmanId, gostId: APIService.korisnik.korisnikId, poruka: "Rezervisao gost";
-  //   var result=
-  // }
+
+  Future<void> poruka() async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text('Poruka'),
+        content: Text('Rezervisali ste apartman ${apartman.naziv}!'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, 'OK'),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void handleRezervisi() async {
+    Rezervacija request = Rezervacija(
+      apartmanId: apartman.apartmanId,
+      gostId: APIService.korisnik.korisnikId,
+      poruka: "Rezervisao gost",
+      checkIn: apartman.search.checkIn,
+      checkOut: apartman.search.checkOut,
+      brojOsoba: apartman.search.osoba,
+      gostIme: APIService.korisnik.ime,
+      gostPrezime: APIService.korisnik.prezime,
+    );
+    try {
+      var result = await APIService.Insert("Rezervacije", request);
+      if (result != null) {
+        await poruka();
+        Navigator.popUntil(context, ModalRoute.withName("/home"));
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +90,7 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
                 ),
                 Button(
                   text: "Rezerviši",
-                  handleClick: () {},
+                  handleClick: handleRezervisi,
                 ),
               ],
             )),

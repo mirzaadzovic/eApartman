@@ -31,7 +31,7 @@ class DateInput extends StatelessWidget {
             onPressed: () {
               showDatePicker(
                       context: context,
-                      initialDate: DateTime.now(),
+                      initialDate: _date == null ? DateTime.now() : _date,
                       firstDate: DateTime.now(),
                       lastDate: DateTime(3000))
                   .then((date) {

@@ -20,6 +20,7 @@ class Apartman {
   double cijena;
   List<int> slikaProfilnaFile;
   List<ApartmanSlika> apartmanSlikas;
+  ApartmanSearch search;
   Apartman({
     this.apartmanId,
     this.naziv,

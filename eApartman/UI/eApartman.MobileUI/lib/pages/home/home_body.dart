@@ -35,7 +35,8 @@ class _HomeBodyState extends State<HomeBody> {
     DateTime date = value != null ? value : checkin;
     setState(() {
       checkin = date;
-      if (date.isAfter(checkout)) checkout = date.add(Duration(days: 1));
+      if (date.isAfter(checkout) || date.isAtSameMomentAs(checkout))
+        checkout = date.add(Duration(days: 1));
     });
   }
 
@@ -44,7 +45,8 @@ class _HomeBodyState extends State<HomeBody> {
     DateTime date = value != null ? value : checkout;
     setState(() {
       checkout = value;
-      if (date.isBefore(checkin)) checkin = date.add(Duration(days: -1));
+      if (date.isBefore(checkin) || date.isAtSameMomentAs(checkin))
+        checkin = date.add(Duration(days: -1));
     });
   }
 

@@ -65,7 +65,8 @@ class _ApartmaniBodyState extends State<ApartmaniBody> {
                   scrollDirection: Axis.vertical,
                   physics: ClampingScrollPhysics(),
                   children: snapshot.data
-                      .map((a) => ApartmanWidget(Apartman.fromJson(a), context))
+                      .map((a) =>
+                          ApartmanWidget(Apartman.fromJson(a), context, search))
                       .toList(),
                 ),
               );

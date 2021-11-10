@@ -1,11 +1,13 @@
+import 'package:eapartman_mobile/models/imodel.dart';
 import 'package:flutter/cupertino.dart';
 
-class Rezervacija {
+class Rezervacija implements IModel {
   int rezervacijaId;
   int gostId;
   int apartmanId;
   String poruka;
   int brojOsoba;
+  int brojDana;
   DateTime checkIn;
   DateTime checkOut;
   String gostIme;
@@ -38,10 +40,10 @@ class Rezervacija {
   Map<String, dynamic> toJson() => {
         "gostId": gostId,
         "apartmanId": apartmanId,
-        "potruka": poruka,
+        "poruka": poruka,
         "brojOsoba": brojOsoba,
-        "checkIn": checkIn,
-        "checkOut": checkOut,
+        "datumCheckIn": checkIn.toIso8601String(),
+        "datumCheckOut": checkOut.toIso8601String(),
         "gostIme": gostIme,
         "gostPrezime": gostPrezime,
       };

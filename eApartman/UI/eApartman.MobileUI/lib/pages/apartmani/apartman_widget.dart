@@ -1,11 +1,14 @@
 import 'package:eapartman_mobile/models/apartman.dart';
+import 'package:eapartman_mobile/models/search_objects/apartman_search.dart';
 import 'package:eapartman_mobile/pages/apartman_detalji/apartman_detalji.dart';
 import 'package:eapartman_mobile/style.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
 import 'package:flutter/material.dart';
 
-Widget ApartmanWidget(Apartman apartman, BuildContext context) {
+Widget ApartmanWidget(
+    Apartman apartman, BuildContext context, ApartmanSearch search) {
   void handlePogledaj() {
+    apartman.search = search;
     Navigator.push(
         context,
         MaterialPageRoute(
