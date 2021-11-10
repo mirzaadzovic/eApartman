@@ -3,6 +3,7 @@ import 'package:eapartman_mobile/models/rezervacija.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/style.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
+import 'package:eapartman_mobile/widgets/poruka_dialog.dart';
 import 'package:eapartman_mobile/widgets/slike_carousel.dart';
 import 'package:flutter/material.dart';
 
@@ -30,22 +31,6 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
     });
   }
 
-  Future<void> poruka() async {
-    return showDialog(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-        title: const Text('Poruka'),
-        content: Text('Rezervisali ste apartman ${apartman.naziv}!'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, 'OK'),
-            child: const Text('OK'),
-          ),
-        ],
-      ),
-    );
-  }
-
   void handleRezervisi() async {
     Rezervacija request = Rezervacija(
       apartmanId: apartman.apartmanId,
@@ -60,7 +45,11 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
     try {
       var result = await APIService.Insert("Rezervacije", request);
       if (result != null) {
-        await poruka();
+        await PorukaDialog.poruka(
+          msg: 'Rezervisali ste apartman ${apartman.naziv}!',
+          handleClick: () => Navigator.pop(context, 'OK'),
+          context: context,
+        );
         Navigator.popUntil(context, ModalRoute.withName("/home"));
       }
     } catch (e) {

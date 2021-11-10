@@ -46,15 +46,14 @@ class APIService {
     String baseUrl = apiUrl + route;
     final String basicAuth =
         "basic " + base64Encode(utf8.encode("$username:$password"));
-    final jsn = json.encode(request.toJson());
-    print(jsn);
+    final bodyJson = json.encode(request.toJson());
     try {
       final response = await http.post(Uri.parse(baseUrl),
           headers: {
             HttpHeaders.authorizationHeader: basicAuth,
             HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8',
           },
-          body: jsn);
+          body: bodyJson);
 
       print(response.statusCode);
       if (response.statusCode == 201 || response.statusCode == 200)
