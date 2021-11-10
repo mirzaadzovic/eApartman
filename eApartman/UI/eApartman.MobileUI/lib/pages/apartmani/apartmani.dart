@@ -2,7 +2,7 @@ import 'package:eapartman_mobile/models/apartman.dart';
 import 'package:eapartman_mobile/models/search_objects/apartman_search.dart';
 import 'package:eapartman_mobile/pages/apartmani/apartmani_body.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
-import 'package:eapartman_mobile/widgets/my_drawer.dart';
+import 'package:eapartman_mobile/widgets/my_appbar.dart';
 import 'package:flutter/material.dart';
 
 class Apartmani extends StatelessWidget {
@@ -12,8 +12,9 @@ class Apartmani extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Apartmani")),
+      appBar: MyAppBar(title: "Apartmani"),
       body: ApartmaniBody(search: search),
+      drawerEnableOpenDragGesture: true,
     );
   }
 }

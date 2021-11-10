@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class Avatar extends StatelessWidget {
   ClipRRect _slika;
-  Avatar({List<int> slika = const []}) {
+  double radius;
+  Avatar({List<int> slika = const [], this.radius}) {
     _slika = getImage(slika);
   }
   @override
@@ -16,8 +17,8 @@ class Avatar extends StatelessWidget {
         borderRadius: BorderRadius.circular(1000),
         child: Image.asset(
           "assets/images/user-default-avatar.png",
-          height: 100,
-          width: 100,
+          height: radius,
+          width: radius,
           fit: BoxFit.cover,
         ),
       );
@@ -27,8 +28,8 @@ class Avatar extends StatelessWidget {
         child: Image(
           image: MemoryImage(slika),
           fit: BoxFit.cover,
-          height: 100,
-          width: 100,
+          height: radius,
+          width: radius,
         ),
       );
   }

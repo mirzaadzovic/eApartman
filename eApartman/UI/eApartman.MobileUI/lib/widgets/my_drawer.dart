@@ -4,7 +4,7 @@ import 'package:eapartman_mobile/widgets/avatar.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
-  var slika = APIService.korisnik.slika;
+  List<int> slika = APIService.korisnik.slika;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class MyDrawer extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  Avatar(slika: slika),
+                  Avatar(slika: slika, radius: 100),
                   Expanded(
                     flex: 10,
                     child: Padding(
@@ -30,16 +30,16 @@ class MyDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: Text("Moj nalog"),
+            title: Text("Moj nalog", style: BodyTextStyle),
           ),
           ListTile(
-            title: Text("Moje rezervacije"),
+            title: Text("Moje rezervacije", style: BodyTextStyle),
           ),
           ListTile(
-            title: Text("Moji utisci"),
+            title: Text("Moji utisci", style: BodyTextStyle),
           ),
           ListTile(
-            title: Text("Logout"),
+            title: Text("Logout", style: BodyTextStyle),
             onTap: () => APIService.logout(context),
           ),
         ],

@@ -58,7 +58,12 @@ class _ApartmaniBodyState extends State<ApartmaniBody> {
             else if (snapshot.hasError)
               return Center(child: Text("${snapshot.error}"));
             else if (snapshot.hasData) {
-              print(snapshot.data);
+              if (snapshot.data.isEmpty)
+                return Padding(
+                  padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
+                  child:
+                      Text("Nema slobodnih apartmana.", style: BodyTextStyle),
+                );
               return SingleChildScrollView(
                 child: ListView(
                   shrinkWrap: true,
