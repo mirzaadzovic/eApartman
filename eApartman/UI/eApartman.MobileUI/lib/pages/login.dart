@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:eapartman_mobile/models/korisnik.dart';
+import 'package:eapartman_mobile/models/search_objects/korisnik_search.dart';
 import 'package:eapartman_mobile/pages/loading/loading.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
@@ -25,15 +26,22 @@ class _LoginState extends State<Login> {
     setState(() => _loading = true);
     APIService.username = usernameController.text;
     APIService.password = passwordController.text;
-    var korisnici = await APIService.Get("Korisnici", null);
-
-    if (korisnici != null) {
-      Navigator.of(context).pushReplacementNamed('/home');
-    } else {
-      setState(() => error = "Pogrešan username ili password.");
+    try {
+      var korisnici = await APIService.Get(
+          "Korisnici", KorisnikSearch(username: usernameController.text));
+      if (korisnici != null) {
+        Korisnik korisnik =
+            (korisnici as List).map((k) => Korisnik.fromJson(k)).toList().first;
+        APIService.korisnik = korisnik;
+        Navigator.of(context).pushReplacementNamed('/home');
+      } else {
+        throw Exception("Pogrešan username ili password.");
+      }
+    } catch (e) {
+      setState(() => error = e.toString().substring(10));
       passwordController.text = "";
+      setState(() => _loading = false);
     }
-    setState(() => _loading = false);
   }
 
   @override

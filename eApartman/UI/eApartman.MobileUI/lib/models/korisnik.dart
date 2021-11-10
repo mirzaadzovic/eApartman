@@ -6,7 +6,7 @@ class Korisnik {
   int korisnikId;
   String username;
   String ime;
-  final String prezime;
+  String prezime;
   String email;
   String telefon;
   DateTime datumRegistracije;
@@ -35,7 +35,7 @@ class Korisnik {
       prezime: json["prezime"],
       email: json["email"],
       telefon: json["telefon"],
-      datumRegistracije: json["datumRegistracije"],
+      datumRegistracije: DateTime.parse(json["datumRegistracije"]),
       rezervacijas: json["rezevacijas"],
       slika: bytes,
     );

@@ -1,4 +1,6 @@
 import 'package:eapartman_mobile/models/apartman.dart';
+import 'package:eapartman_mobile/models/rezervacija.dart';
+import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/style.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
 import 'package:eapartman_mobile/widgets/slike_carousel.dart';
@@ -27,6 +29,10 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
       slike.add(element.slikaFile);
     });
   }
+  // void handleRezervisi() async {
+  //   Rezervacija request=Rezervacija(apartmanId: apartman.apartmanId, gostId: APIService.korisnik.korisnikId, poruka: "Rezervisao gost";
+  //   var result=
+  // }
 
   @override
   Widget build(BuildContext context) {

@@ -28,7 +28,6 @@ class APIService {
         "basic " + base64Encode(utf8.encode("$username:$password"));
 
     if (search != null) baseUrl += "?${toQueryString(search)}";
-
     try {
       final response = await http.get(Uri.parse(baseUrl),
           headers: {HttpHeaders.authorizationHeader: basicAuth});
@@ -36,6 +35,23 @@ class APIService {
       if (response.statusCode == 200) {
         return JsonDecoder().convert(response.body) as List;
       } else
+        return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  static Future<dynamic> Insert(String route, dynamic request) async {
+    String baseUrl = apiUrl + route;
+    final String basicAuth =
+        "basic " + base64Encode(utf8.encode("$username:$password"));
+    try {
+      final response = await http.post(Uri.parse(baseUrl),
+          headers: {HttpHeaders.authorizationHeader: basicAuth}, body: request);
+
+      if (response.statusCode == 200)
+        return request;
+      else
         return null;
     } catch (e) {
       return null;
