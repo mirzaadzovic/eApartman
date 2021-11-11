@@ -10,6 +10,7 @@ namespace eApartman.Model.Requests
         public DateTime? Datum { get; set; }
         public string ApartmanNaziv { get; set; }
         public int VlasnikId { get; set; }
+        public int GostId { get; set; }
         public int ApartmanId { get; set; }
         public bool Otkazana { get; set; }
         public bool Izvrsena { get; set; }

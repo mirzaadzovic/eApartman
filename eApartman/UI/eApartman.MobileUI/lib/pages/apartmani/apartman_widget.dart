@@ -42,6 +42,7 @@ Widget ApartmanWidget(
                     ),
                     Column(
                       mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Grad: " + apartman.gradNaziv,
                             style: BodyTextStyle),

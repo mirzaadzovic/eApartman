@@ -1,3 +1,4 @@
+import 'package:eapartman_mobile/models/apartman.dart';
 import 'package:eapartman_mobile/models/imodel.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -5,9 +6,11 @@ class Rezervacija implements IModel {
   int rezervacijaId;
   int gostId;
   int apartmanId;
+  Apartman apartman;
   String poruka;
   int brojOsoba;
   int brojDana;
+  double cijena;
   DateTime checkIn;
   DateTime checkOut;
   String gostIme;
@@ -23,6 +26,8 @@ class Rezervacija implements IModel {
     this.checkOut,
     this.gostIme,
     this.gostPrezime,
+    this.apartman,
+    this.cijena,
   });
   factory Rezervacija.fromJson(Map<String, dynamic> json) {
     return Rezervacija(
@@ -31,17 +36,19 @@ class Rezervacija implements IModel {
       gostId: json["gostId"],
       poruka: json["poruka"],
       brojOsoba: json["brojOsoba"],
-      checkIn: json["checkIn"],
-      checkOut: json["checkOut"],
+      checkIn: DateTime.parse(json["datumCheckIn"]),
+      checkOut: DateTime.parse(json["datumCheckOut"]),
       gostIme: json["gostIme"],
       gostPrezime: json["gostPrezime"],
+      apartman: Apartman.fromJson(json["apartman"]),
+      cijena: json["cijena"],
     );
   }
   Map<String, dynamic> toJson() => {
-        "gostId": gostId,
-        "apartmanId": apartmanId,
+        "gostId": gostId.toString(),
+        "apartmanId": apartmanId.toString(),
         "poruka": poruka,
-        "brojOsoba": brojOsoba,
+        "brojOsoba": brojOsoba.toString(),
         "datumCheckIn": checkIn.toIso8601String(),
         "datumCheckOut": checkOut.toIso8601String(),
         "gostIme": gostIme,

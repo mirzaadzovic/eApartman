@@ -35,6 +35,8 @@ namespace eApartman.Services
 
             if (search?.VlasnikId > 0)
                 set = set.Where(r => r.Apartman.VlasnikId == search.VlasnikId);
+            if (search?.GostId > 0)
+                set = set.Where(r => r.GostId == search.GostId).OrderBy(r=>r.Izvrsena).ThenBy(r=>r.DatumCheckIn);
             if (search?.ApartmanId > 0)
                 set = set.Where(r => r.Apartman.ApartmanId == search.ApartmanId);
             if (!string.IsNullOrWhiteSpace(search.ApartmanNaziv))

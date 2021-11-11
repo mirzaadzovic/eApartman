@@ -26,6 +26,12 @@ const BodyTextStyle = TextStyle(
   fontSize: MediumTextSize,
 );
 
+const PodNaslovTextStyle = TextStyle(
+  fontFamily: FontNameDefault,
+  color: Colors.black54,
+  fontSize: SmallTextSize,
+);
+
 const ErrorTextStyle = TextStyle(
   color: Colors.red,
   fontSize: SmallTextSize,
