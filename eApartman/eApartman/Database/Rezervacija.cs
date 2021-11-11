@@ -26,5 +26,6 @@ namespace eApartman.Database
         public virtual Apartman Apartman { get; set; }
         public virtual Korisnik Gost { get; set; }
         public virtual Popust Popust { get; set; }
+        public virtual Utisak Utisak { get; set; }
     }
 }

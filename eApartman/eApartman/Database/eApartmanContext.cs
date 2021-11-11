@@ -263,17 +263,27 @@ namespace eApartman.Database
             {
                 entity.ToTable("Utisak");
 
+                entity.Property(e => e.UtisakId).ValueGeneratedNever();
+
                 entity.Property(e => e.DatumKreiranja).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Apartman)
                     .WithMany(p => p.Utisaks)
                     .HasForeignKey(d => d.ApartmanId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_apartmanutisak");
 
                 entity.HasOne(d => d.Korisnik)
                     .WithMany(p => p.Utisaks)
                     .HasForeignKey(d => d.KorisnikId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_korisnikutisak");
+
+                entity.HasOne(d => d.UtisakNavigation)
+                    .WithOne(p => p.Utisak)
+                    .HasForeignKey<Utisak>(d => d.UtisakId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Utisak__UtisakId__160F4887");
             });
 
             OnModelCreatingPartial(modelBuilder);

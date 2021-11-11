@@ -32,7 +32,6 @@ class RezervacijeBody extends StatelessWidget {
           BuildContext context,
           AsyncSnapshot<List<Rezervacija>> snapshot,
         ) {
-          
           if (snapshot.connectionState == ConnectionState.waiting)
             return Container(child: Loading());
           else if (snapshot.hasError)
@@ -47,7 +46,9 @@ class RezervacijeBody extends StatelessWidget {
                   children:
                       snapshot.data.map((r) => RezervacijaWidget(r)).toList(),
                 ),
-                 return Center(
+              );
+          }
+          return Center(
             child: Padding(
                 padding: EdgeInsets.all(20),
                 child: Text(
@@ -55,10 +56,6 @@ class RezervacijeBody extends StatelessWidget {
                   style: BodyTextStyle,
                 )),
           );
-              );
-              
-          }
-         
         });
   }
 

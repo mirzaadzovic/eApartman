@@ -68,7 +68,10 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
               children: [
                 Text(apartman.naziv, style: NaslovTextStyle),
                 SlikeCarousel(slike: slike),
+                SizedBox(height: 20),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text("Grad: " + apartman.gradNaziv, style: BodyTextStyle),
                     Text("Cijena: " + apartman.cijena.toString() + " €",
@@ -77,6 +80,7 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
                         style: BodyTextStyle),
                   ],
                 ),
+                SizedBox(height: 20),
                 Button(
                   text: "Rezerviši",
                   handleClick: handleRezervisi,
