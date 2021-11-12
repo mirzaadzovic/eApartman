@@ -1,3 +1,4 @@
+import 'package:eapartman_mobile/Helpers/helpers.dart';
 import 'package:eapartman_mobile/models/apartman.dart';
 import 'package:eapartman_mobile/models/rezervacija.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
@@ -36,8 +37,8 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
       apartmanId: apartman.apartmanId,
       gostId: APIService.korisnik.korisnikId,
       poruka: "Rezervisao gost",
-      checkIn: apartman.search.checkIn,
-      checkOut: apartman.search.checkOut,
+      checkIn: Helpers.DateOnly(apartman.search.checkIn),
+      checkOut: Helpers.DateOnly(apartman.search.checkOut),
       brojOsoba: apartman.search.osoba,
       gostIme: APIService.korisnik.ime,
       gostPrezime: APIService.korisnik.prezime,
