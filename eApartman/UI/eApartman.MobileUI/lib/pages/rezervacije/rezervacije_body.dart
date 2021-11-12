@@ -43,8 +43,9 @@ class RezervacijeBody extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   physics: ClampingScrollPhysics(),
-                  children:
-                      snapshot.data.map((r) => RezervacijaWidget(r)).toList(),
+                  children: snapshot.data
+                      .map((r) => rezervacijaWidget(r, context))
+                      .toList(),
                 ),
               );
           }
@@ -74,7 +75,6 @@ class RezervacijeBody extends StatelessWidget {
       else
         throw Exception("Vraćena prazna lista.");
     } catch (e) {
-      print("KURČINA -> " + e.toString());
       return [];
     }
   }
