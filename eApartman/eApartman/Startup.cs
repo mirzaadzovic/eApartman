@@ -77,6 +77,7 @@ namespace eApartman
             services.AddScoped<ICRUDService<Model.Korisnik, Model.Moderator, Model.Moderator, Model.Moderator>, ModeratoriService>();
             services.AddScoped<ICRUDService<Model.Rezervacija, RezervacijaSearchObject, RezervacijaInsertRequest, RezervacijaUpdateRequest>, RezervacijeService>();
             services.AddScoped<IRezervacijeService, RezervacijeService>();
+            services.AddScoped<ICRUDService<Model.Utisak, UtisakSearchObject, Model.Utisak, Model.Utisak>, UtisciService>();
 
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
