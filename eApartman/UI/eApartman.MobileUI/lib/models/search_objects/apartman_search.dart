@@ -1,6 +1,6 @@
 import 'package:eapartman_mobile/models/search_objects/search_object.dart';
 
-class ApartmanSearch implements ISearchObject {
+class ApartmanSearch implements ISearch {
   String grad;
   DateTime checkIn;
   DateTime checkOut;

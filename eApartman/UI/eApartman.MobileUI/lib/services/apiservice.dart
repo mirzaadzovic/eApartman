@@ -25,7 +25,7 @@ class APIService {
     password = pwd;
   }
 
-  static Future<dynamic> Get(String route, ISearchObject search) async {
+  static Future<dynamic> Get(String route, ISearch search) async {
     String baseUrl = apiUrl + route;
     final String basicAuth =
         "basic " + base64Encode(utf8.encode("$username:$password"));
@@ -42,6 +42,18 @@ class APIService {
     } catch (e) {
       return null;
     }
+  }
+
+  static Future<Map<String, dynamic>> GetById(String route, int id) async {
+    String baseUrl = apiUrl + route + "/$id";
+    String basicAuth =
+        "basic " + base64Encode(utf8.encode("$username:$password"));
+    final response = await http.get(Uri.parse(baseUrl),
+        headers: {HttpHeaders.authorizationHeader: basicAuth});
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    }
+    return null;
   }
 
   static Future<dynamic> Insert(String route, IModel request) async {
@@ -92,7 +104,7 @@ class APIService {
     }
   }
 
-  static String toQueryString(ISearchObject search) {
+  static String toQueryString(ISearch search) {
     String queryString = Uri(queryParameters: search.toJson()).query;
     return queryString;
   }

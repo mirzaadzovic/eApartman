@@ -1,10 +1,17 @@
+import 'package:eapartman_mobile/models/rezervacija.dart';
+import 'package:eapartman_mobile/pages/utisci/utisak_dodaj_body.dart';
+import 'package:eapartman_mobile/widgets/my_appbar.dart';
 import 'package:flutter/material.dart';
 
 class UtisakDodaj extends StatelessWidget {
-  UtisakDodaj(int rezervacijaId);
+  Rezervacija rezervacija;
+  UtisakDodaj(this.rezervacija);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: MyAppBar(title: "Rezervacije > Detalji > Utisak"),
+      body: UtisakDodajBody(rezervacija),
+    );
   }
 }

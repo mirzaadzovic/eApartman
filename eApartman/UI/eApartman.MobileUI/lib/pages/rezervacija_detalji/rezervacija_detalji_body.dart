@@ -1,6 +1,7 @@
 import 'package:eapartman_mobile/Helpers/helpers.dart';
 import 'package:eapartman_mobile/models/rezervacija.dart';
 import 'package:eapartman_mobile/models/search_objects/rezervacija_update.dart';
+import 'package:eapartman_mobile/pages/utisci/utisak_dodaj.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/style.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
@@ -45,6 +46,7 @@ class RezervacijaDetaljiBody extends StatelessWidget {
           handleClick: () => Navigator.pop(context, 'OK'),
           context: context,
         );
+        Navigator.pop(context);
       }
     } catch (e) {
       await PorukaDialog.poruka(
@@ -72,6 +74,18 @@ class RezervacijaDetaljiBody extends StatelessWidget {
                   height: 250,
                   width: 400),
               SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UtisakDodaj(rezervacija)));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Text("Dodaj utisak...", style: LinkTextStyle),
+                ),
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,

@@ -1,6 +1,6 @@
 import 'package:eapartman_mobile/models/search_objects/search_object.dart';
 
-class GradSearch implements ISearchObject {
+class GradSearch implements ISearch {
   String query;
   String naziv;
   String drzava;

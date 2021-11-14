@@ -36,3 +36,9 @@ const ErrorTextStyle = TextStyle(
   color: Colors.red,
   fontSize: SmallTextSize,
 );
+
+const LinkTextStyle = TextStyle(
+  color: Colors.blue,
+  fontSize: MediumTextSize,
+  decoration: TextDecoration.underline,
+);

@@ -51,7 +51,15 @@ namespace eApartman.Services
             }
             return set;
         }
-
+        public override Model.Rezervacija GetById(int id)
+        {
+            var entity = _context.Set<Rezervacija>()
+                .Include(r => r.Utisak)
+                .FirstOrDefault(r=>r.RezervacijaId==id);
+ 
+                
+            return _mapper.Map<Model.Rezervacija>(entity);
+        }
         public override Model.Rezervacija Insert(RezervacijaInsertRequest request)
         {
             if (request.DatumCheckIn.Date < DateTime.Now.Date)

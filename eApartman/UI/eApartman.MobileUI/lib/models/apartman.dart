@@ -3,8 +3,10 @@ import 'dart:core';
 import 'dart:core';
 import 'dart:ffi';
 
+import 'package:eapartman_mobile/models/apartman_ocjene.dart';
 import 'package:eapartman_mobile/models/apartman_slika.dart';
 import 'package:eapartman_mobile/models/search_objects/apartman_search.dart';
+import 'package:eapartman_mobile/models/utisak.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 
 class Apartman {
@@ -20,6 +22,7 @@ class Apartman {
   double cijena;
   List<int> slikaProfilnaFile;
   List<ApartmanSlika> apartmanSlikas;
+  List<Utisak> utisci;
   ApartmanSearch search;
   Apartman({
     this.apartmanId,
@@ -34,6 +37,7 @@ class Apartman {
     this.cijena,
     this.slikaProfilnaFile,
     this.apartmanSlikas,
+    this.utisci,
   });
 
   factory Apartman.fromJson(Map<String, dynamic> json) {
@@ -42,6 +46,8 @@ class Apartman {
     List<ApartmanSlika> slike = (json["apartmanSlikas"] as List)
         .map((s) => ApartmanSlika.fromJson(s))
         .toList();
+    List<Utisak> utisaks =
+        (json["utisaks"] as List).map((u) => Utisak.fromJson(u)).toList();
     return Apartman(
       apartmanId: json["apartmanId"],
       naziv: json["naziv"],
@@ -55,6 +61,7 @@ class Apartman {
       cijena: json["cijena"],
       slikaProfilnaFile: bytes,
       apartmanSlikas: slike,
+      utisci: utisaks,
     );
   }
 
@@ -72,5 +79,51 @@ class Apartman {
       "cijena": cijena,
       "slikaProfilnaFile": slikaProfilnaFile,
     };
+  }
+
+  ApartmanOcjene OcjeneProsjek() {
+    double wifi = WiFiProsjek();
+    double lokacija = LokacijaProsjek();
+    double cistoca = CistocaProsjek();
+    double vlasnik = VlasnikProsjek();
+    return ApartmanOcjene(
+      cistoca: cistoca,
+      lokacija: lokacija,
+      wifi: wifi,
+      vlasnik: vlasnik,
+    );
+  }
+
+  double WiFiProsjek() {
+    double wifi;
+    utisci.forEach((element) {
+      wifi += element.ocjenaWiFi;
+    });
+
+    return wifi / utisci.length;
+  }
+
+  double LokacijaProsjek() {
+    double lokacija;
+    utisci.forEach((element) {
+      lokacija += element.ocjenaLokacija;
+    });
+    return lokacija / utisci.length;
+  }
+
+  double CistocaProsjek() {
+    double cistoca;
+    utisci.forEach((element) {
+      cistoca += element.ocjenaCistoca;
+    });
+    return cistoca / utisci.length;
+  }
+
+  double VlasnikProsjek() {
+    double vlasnik;
+    utisci.forEach((element) {
+      vlasnik += element.ocjenaVlasnik;
+    });
+    return vlasnik / utisci.length;
   }
 }
