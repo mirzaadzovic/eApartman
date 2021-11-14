@@ -1,4 +1,6 @@
-class Utisak {
+import 'package:eapartman_mobile/models/imodel.dart';
+
+class Utisak implements IModel {
   int utisakId;
   int korisnikId;
   int apartmanId;

@@ -1,6 +1,7 @@
 import 'package:eapartman_mobile/Helpers/helpers.dart';
 import 'package:eapartman_mobile/models/rezervacija.dart';
 import 'package:eapartman_mobile/models/search_objects/rezervacija_update.dart';
+import 'package:eapartman_mobile/pages/rezervacija_detalji/rezervacija_utisak.dart';
 import 'package:eapartman_mobile/pages/utisci/utisak_dodaj.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/style.dart';
@@ -10,7 +11,8 @@ import 'package:flutter/material.dart';
 
 class RezervacijaDetaljiBody extends StatelessWidget {
   Rezervacija rezervacija;
-  RezervacijaDetaljiBody(this.rezervacija);
+  Function setRezervacija;
+  RezervacijaDetaljiBody(this.rezervacija, this.setRezervacija);
 
   void handleOtkazi(BuildContext context) async {
     var request = RezervacijaUpdate(
@@ -57,18 +59,6 @@ class RezervacijaDetaljiBody extends StatelessWidget {
                   height: 250,
                   width: 400),
               SizedBox(height: 20),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => UtisakDodaj(rezervacija)));
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Text("Dodaj utisak...", style: LinkTextStyle),
-                ),
-              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -84,6 +74,9 @@ class RezervacijaDetaljiBody extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 20),
+              rezervacija.izvrsena
+                  ? RezervacijaUtisakBody(context, rezervacija, setRezervacija)
+                  : SizedBox(),
               rezervacija.otkazana || rezervacija.izvrsena
                   ? SizedBox()
                   : Button(

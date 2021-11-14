@@ -50,7 +50,7 @@ class APIService {
         "basic " + base64Encode(utf8.encode("$username:$password"));
     final response = await http.get(Uri.parse(baseUrl),
         headers: {HttpHeaders.authorizationHeader: basicAuth});
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 && response.body != null) {
       return jsonDecode(response.body);
     }
     return null;

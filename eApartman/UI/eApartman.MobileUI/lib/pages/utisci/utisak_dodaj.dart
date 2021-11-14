@@ -5,13 +5,14 @@ import 'package:flutter/material.dart';
 
 class UtisakDodaj extends StatelessWidget {
   Rezervacija rezervacija;
-  UtisakDodaj(this.rezervacija);
+  Function setRezervacija;
+  UtisakDodaj(this.rezervacija, this.setRezervacija);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(title: "Rezervacije > Detalji > Utisak"),
-      body: UtisakDodajBody(rezervacija),
+      body: UtisakDodajBody(rezervacija, setRezervacija),
     );
   }
 }

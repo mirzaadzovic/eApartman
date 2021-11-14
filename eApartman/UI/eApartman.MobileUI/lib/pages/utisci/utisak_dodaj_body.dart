@@ -6,23 +6,26 @@ import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/style.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
 import 'package:eapartman_mobile/widgets/input.dart';
+import 'package:eapartman_mobile/widgets/poruka_dialog.dart';
 import 'package:eapartman_mobile/widgets/rating_stars.dart';
 import 'package:eapartman_mobile/widgets/text_area.dart';
 import 'package:flutter/material.dart';
 
 class UtisakDodajBody extends StatefulWidget {
   Rezervacija rezervacija;
-  UtisakDodajBody(this.rezervacija);
-  _UtisakState createState() => _UtisakState(rezervacija);
+  Function setRezervacija;
+  UtisakDodajBody(this.rezervacija, this.setRezervacija);
+  _UtisakState createState() => _UtisakState(rezervacija, setRezervacija);
 }
 
 class _UtisakState extends State<UtisakDodajBody> {
   Rezervacija rezervacija;
-  int cistoca = 0;
-  int lokacija = 0;
-  int wifi = 0;
-  int vlasnik = 0;
-  TextEditingController komentarController;
+  int cistoca = 3;
+  int lokacija = 3;
+  int wifi = 3;
+  int vlasnik = 3;
+  TextEditingController komentarController = TextEditingController();
+  Function setRezervacija;
 
   void rateCistoca(int value) {
     setState(() {
@@ -48,7 +51,7 @@ class _UtisakState extends State<UtisakDodajBody> {
     });
   }
 
-  void handleDodaj() async {
+  void handleDodaj(BuildContext context) async {
     Utisak request = Utisak(
       utisakId: rezervacija.rezervacijaId,
       apartmanId: rezervacija.apartmanId,
@@ -59,10 +62,31 @@ class _UtisakState extends State<UtisakDodajBody> {
       ocjenaVlasnik: vlasnik,
       ocjenaWiFi: wifi,
     );
-    try {} catch (e) {}
+    try {
+      var response = await APIService.Insert("Utisci", request);
+      String poruka;
+      if (response != null)
+        poruka = "Utisak za apartman ${rezervacija.apartman.naziv} dodan!";
+      else
+        poruka = "Došlo je do greške...";
+      await PorukaDialog.poruka(
+        msg: poruka,
+        context: context,
+        handleClick: () => Navigator.pop(context, "OK"),
+      );
+      //update stanja rezervacije kad se vratimo na prethodni page
+      setRezervacija();
+      Navigator.pop(context);
+    } catch (e) {
+      await PorukaDialog.poruka(
+        msg: e.toString(),
+        context: context,
+        handleClick: () => Navigator.pop(context, "OK"),
+      );
+    }
   }
 
-  _UtisakState(this.rezervacija);
+  _UtisakState(this.rezervacija, this.setRezervacija);
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -101,6 +125,7 @@ class _UtisakState extends State<UtisakDodajBody> {
                     ),
                     Button(
                       text: "Dodaj",
+                      handleClick: () => handleDodaj(context),
                     ),
                   ],
                 ),

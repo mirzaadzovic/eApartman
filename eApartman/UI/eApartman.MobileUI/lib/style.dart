@@ -25,6 +25,24 @@ const BodyTextStyle = TextStyle(
   color: Colors.black54,
   fontSize: MediumTextSize,
 );
+const UsernameTextStyle = TextStyle(
+  fontFamily: FontNameDefault,
+  color: Colors.black54,
+  fontSize: MediumTextSize,
+  fontWeight: FontWeight.bold,
+);
+const OcjenaTextStyle = TextStyle(
+  fontFamily: FontNameDefault,
+  color: Color.fromRGBO(250, 250, 250, 100),
+  fontSize: MediumTextSize,
+  fontWeight: FontWeight.bold,
+);
+const KomentarTextStyle = TextStyle(
+  fontFamily: FontNameDefault,
+  color: Colors.black54,
+  fontSize: MediumTextSize,
+  fontStyle: FontStyle.italic,
+);
 
 const PodNaslovTextStyle = TextStyle(
   fontFamily: FontNameDefault,

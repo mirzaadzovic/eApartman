@@ -23,5 +23,22 @@ namespace eApartman.Services
                 set = set.Where(u => u.KorisnikId == search.GostId);
             return _mapper.Map<List<Model.Utisak>>(set);
         }
+        public override Model.Utisak GetById(int id)
+        {
+            var entity = _context.Utisaks.Find(id);
+            if (entity == null) return null;
+            return _mapper.Map<Model.Utisak>(entity);
+        }
+        public override Model.Utisak Insert(Model.Utisak request)
+        {
+            var search=_context.Utisaks.Find(request.UtisakId);
+            if (search == null)
+            {
+                var entity = _mapper.Map<Utisak>(request);
+                _context.Utisaks.Add(entity);
+                _context.SaveChanges();
+            }
+            return request;
+        }
     }
 }

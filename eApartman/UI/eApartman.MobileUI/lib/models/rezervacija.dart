@@ -73,7 +73,7 @@ class Rezervacija implements IModel {
     if (otkazana)
       return "Otkazana";
     else if (JeLiIzvrsena)
-      return "Izvrsena";
+      return "Izvršena";
     else if (jeLiUToku)
       return "U toku";
     else
