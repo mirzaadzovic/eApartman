@@ -60,10 +60,11 @@ Widget rezervacijaWidget(Rezervacija rezervacija, BuildContext context) {
                           Text("Grad: " + rezervacija.apartman.gradNaziv,
                               style: BodyTextStyle),
                           Text(
-                              "Broj osoba: " + rezervacija.brojOsoba.toString(),
+                              "Cijena: " +
+                                  rezervacija.cijena.round().toString() +
+                                  " €",
                               style: BodyTextStyle),
-                          Text(
-                              "Cijena: " + rezervacija.cijena.toString() + " €",
+                          Text("Status: " + rezervacija.Status(),
                               style: BodyTextStyle),
                         ],
                       ),

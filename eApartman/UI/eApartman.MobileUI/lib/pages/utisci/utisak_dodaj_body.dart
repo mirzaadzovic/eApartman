@@ -48,6 +48,20 @@ class _UtisakState extends State<UtisakDodajBody> {
     });
   }
 
+  void handleDodaj() async {
+    Utisak request = Utisak(
+      utisakId: rezervacija.rezervacijaId,
+      apartmanId: rezervacija.apartmanId,
+      komentar: komentarController.text,
+      korisnikId: APIService.korisnik.korisnikId,
+      ocjenaCistoca: cistoca,
+      ocjenaLokacija: lokacija,
+      ocjenaVlasnik: vlasnik,
+      ocjenaWiFi: wifi,
+    );
+    try {} catch (e) {}
+  }
+
   _UtisakState(this.rezervacija);
   @override
   Widget build(BuildContext context) {

@@ -12,23 +12,6 @@ class RezervacijaDetaljiBody extends StatelessWidget {
   Rezervacija rezervacija;
   RezervacijaDetaljiBody(this.rezervacija);
 
-  String rezervacijaStatus() {
-    DateTime checkin = Helpers.DateOnly(rezervacija.checkIn);
-    bool JeLiIzvrsena = rezervacija.izvrsena;
-    DateTime danas = Helpers.DateOnly(DateTime.now());
-    bool jeLiUToku =
-        (danas.isAtSameMomentAs(checkin) || danas.isAfter(checkin)) &&
-            (!JeLiIzvrsena);
-    if (rezervacija.otkazana)
-      return "Otkazana";
-    else if (JeLiIzvrsena)
-      return "Izvrsena";
-    else if (jeLiUToku)
-      return "U toku";
-    else
-      return "Kreirana";
-  }
-
   void handleOtkazi(BuildContext context) async {
     var request = RezervacijaUpdate(
       checkin: Helpers.DateOnly(rezervacija.checkIn),
@@ -92,11 +75,12 @@ class RezervacijaDetaljiBody extends StatelessWidget {
                 children: [
                   Text("Grad: " + rezervacija.apartman.gradNaziv,
                       style: BodyTextStyle),
-                  Text("Cijena: " + rezervacija.cijena.toString() + " €",
+                  Text(
+                      "Cijena: " + rezervacija.cijena.round().toString() + " €",
                       style: BodyTextStyle),
                   Text("Broj osoba: " + rezervacija.brojOsoba.toString(),
                       style: BodyTextStyle),
-                  Text("Status: " + rezervacijaStatus(), style: BodyTextStyle),
+                  Text("Status: " + rezervacija.Status(), style: BodyTextStyle),
                 ],
               ),
               SizedBox(height: 20),

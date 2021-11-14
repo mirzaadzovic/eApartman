@@ -63,4 +63,20 @@ class Rezervacija implements IModel {
         "otkazana": otkazana,
         "izvrsena": izvrsena,
       };
+  String Status() {
+    DateTime checkin = Helpers.DateOnly(checkIn);
+    bool JeLiIzvrsena = izvrsena;
+    DateTime danas = Helpers.DateOnly(DateTime.now());
+    bool jeLiUToku =
+        (danas.isAtSameMomentAs(checkin) || danas.isAfter(checkin)) &&
+            (!JeLiIzvrsena);
+    if (otkazana)
+      return "Otkazana";
+    else if (JeLiIzvrsena)
+      return "Izvrsena";
+    else if (jeLiUToku)
+      return "U toku";
+    else
+      return "Kreirana";
+  }
 }
