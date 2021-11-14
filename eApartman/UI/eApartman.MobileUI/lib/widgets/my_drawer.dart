@@ -12,6 +12,10 @@ class MyDrawer extends StatelessWidget {
         context, MaterialPageRoute(builder: (context) => Rezervacije()));
   }
 
+  void toHome(BuildContext context) {
+    Navigator.popUntil(context, ModalRoute.withName("/home"));
+  }
+
   void toUtisci(BuildContext context) {}
 
   void toNalog(BuildContext context) {}
@@ -40,8 +44,8 @@ class MyDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: Text("Moj nalog", style: BodyTextStyle),
-            onTap: () => toNalog(context),
+            title: Text("Početna", style: BodyTextStyle),
+            onTap: () => toHome(context),
           ),
           ListTile(
             title: Text("Moje rezervacije", style: BodyTextStyle),
@@ -50,6 +54,10 @@ class MyDrawer extends StatelessWidget {
           ListTile(
             title: Text("Moji utisci", style: BodyTextStyle),
             onTap: () => toUtisci(context),
+          ),
+          ListTile(
+            title: Text("Moj nalog", style: BodyTextStyle),
+            onTap: () => toNalog(context),
           ),
           ListTile(
             title: Text("Logout", style: BodyTextStyle),

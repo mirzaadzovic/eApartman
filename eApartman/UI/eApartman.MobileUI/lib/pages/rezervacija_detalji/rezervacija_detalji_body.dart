@@ -1,7 +1,10 @@
 import 'package:eapartman_mobile/Helpers/helpers.dart';
 import 'package:eapartman_mobile/models/rezervacija.dart';
+import 'package:eapartman_mobile/models/search_objects/rezervacija_update.dart';
+import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/style.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
+import 'package:eapartman_mobile/widgets/poruka_dialog.dart';
 import 'package:flutter/material.dart';
 
 class RezervacijaDetaljiBody extends StatelessWidget {
@@ -23,6 +26,33 @@ class RezervacijaDetaljiBody extends StatelessWidget {
       return "U toku";
     else
       return "Kreirana";
+  }
+
+  void handleOtkazi(BuildContext context) async {
+    var request = RezervacijaUpdate(
+      checkin: Helpers.DateOnly(rezervacija.checkIn),
+      checkout: Helpers.DateOnly(rezervacija.checkOut),
+      izvrsena: false,
+      otkazana: true,
+    );
+    try {
+      final response = await APIService.Update(
+          "Rezervacije", rezervacija.rezervacijaId, request);
+
+      if (response != null) {
+        await PorukaDialog.poruka(
+          msg: 'Rezervacija otkazana!',
+          handleClick: () => Navigator.pop(context, 'OK'),
+          context: context,
+        );
+      }
+    } catch (e) {
+      await PorukaDialog.poruka(
+        msg: e.toString(),
+        handleClick: () => Navigator.pop(context, 'OK'),
+        context: context,
+      );
+    }
   }
 
   @override
@@ -57,8 +87,9 @@ class RezervacijaDetaljiBody extends StatelessWidget {
               ),
               SizedBox(height: 20),
               rezervacija.otkazana || rezervacija.izvrsena
-                  ? null
-                  : Button(text: "Otkaži", handleClick: () {}),
+                  ? SizedBox()
+                  : Button(
+                      text: "Otkaži", handleClick: () => handleOtkazi(context)),
             ],
           ),
         ),

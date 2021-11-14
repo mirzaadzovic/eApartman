@@ -81,8 +81,8 @@ namespace eApartman.Services
             var set = _context
                 .Set<Rezervacija>()
                 .AsQueryable()
-                .Where(r=>r.Otkazana==false)
-                .Where(r => r.DatumCheckOut.Date == DateTime.Today.Date);
+                .Where(r=>r.Otkazana==false && r.Izvrsena==false)
+                .Where(r => r.DatumCheckOut.Date <= DateTime.Today.Date);
            
             await set.ForEachAsync(r => r.Izvrsena = true);
 

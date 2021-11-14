@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:eapartman_mobile/models/grad.dart';
 import 'package:eapartman_mobile/models/imodel.dart';
 import 'package:eapartman_mobile/models/korisnik.dart';
+import 'package:eapartman_mobile/models/rezervacija.dart';
 import 'package:eapartman_mobile/models/search_objects/search_object.dart';
 import 'package:eapartman_mobile/pages/login.dart';
 import 'package:flutter/material.dart';
@@ -62,6 +63,31 @@ class APIService {
       else
         return null;
     } catch (e) {
+      return null;
+    }
+  }
+
+  static Future<dynamic> Update(String route, int id, IModel request) async {
+    String baseUrl = apiUrl + route + "/$id";
+    final String basicAuth =
+        "basic " + base64Encode(utf8.encode("$username:$password"));
+    final bodyJson = json.encode(request.toJson());
+    try {
+      final response = await http.put(
+        Uri.parse(baseUrl),
+        headers: {
+          HttpHeaders.authorizationHeader: basicAuth,
+          HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8',
+        },
+        body: bodyJson,
+      );
+      print(response);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return response.body;
+      }
+      return null;
+    } catch (e) {
+      print(e.toString());
       return null;
     }
   }
