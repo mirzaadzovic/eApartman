@@ -1,3 +1,4 @@
+import 'package:eapartman_mobile/pages/moj_nalog/moj_nalog.dart';
 import 'package:eapartman_mobile/pages/rezervacije/rezervacije.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/style.dart';
@@ -18,7 +19,10 @@ class MyDrawer extends StatelessWidget {
 
   void toUtisci(BuildContext context) {}
 
-  void toNalog(BuildContext context) {}
+  void toNalog(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => MojNalog()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +34,9 @@ class MyDrawer extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  Avatar(slika: slika, radius: 100),
+                  Avatar(slika: slika, radius: 80),
                   Expanded(
-                    flex: 10,
+                    flex: 1,
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                       child: Text(APIService.username, style: NaslovTextStyle),

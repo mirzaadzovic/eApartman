@@ -95,7 +95,7 @@ class APIService {
       );
       print(response);
       if (response.statusCode == 200 || response.statusCode == 201) {
-        return response.body;
+        return jsonDecode(response.body);
       }
       return null;
     } catch (e) {

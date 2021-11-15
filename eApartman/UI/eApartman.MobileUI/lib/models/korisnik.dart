@@ -16,6 +16,8 @@ class Korisnik implements IModel {
   List<Rezervacija> rezervacijas;
   List<int> slika;
   List<int> uloge;
+  String oldPassword;
+  bool status;
 
   // List<Utisak> utisaks;
   Korisnik({
@@ -31,6 +33,8 @@ class Korisnik implements IModel {
     this.password,
     this.passwordPotvrda,
     this.uloge,
+    this.oldPassword,
+    this.status,
   });
   factory Korisnik.fromJson(Map<String, dynamic> json) {
     String stringByte = json["slika"] as String;
@@ -57,5 +61,7 @@ class Korisnik implements IModel {
         "password": password,
         "passwordPotvrda": passwordPotvrda,
         "uloge": uloge,
+        "oldPassword": oldPassword,
+        "status": status,
       };
 }
