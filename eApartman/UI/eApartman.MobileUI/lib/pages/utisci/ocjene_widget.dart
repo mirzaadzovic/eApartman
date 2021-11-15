@@ -9,23 +9,29 @@ Widget OcjeneWidget(Utisak utisak) {
     padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
     child: Column(
       children: [
-        Padding(
-          padding: EdgeInsets.all(20),
-          child: Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              shape: BoxShape.circle,
-            ),
-            child: Center(
-              child: Text(
-                utisak.Prosjek().toStringAsFixed(1),
-                style: OcjenaTextStyle,
-                textAlign: TextAlign.center,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Ocjena", style: BoldBodyTextStyle),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Text(
+                    utisak.Prosjek().toStringAsFixed(1),
+                    style: OcjenaTextStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ),
             ),
-          ),
+          ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -34,9 +40,9 @@ Widget OcjeneWidget(Utisak utisak) {
                 style: PodNaslovTextStyle),
             Text("Čistoća: ${utisak.ocjenaCistoca.toString()}",
                 style: PodNaslovTextStyle),
-            Text("Wi-Fi: ${utisak.ocjenaLokacija.toString()}",
+            Text("Lokacija: ${utisak.ocjenaLokacija.toString()}",
                 style: PodNaslovTextStyle),
-            Text("Wi-Fi: ${utisak.ocjenaVlasnik.toString()}",
+            Text("Vlasnik: ${utisak.ocjenaVlasnik.toString()}",
                 style: PodNaslovTextStyle),
             SizedBox(
               height: 20,

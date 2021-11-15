@@ -25,7 +25,7 @@ const BodyTextStyle = TextStyle(
   color: Colors.black54,
   fontSize: MediumTextSize,
 );
-const UsernameTextStyle = TextStyle(
+const BoldBodyTextStyle = TextStyle(
   fontFamily: FontNameDefault,
   color: Colors.black54,
   fontSize: MediumTextSize,
@@ -58,5 +58,11 @@ const ErrorTextStyle = TextStyle(
 const LinkTextStyle = TextStyle(
   color: Colors.blue,
   fontSize: MediumTextSize,
+  decoration: TextDecoration.underline,
+);
+
+const SmallLinkTextStyle = TextStyle(
+  color: Colors.blue,
+  fontSize: SmallTextSize,
   decoration: TextDecoration.underline,
 );

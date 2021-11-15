@@ -18,6 +18,9 @@ class ErrorText extends StatelessWidget {
           style: ErrorTextStyle,
           maxLines: 1,
         ),
+        SizedBox(
+          height: 20,
+        ),
       ],
     );
   }

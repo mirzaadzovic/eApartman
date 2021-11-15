@@ -20,7 +20,7 @@ Widget komentarWidget(List<int> slika, String komentar, String username) {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(username, style: UsernameTextStyle),
+                        Text(username, style: BoldBodyTextStyle),
                       ],
                     ),
                   ),

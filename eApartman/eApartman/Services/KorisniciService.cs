@@ -52,6 +52,7 @@ namespace eApartman.Services
             entity.PasswordSalt = GenerateSalt();
             entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
             entity.DatumRegistracije = DateTime.Now;
+            entity.Status = true;
 
             _context.Add(entity);
             _context.SaveChanges();

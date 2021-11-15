@@ -3,7 +3,9 @@
 import 'package:eapartman_mobile/models/korisnik.dart';
 import 'package:eapartman_mobile/models/search_objects/korisnik_search.dart';
 import 'package:eapartman_mobile/pages/loading/loading.dart';
+import 'package:eapartman_mobile/pages/register.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
+import 'package:eapartman_mobile/style.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
 import 'package:eapartman_mobile/widgets/error_text.dart';
 import 'package:eapartman_mobile/widgets/input.dart';
@@ -21,7 +23,7 @@ class _LoginState extends State<Login> {
   TextEditingController passwordController = TextEditingController();
   bool _loading = false;
   String error = "";
-
+  bool validacija() {}
   void handleClick() async {
     setState(() => _loading = true);
     APIService.username = usernameController.text;
@@ -79,6 +81,17 @@ class _LoginState extends State<Login> {
                     text: "Login",
                     handleClick: _loading ? () => {} : handleClick),
                 ErrorText(error),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Register()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Text("Nemaš nalog? Registruj se...",
+                        style: SmallLinkTextStyle),
+                  ),
+                ),
               ],
             ),
           ),
