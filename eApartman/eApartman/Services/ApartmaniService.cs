@@ -68,7 +68,7 @@ namespace eApartman.Services
         {
             if (!string.IsNullOrWhiteSpace(search.Grad) && search.Grad != "")
             {
-                set = set.Where(a => a.Adresa.Grad.Naziv.Contains(search.Grad));
+                set = set.Where(a => a.Adresa.Grad.Naziv.ToLower().Contains(search.Grad.ToLower()));
             }
 
             if (!string.IsNullOrWhiteSpace(search.Tip) && search.Tip != "")
@@ -98,7 +98,7 @@ namespace eApartman.Services
 
             if (!string.IsNullOrWhiteSpace(search.Naziv) && search.Naziv != "")
             {
-                set = set.Where(a => a.Naziv.Contains(search.Naziv));
+                set = set.Where(a => a.Naziv.ToLower().Contains(search.Naziv.ToLower()));
             }
 
             return set;

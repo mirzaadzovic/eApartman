@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:core';
 import 'dart:core';
-import 'dart:ffi';
 
 import 'package:eapartman_mobile/models/apartman_ocjene.dart';
 import 'package:eapartman_mobile/models/apartman_slika.dart';
