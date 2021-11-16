@@ -3,8 +3,12 @@ import 'package:eapartman_mobile/models/utisak.dart';
 
 class UtisakSearch implements ISearch {
   int apartmanId;
-  UtisakSearch({this.apartmanId});
+  int gostId;
+  List<String> includeList;
+  UtisakSearch({this.apartmanId, this.gostId, this.includeList = const []});
   Map<String, dynamic> toJson() => {
         "apartmanId": apartmanId.toString(),
+        "gostId": gostId.toString(),
+        "includeList": includeList,
       };
 }

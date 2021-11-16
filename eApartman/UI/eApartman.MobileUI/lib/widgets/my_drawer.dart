@@ -1,5 +1,6 @@
 import 'package:eapartman_mobile/pages/moj_nalog/moj_nalog.dart';
 import 'package:eapartman_mobile/pages/rezervacije/rezervacije.dart';
+import 'package:eapartman_mobile/pages/utisci/utisci.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/style.dart';
 import 'package:eapartman_mobile/widgets/avatar.dart';
@@ -17,7 +18,9 @@ class MyDrawer extends StatelessWidget {
     Navigator.popUntil(context, ModalRoute.withName("/home"));
   }
 
-  void toUtisci(BuildContext context) {}
+  void toUtisci(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Utisci()));
+  }
 
   void toNalog(BuildContext context) {
     Navigator.push(

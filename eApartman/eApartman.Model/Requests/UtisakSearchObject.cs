@@ -8,5 +8,6 @@ namespace eApartman.Model.Requests
     {
         public int GostId { get; set; }
         public int ApartmanId { get; set; }
+        public string[] IncludeList { get; set; } = { };
     }
 }

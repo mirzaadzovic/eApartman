@@ -46,8 +46,14 @@ class Apartman {
     List<ApartmanSlika> slike = (json["apartmanSlikas"] as List)
         .map((s) => ApartmanSlika.fromJson(s))
         .toList();
-    List<Utisak> utisaks =
-        (json["utisaks"] as List).map((u) => Utisak.fromJson(u)).toList();
+    List<Utisak> utisaks;
+    try {
+      utisaks =
+          (json["utisaks"] as List).map((u) => Utisak.fromJson(u)).toList();
+    } catch (e) {
+      utisaks = [];
+    }
+
     return Apartman(
       apartmanId: json["apartmanId"],
       naziv: json["naziv"],

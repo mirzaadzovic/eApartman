@@ -39,6 +39,7 @@ Widget RezervacijaUtisakBody(
 Future<Utisak> GetUtisak(int id) async {
   try {
     var utisak = await APIService.GetById("utisci", id);
+    print(utisak);
     return Utisak.fromJson(utisak);
   } catch (e) {
     return null;

@@ -8,6 +8,7 @@ import 'package:eapartman_mobile/widgets/date_input.dart';
 import 'package:eapartman_mobile/widgets/input.dart';
 import 'package:eapartman_mobile/widgets/icon_input_numbers.dart';
 import 'package:eapartman_mobile/widgets/input_lokacija.dart';
+import 'package:eapartman_mobile/widgets/poruka_dialog.dart';
 import 'package:flutter/material.dart';
 import '../../style.dart';
 
@@ -70,6 +71,12 @@ class _HomeBodyState extends State<HomeBody> {
                       includeUtisci: true,
                     ),
                   )),
+        );
+      } else {
+        PorukaDialog.poruka(
+          context: context,
+          msg: "Broj osoba nije unesen!",
+          handleClick: () => Navigator.pop(context, 'OK'),
         );
       }
     } catch (e) {

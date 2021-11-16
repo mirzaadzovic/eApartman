@@ -1,7 +1,7 @@
 import 'package:eapartman_mobile/Helpers/helpers.dart';
 import 'package:eapartman_mobile/models/apartman.dart';
 import 'package:eapartman_mobile/models/rezervacija.dart';
-import 'package:eapartman_mobile/pages/apartman_detalji/apartman_utisci.dart';
+import 'package:eapartman_mobile/pages/apartman_detalji/apartman_prosjek.dart';
 import 'package:eapartman_mobile/pages/utisci/ocjena_prosjek.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/style.dart';
@@ -76,7 +76,7 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
               children: [
                 Text(apartman.naziv, style: NaslovTextStyle),
                 SlikeCarousel(slike: slike),
-                ApartmanUtisci(apartman, setApartman),
+                ApartmanProsjek(apartman, setApartman, true),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,

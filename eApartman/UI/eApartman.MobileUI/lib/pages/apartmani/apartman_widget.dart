@@ -46,7 +46,10 @@ Widget ApartmanWidget(
                       children: [
                         Text("Grad: " + apartman.gradNaziv,
                             style: BodyTextStyle),
-                        Text("Cijena: " + apartman.cijena.toString() + " €",
+                        Text(
+                            "Cijena: " +
+                                apartman.cijena.toStringAsFixed(0) +
+                                " €",
                             style: BodyTextStyle),
                         Text("Max osoba: " + apartman.maxOsoba.toString(),
                             style: BodyTextStyle),

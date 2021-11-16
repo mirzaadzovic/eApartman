@@ -57,8 +57,19 @@ class _State extends State<RezervacijeBody> {
           else if (snapshot.hasData) {
             if (snapshot.data.isNotEmpty) {
               List<Rezervacija> lista = snapshot.data;
-              if (status != "Sve")
+              if (status != "Sve") {
                 lista = lista.where((r) => r.Status() == status).toList();
+                if (lista.length == 0)
+                  return Center(
+                    child: Padding(
+                        padding: EdgeInsets.all(20),
+                        child: Text(
+                          "Nema rezervacija sa statusom $status",
+                          style: BodyTextStyle,
+                        )),
+                  );
+              }
+
               return SingleChildScrollView(
                 child: ListView(
                   scrollDirection: Axis.vertical,

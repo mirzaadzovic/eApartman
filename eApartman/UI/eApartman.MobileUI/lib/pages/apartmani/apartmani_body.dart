@@ -20,7 +20,7 @@ class ApartmaniBody extends StatefulWidget {
 class _ApartmaniBodyState extends State<ApartmaniBody> {
   final ApartmanSearch search;
   String _naslov;
-  final DateFormat formatter = DateFormat('d.M.yyyy.');
+  final DateFormat formatter = DateFormat('d/M/yyyy');
   String grad;
 
   _ApartmaniBodyState({this.search, this.grad = ""}) {

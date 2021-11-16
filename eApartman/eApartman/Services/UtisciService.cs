@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using eApartman.Database;
 using eApartman.Model.Requests;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,19 @@ namespace eApartman.Services
         }
         public override IEnumerable<Model.Utisak> Get(UtisakSearchObject search)
         {
-            var set = _context.Utisaks.AsQueryable();
+            var set = _context.Set<Utisak>().AsQueryable();
             if (search?.ApartmanId > 0)
                 set = set.Where(u => u.ApartmanId == search.ApartmanId);
             if (search?.GostId > 0)
                 set = set.Where(u => u.KorisnikId == search.GostId);
+            if (search != null) 
+            {
+                foreach (var item in search.IncludeList)
+                {
+                    set = set.Include(item);
+                }
+            }
+
             return _mapper.Map<List<Model.Utisak>>(set);
         }
         public override Model.Utisak GetById(int id)
