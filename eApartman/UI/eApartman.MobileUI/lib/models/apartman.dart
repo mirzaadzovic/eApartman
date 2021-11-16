@@ -95,7 +95,7 @@ class Apartman {
   }
 
   double WiFiProsjek() {
-    double wifi;
+    double wifi = 0;
     utisci.forEach((element) {
       wifi += element.ocjenaWiFi;
     });
@@ -104,7 +104,7 @@ class Apartman {
   }
 
   double LokacijaProsjek() {
-    double lokacija;
+    double lokacija = 0;
     utisci.forEach((element) {
       lokacija += element.ocjenaLokacija;
     });
@@ -112,7 +112,7 @@ class Apartman {
   }
 
   double CistocaProsjek() {
-    double cistoca;
+    double cistoca = 0;
     utisci.forEach((element) {
       cistoca += element.ocjenaCistoca;
     });
@@ -120,7 +120,7 @@ class Apartman {
   }
 
   double VlasnikProsjek() {
-    double vlasnik;
+    double vlasnik = 0;
     utisci.forEach((element) {
       vlasnik += element.ocjenaVlasnik;
     });

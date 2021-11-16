@@ -1,3 +1,4 @@
+import 'package:eapartman_mobile/Helpers/helpers.dart';
 import 'package:eapartman_mobile/models/grad.dart';
 import 'package:eapartman_mobile/models/search_objects/apartman_search.dart';
 import 'package:eapartman_mobile/pages/apartmani/apartmani.dart';
@@ -20,8 +21,8 @@ class HomeBody extends StatefulWidget {
 class _HomeBodyState extends State<HomeBody> {
   TextEditingController _lokacijaController = TextEditingController();
   TextEditingController _osobaController = TextEditingController();
-  DateTime checkin = DateTime.now();
-  DateTime checkout = DateTime.now().add(Duration(days: 1));
+  DateTime checkin = Helpers.DateOnly(DateTime.now());
+  DateTime checkout = Helpers.DateOnly(DateTime.now().add(Duration(days: 1)));
   String _lokacija;
 
   void setLokacija(String grad) {
@@ -44,8 +45,11 @@ class _HomeBodyState extends State<HomeBody> {
     //ako se ode cancel na datePickeru, da vrijednost ne ostane null
     DateTime date = value != null ? value : checkout;
     setState(() {
-      checkout = value;
-      if (date.isBefore(checkin) || date.isAtSameMomentAs(checkin))
+      checkout = date;
+      if (checkout.isAtSameMomentAs(Helpers.DateOnly(DateTime.now()))) {
+        checkin = Helpers.DateOnly(DateTime.now());
+        checkout = Helpers.DateOnly(checkin.add(Duration(days: 1)));
+      } else if (date.isBefore(checkin) || date.isAtSameMomentAs(checkin))
         checkin = date.add(Duration(days: -1));
     });
   }

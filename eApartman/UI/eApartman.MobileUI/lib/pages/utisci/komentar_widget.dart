@@ -2,7 +2,7 @@ import 'package:eapartman_mobile/style.dart';
 import 'package:eapartman_mobile/widgets/avatar.dart';
 import 'package:flutter/material.dart';
 
-Widget komentarWidget(List<int> slika, String komentar, String username) {
+Widget KomentarWidget(List<int> slika, String komentar, String username) {
   return Card(
     child: Padding(
       padding: EdgeInsets.all(20),

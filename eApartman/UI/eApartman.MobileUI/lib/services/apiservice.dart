@@ -29,8 +29,9 @@ class APIService {
     String baseUrl = apiUrl + route;
     final String basicAuth =
         "basic " + base64Encode(utf8.encode("$username:$password"));
-
     if (search != null) baseUrl += "?${toQueryString(search)}";
+    print(baseUrl);
+
     try {
       final response = await http.get(Uri.parse(baseUrl),
           headers: {HttpHeaders.authorizationHeader: basicAuth});

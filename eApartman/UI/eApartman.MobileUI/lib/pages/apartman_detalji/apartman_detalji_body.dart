@@ -1,6 +1,8 @@
 import 'package:eapartman_mobile/Helpers/helpers.dart';
 import 'package:eapartman_mobile/models/apartman.dart';
 import 'package:eapartman_mobile/models/rezervacija.dart';
+import 'package:eapartman_mobile/pages/apartman_detalji/apartman_utisci.dart';
+import 'package:eapartman_mobile/pages/utisci/ocjena_prosjek.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/style.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
@@ -21,6 +23,11 @@ class ApartmanDetaljiBody extends StatefulWidget {
 class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
   Apartman apartman;
   List<List<int>> slike = [];
+  void setApartman(Apartman value) {
+    setState(() {
+      apartman = value;
+    });
+  }
 
   _ApartmanDetaljiBodyState({this.apartman}) {
     loadSlike();
@@ -69,13 +76,13 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
               children: [
                 Text(apartman.naziv, style: NaslovTextStyle),
                 SlikeCarousel(slike: slike),
-                SizedBox(height: 20),
+                ApartmanUtisci(apartman, setApartman),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text("Grad: " + apartman.gradNaziv, style: BodyTextStyle),
-                    Text("Cijena: " + apartman.cijena.toString() + " €",
+                    Text("Cijena: " + apartman.cijena.toStringAsFixed(0) + " €",
                         style: BodyTextStyle),
                     Text("Max osoba: " + apartman.maxOsoba.toString(),
                         style: BodyTextStyle),

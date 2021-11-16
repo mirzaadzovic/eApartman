@@ -1,6 +1,7 @@
 import 'package:eapartman_mobile/models/imodel.dart';
+import 'package:eapartman_mobile/models/iutisak.dart';
 
-class Utisak implements IModel {
+class Utisak implements IModel, IUtisak {
   int utisakId;
   int korisnikId;
   int apartmanId;
@@ -43,5 +44,25 @@ class Utisak implements IModel {
       };
   double Prosjek() {
     return (ocjenaCistoca + ocjenaLokacija + ocjenaVlasnik + ocjenaWiFi) / 4;
+  }
+
+  @override
+  int CistocaProsjek() {
+    return ocjenaCistoca;
+  }
+
+  @override
+  int LokacijaProsjek() {
+    return ocjenaLokacija;
+  }
+
+  @override
+  int VlasnikProsjek() {
+    return ocjenaVlasnik;
+  }
+
+  @override
+  int WifiProsjek() {
+    return ocjenaWiFi;
   }
 }

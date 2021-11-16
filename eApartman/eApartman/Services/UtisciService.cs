@@ -16,7 +16,7 @@ namespace eApartman.Services
         }
         public override IEnumerable<Model.Utisak> Get(UtisakSearchObject search)
         {
-            var set = _context.Set<Utisak>().AsQueryable();
+            var set = _context.Utisaks.AsQueryable();
             if (search?.ApartmanId > 0)
                 set = set.Where(u => u.ApartmanId == search.ApartmanId);
             if (search?.GostId > 0)
