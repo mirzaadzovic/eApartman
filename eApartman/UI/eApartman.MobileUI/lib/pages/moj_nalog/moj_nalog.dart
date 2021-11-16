@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:eapartman_mobile/models/korisnik.dart';
 import 'package:eapartman_mobile/models/search_objects/korisnik_search.dart';
 import 'package:eapartman_mobile/pages/loading/loading.dart';
@@ -9,6 +12,8 @@ import 'package:eapartman_mobile/widgets/error_text.dart';
 import 'package:eapartman_mobile/widgets/input.dart';
 import 'package:eapartman_mobile/widgets/poruka_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 
 class MojNalog extends StatefulWidget {
   const MojNalog({Key key}) : super(key: key);
@@ -18,6 +23,7 @@ class MojNalog extends StatefulWidget {
 }
 
 class _MojNalogState extends State<MojNalog> {
+  var slika = APIService.korisnik.slika;
   TextEditingController imeController =
       TextEditingController(text: APIService.korisnik.ime);
   TextEditingController prezimeController =
@@ -36,6 +42,22 @@ class _MojNalogState extends State<MojNalog> {
     if (prezimeController.text.length < 3) return "Prezime prekratko";
     if (telefonController.text.length < 8) return "Pogrešan unos telefona";
     return true;
+  }
+
+  // void getFromGallery() async {
+  //   final ImagePicker _picker = ImagePicker();
+  //   // Pick an image
+  //   final XFile image = await _picker.pickImage(source: ImageSource.gallery);
+  //   if (image != null) {
+  //     var bytes = await rootBundle.load(image.path);
+  //     var novaSlika = await writeToFile(bytes, image.path);
+  //   }
+  // }
+
+  Future<File> writeToFile(ByteData data, String path) {
+    final buffer = data.buffer;
+    return new File(path).writeAsBytes(
+        buffer.asUint8List(data.offsetInBytes, data.lengthInBytes));
   }
 
   void handleClick() async {

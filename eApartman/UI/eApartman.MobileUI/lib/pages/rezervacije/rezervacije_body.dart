@@ -4,11 +4,25 @@ import 'package:eapartman_mobile/models/rezervacija.dart';
 import 'package:eapartman_mobile/models/search_objects/rezervacija_serach.dart';
 import 'package:eapartman_mobile/pages/loading/loading.dart';
 import 'package:eapartman_mobile/pages/rezervacije/rezervacija_widget.dart';
+import 'package:eapartman_mobile/pages/rezervacije/rezervacije.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/style.dart';
+import 'package:eapartman_mobile/widgets/dropdown.dart';
 import 'package:flutter/material.dart';
 
-class RezervacijeBody extends StatelessWidget {
+class RezervacijeBody extends StatefulWidget {
+  _State createState() => _State();
+}
+
+class _State extends State<RezervacijeBody> {
+  String dropDownValue = "Sve";
+  void setValue(String value) {
+    setState(() {
+      dropDownValue = value;
+      print(value);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -19,13 +33,17 @@ class RezervacijeBody extends StatelessWidget {
             padding: EdgeInsets.all(20),
             child: Text("Moje rezervacije", style: PaleTextStyle),
           ),
-          bodyWidget(),
+          DropDown(setValue, dropDownValue),
+          SizedBox(
+            height: 20,
+          ),
+          bodyWidget(dropDownValue),
         ],
       )),
     );
   }
 
-  Widget bodyWidget() {
+  Widget bodyWidget(String status) {
     return FutureBuilder(
         future: GetRezervacije(),
         builder: (
@@ -37,17 +55,20 @@ class RezervacijeBody extends StatelessWidget {
           else if (snapshot.hasError)
             return Container(child: Text(snapshot.error.toString()));
           else if (snapshot.hasData) {
-            if (snapshot.data.isNotEmpty)
+            if (snapshot.data.isNotEmpty) {
+              List<Rezervacija> lista = snapshot.data;
+              if (status != "Sve")
+                lista = lista.where((r) => r.Status() == status).toList();
               return SingleChildScrollView(
                 child: ListView(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   physics: ClampingScrollPhysics(),
-                  children: snapshot.data
-                      .map((r) => rezervacijaWidget(r, context))
-                      .toList(),
+                  children:
+                      lista.map((r) => rezervacijaWidget(r, context)).toList(),
                 ),
               );
+            }
           }
           return Center(
             child: Padding(
