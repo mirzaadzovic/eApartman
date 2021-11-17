@@ -1,3 +1,4 @@
+import 'package:eapartman_mobile/Helpers/helpers.dart';
 import 'package:eapartman_mobile/models/apartman.dart';
 import 'package:eapartman_mobile/models/search_objects/apartman_search.dart';
 import 'package:eapartman_mobile/pages/apartman_detalji/apartman_detalji.dart';
@@ -15,6 +16,8 @@ Widget ApartmanWidget(
             builder: (context) => ApartmanDetalji(apartman: apartman)));
   }
 
+  double cijena = apartman.cijena *
+      Helpers.DateDifferenceDays(search.checkIn, search.checkOut);
   return Card(
     child: Padding(
       padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
@@ -46,10 +49,7 @@ Widget ApartmanWidget(
                       children: [
                         Text("Grad: " + apartman.gradNaziv,
                             style: BodyTextStyle),
-                        Text(
-                            "Cijena: " +
-                                apartman.cijena.toStringAsFixed(0) +
-                                " €",
+                        Text("Cijena: " + cijena.toStringAsFixed(0) + " €",
                             style: BodyTextStyle),
                         Text("Max osoba: " + apartman.maxOsoba.toString(),
                             style: BodyTextStyle),

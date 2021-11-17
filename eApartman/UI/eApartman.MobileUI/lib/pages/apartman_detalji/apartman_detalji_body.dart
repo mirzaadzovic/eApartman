@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:eapartman_mobile/Helpers/helpers.dart';
 import 'package:eapartman_mobile/models/apartman.dart';
 import 'package:eapartman_mobile/models/rezervacija.dart';
@@ -9,6 +11,7 @@ import 'package:eapartman_mobile/widgets/button.dart';
 import 'package:eapartman_mobile/widgets/poruka_dialog.dart';
 import 'package:eapartman_mobile/widgets/slike_carousel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 class ApartmanDetaljiBody extends StatefulWidget {
   Apartman apartman;
@@ -22,6 +25,7 @@ class ApartmanDetaljiBody extends StatefulWidget {
 
 class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
   Apartman apartman;
+  Map<String, dynamic> paymentIntentData;
   List<List<int>> slike = [];
   void setApartman(Apartman value) {
     setState(() {
@@ -29,7 +33,7 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
     });
   }
 
-  _ApartmanDetaljiBodyState({this.apartman}) {
+  _ApartmanDetaljiBodyState({this.apartman, this.paymentIntentData}) {
     loadSlike();
   }
   void loadSlike() {
@@ -91,11 +95,84 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
                 SizedBox(height: 20),
                 Button(
                   text: "Rezerviši",
-                  handleClick: handleRezervisi,
+                  handleClick: () async {
+                    makePayment();
+                  },
                 ),
               ],
             )),
       ),
     );
+  }
+
+  Future<void> makePayment() async {
+    try {
+      String cijena = calculateCijena().toStringAsFixed(0);
+      paymentIntentData = await createPaymentIntent(cijena, 'EUR');
+      await Stripe.instance
+          .initPaymentSheet(
+              paymentSheetParameters: SetupPaymentSheetParameters(
+                  paymentIntentClientSecret: paymentIntentData["client_secret"],
+                  applePay: true,
+                  googlePay: true,
+                  testEnv: true,
+                  style: ThemeMode.dark,
+                  merchantCountryCode: 'US',
+                  merchantDisplayName: APIService.username))
+          .then((value) {
+        print("value");
+      }).catchError((e) => print(e.toString()));
+      setState(() {});
+      displayPaymentSheet();
+    } catch (e) {
+      print("makePayment: " + e.toString());
+    }
+  }
+
+  dynamic createPaymentIntent(String amount, String currency) async {
+    try {
+      print(amount);
+      Map<String, dynamic> body = {
+        "amount": amount.toString(),
+        "currency": currency,
+        "payment_method_types[]": "card",
+      };
+
+      var response = await http.post(
+          Uri.parse('https://api.stripe.com/v1/payment_intents'),
+          body: body,
+          headers: {
+            'Authorization':
+                'Bearer sk_test_51JwnUmHsjqdF5wnurCvQMqqHGLRSZ0zmyCFAtnz1LB50HwtLkTiKggyzh1cIjdFCXGGZlz4m4hzoWBcry6R3an5j00OmbqNz8P',
+            'Content-Type': 'application/x-www-form-urlencoded',
+          });
+      print(response.body.toString());
+      return jsonDecode(response.body.toString());
+    } catch (e) {
+      print("create: " + e.toString());
+    }
+  }
+
+  double calculateCijena() {
+    return apartman.cijena *
+        Helpers.DateDifferenceDays(
+            apartman.search.checkIn, apartman.search.checkOut) *
+        100;
+  }
+
+  Future<void> displayPaymentSheet() async {
+    try {
+      await Stripe.instance.presentPaymentSheet(
+        parameters: PresentPaymentSheetParameters(
+          clientSecret: paymentIntentData['client_secret'],
+          confirmPayment: true,
+        ),
+      );
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Uspješno plaćanje")));
+      handleRezervisi();
+    } catch (e) {
+      print("display: " + e.toString());
+    }
   }
 }
