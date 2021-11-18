@@ -19,25 +19,26 @@ class Apartman {
   bool imaParking;
   bool petFriendly;
   double cijena;
+  DateTime datumSlobodan;
   List<int> slikaProfilnaFile;
   List<ApartmanSlika> apartmanSlikas;
   List<Utisak> utisci;
   ApartmanSearch search;
-  Apartman({
-    this.apartmanId,
-    this.naziv,
-    this.vlasnikId,
-    this.adresaNaziv,
-    this.gradNaziv,
-    this.maxOsoba,
-    this.imaBalkon,
-    this.imaParking,
-    this.petFriendly,
-    this.cijena,
-    this.slikaProfilnaFile,
-    this.apartmanSlikas,
-    this.utisci,
-  });
+  Apartman(
+      {this.apartmanId,
+      this.naziv,
+      this.vlasnikId,
+      this.adresaNaziv,
+      this.gradNaziv,
+      this.maxOsoba,
+      this.imaBalkon,
+      this.imaParking,
+      this.petFriendly,
+      this.cijena,
+      this.slikaProfilnaFile,
+      this.apartmanSlikas,
+      this.utisci,
+      this.datumSlobodan});
 
   factory Apartman.fromJson(Map<String, dynamic> json) {
     String stringByte = json["slikaProfilnaFile"] as String;
@@ -67,6 +68,7 @@ class Apartman {
       slikaProfilnaFile: bytes,
       apartmanSlikas: slike,
       utisci: utisaks,
+      datumSlobodan: DateTime.parse(json["datumSlobodan"]),
     );
   }
 

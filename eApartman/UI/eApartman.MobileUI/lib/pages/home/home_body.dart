@@ -1,7 +1,9 @@
 import 'package:eapartman_mobile/Helpers/helpers.dart';
+import 'package:eapartman_mobile/models/apartman.dart';
 import 'package:eapartman_mobile/models/grad.dart';
 import 'package:eapartman_mobile/models/search_objects/apartman_search.dart';
 import 'package:eapartman_mobile/pages/apartmani/apartmani.dart';
+import 'package:eapartman_mobile/pages/home/home_recommend.dart';
 import 'package:eapartman_mobile/services/apiservice.dart';
 import 'package:eapartman_mobile/widgets/button.dart';
 import 'package:eapartman_mobile/widgets/date_input.dart';
@@ -109,7 +111,8 @@ class _HomeBodyState extends State<HomeBody> {
           SizedBox(height: 20),
           DateInput(checkout, "Check-Out", handleCheckout),
           SizedBox(height: 20),
-          Button(text: "Traži", handleClick: handleTrazi)
+          Button(text: "Traži", handleClick: handleTrazi),
+          HomeRecommend(),
         ]),
       ),
     );

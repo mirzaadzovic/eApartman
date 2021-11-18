@@ -28,6 +28,7 @@ namespace eApartman.Model
         public int? DrzavaId => Adresa?.Grad?.DrzavaId;
         public int? GradId => Adresa?.GradId;
         public int CijenaInt => ((int)Cijena);
+        public DateTime DatumSlobodan { get; set; }
         public virtual ApartmanTip ApartmanTip { get; set; }
         public virtual ICollection<ApartmanSlika> ApartmanSlikas { get; set; }
         public virtual ICollection<Rezervacija> Rezervacijas { get; set; }

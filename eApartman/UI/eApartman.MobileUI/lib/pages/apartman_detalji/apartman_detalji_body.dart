@@ -87,12 +87,14 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text("Grad: " + apartman.gradNaziv, style: BodyTextStyle),
+                    Text("Osoba: " + apartman.search.osoba.toString(),
+                        style: BodyTextStyle),
+                    Text("Noćenja: " + calculateNocenja().toString(),
+                        style: BodyTextStyle),
                     Text(
                         "Cijena: " +
                             calculateCijena().toStringAsFixed(0) +
                             " €",
-                        style: BodyTextStyle),
-                    Text("Max osoba: " + apartman.maxOsoba.toString(),
                         style: BodyTextStyle),
                   ],
                 ),
@@ -158,9 +160,12 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
   // }
 
   double calculateCijena() {
-    return apartman.cijena *
-        Helpers.DateDifferenceDays(
-            apartman.search.checkIn, apartman.search.checkOut);
+    return apartman.cijena * calculateNocenja();
+  }
+
+  int calculateNocenja() {
+    return Helpers.DateDifferenceDays(
+        apartman.search.checkIn, apartman.search.checkOut);
   }
 
   Future<void> displayPaymentSheet() async {

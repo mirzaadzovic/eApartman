@@ -12,9 +12,11 @@ namespace eApartman.Controllers
 {
     public class ApartmaniController:BaseCRUDController<Model.Apartman, Apartman, ApartmanUpsertRequest, ApartmanUpsertRequest, ApartmanSearchObject>
     {
-        public ApartmaniController(ICRUDService<Model.Apartman, ApartmanSearchObject, ApartmanUpsertRequest, ApartmanUpsertRequest> service)
+        private readonly new IApartmaniService _service;
+        public ApartmaniController(IApartmaniService service)
             :base(service)
         {
+            _service = service;
         }
 
         [Authorize(Roles = "Vlasnik,Developer,ModeratorApartmani")]
@@ -36,6 +38,11 @@ namespace eApartman.Controllers
         public override Model.Apartman Delete(int id)
         {
             return _service.Delete(id);
+        }
+        [HttpGet("recommend/{id}")]
+        public IEnumerable<Model.Apartman> Recommend(int id)
+        {
+            return _service.Recommend(id);
         }
     }
 }
