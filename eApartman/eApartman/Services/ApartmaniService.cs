@@ -156,7 +156,7 @@ namespace eApartman.Services
                 options.LossFunction = MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass;
                 options.Alpha = 0.01;
                 options.Lambda = 0.025;
-                //options.K = 100;
+                options.NumberOfIterations = 100;
                 options.C = 0.00001;
 
                 var est = mlContext.Recommendation().Trainers.MatrixFactorization(options);
@@ -199,10 +199,10 @@ namespace eApartman.Services
 
         public class ApartmanEntry
         {
-            [KeyType(count: 10)]
+            [KeyType(count: 50)]
             public uint ApartmanID { get; set; }
 
-            [KeyType(count: 10)]
+            [KeyType(count: 50)]
             public uint CoRentedApartmanID { get; set; }
             public float Label { get; set; }
         }
