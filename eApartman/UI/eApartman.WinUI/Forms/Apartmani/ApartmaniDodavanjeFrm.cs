@@ -53,6 +53,11 @@ namespace eApartman.WinUI.Forms.Apartmani
                 await LoadData();
                 
                 SwitchComboBoxes(true);
+                if (_apartman != null)
+                {
+                    cmbDrzava.Enabled = false;
+                    cmbGrad.Enabled = false;
+                }
             }
             catch
             {
@@ -243,6 +248,11 @@ namespace eApartman.WinUI.Forms.Apartmani
                 control.Enabled = state;
             }
             CheckGalleryButtons();
+            if(_apartman!=null)
+            {
+                cmbDrzava.Enabled = false;
+                cmbGrad.Enabled = false;
+            }
         }
         private int GetAdresaTip()
         {

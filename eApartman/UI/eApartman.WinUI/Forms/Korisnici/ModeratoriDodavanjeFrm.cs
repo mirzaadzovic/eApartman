@@ -69,13 +69,14 @@ namespace eApartman.WinUI.Forms.Korisnici
                 await _apiModeratori.Insert<Moderator>(requestModerator);
 
                 MessageBox.Show($"Moderator {moderator.Username} dodan!");
+                this.Close();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Poruka", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loading(false);
             }
-            this.Close();
 
         }
         private void Loading(bool state)

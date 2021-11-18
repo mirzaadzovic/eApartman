@@ -44,5 +44,13 @@ namespace eApartman.WinUI.Forms.Korisnici
         {
 
         }
+
+        private async void btnDodaj_Click(object sender, EventArgs e)
+        {
+            var frm = new ModeratoriDodavanjeFrm();
+            frm.ShowDialog();
+            await LoadData();
+
+        }
     }
 }

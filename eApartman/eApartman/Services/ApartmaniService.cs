@@ -68,7 +68,8 @@ namespace eApartman.Services
         {
             if (!string.IsNullOrWhiteSpace(search.Grad) && search.Grad != "")
             {
-                set = set.Where(a => a.Adresa.Grad.Naziv.ToLower().Contains(search.Grad.ToLower()));
+                set = set.Where(a => a.Adresa.Grad.Naziv.ToLower().Contains(search.Grad.ToLower())
+                || a.Adresa.Grad.Drzava.Naziv.ToLower().Contains(search.Grad.ToLower()));
             }
 
             if (!string.IsNullOrWhiteSpace(search.Tip) && search.Tip != "")
