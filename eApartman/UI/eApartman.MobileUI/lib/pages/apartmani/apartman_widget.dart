@@ -13,7 +13,10 @@ Widget ApartmanWidget(
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => ApartmanDetalji(apartman: apartman)));
+            builder: (context) => ApartmanDetalji(
+                  apartman: apartman,
+                  setState: () {},
+                )));
   }
 
   double cijena = apartman.cijena *

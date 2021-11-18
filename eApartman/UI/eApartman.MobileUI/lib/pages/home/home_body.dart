@@ -112,7 +112,7 @@ class _HomeBodyState extends State<HomeBody> {
           DateInput(checkout, "Check-Out", handleCheckout),
           SizedBox(height: 20),
           Button(text: "Traži", handleClick: handleTrazi),
-          HomeRecommend(),
+          HomeRecommend(() => {this.setState(() {})}),
         ]),
       ),
     );

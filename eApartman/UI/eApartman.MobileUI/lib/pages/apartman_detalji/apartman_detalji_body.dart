@@ -16,25 +16,28 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 
 class ApartmanDetaljiBody extends StatefulWidget {
   Apartman apartman;
+  Function setHome;
 
-  ApartmanDetaljiBody({this.apartman});
+  ApartmanDetaljiBody({this.apartman, this.setHome});
 
   @override
   _ApartmanDetaljiBodyState createState() =>
-      _ApartmanDetaljiBodyState(apartman: apartman);
+      _ApartmanDetaljiBodyState(apartman: apartman, setHome: setHome);
 }
 
 class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
   Apartman apartman;
   Map<String, dynamic> paymentIntentData;
   List<List<int>> slike = [];
+  Function setHome;
   void setApartman(Apartman value) {
     setState(() {
       apartman = value;
     });
   }
 
-  _ApartmanDetaljiBodyState({this.apartman, this.paymentIntentData}) {
+  _ApartmanDetaljiBodyState(
+      {this.apartman, this.paymentIntentData, this.setHome}) {
     loadSlike();
   }
   void loadSlike() {
@@ -63,6 +66,7 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
           handleClick: () => Navigator.pop(context, 'OK'),
           context: context,
         );
+        setHome();
         Navigator.popUntil(context, ModalRoute.withName("/home"));
       }
     } catch (e) {

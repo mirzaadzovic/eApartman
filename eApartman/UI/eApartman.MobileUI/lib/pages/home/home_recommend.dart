@@ -9,14 +9,15 @@ import 'package:intl/intl.dart';
 
 class HomeRecommend extends StatelessWidget {
   List<Apartman> preporuka;
-  HomeRecommend();
+  Function setState;
+  HomeRecommend(this.setState);
   @override
   Widget build(BuildContext context) {
-    return body();
+    return body(setState);
   }
 }
 
-Widget body() {
+Widget body(Function setState) {
   return FutureBuilder(
     future: getPreporuke(),
     builder: (BuildContext context, AsyncSnapshot<List<Apartman>> snapshot) {
@@ -35,7 +36,8 @@ Widget body() {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  ...snapshot.data.map((a) => apartmanPreporuka(a, context))
+                  ...snapshot.data
+                      .map((a) => apartmanPreporuka(a, context, setState))
                 ],
               ),
             ],
@@ -52,6 +54,8 @@ Future<List<Apartman>> getPreporuke() async {
     var result = await APIService.Get(
         "Apartmani/recommend/${APIService.korisnik.korisnikId}", null);
     var list = (result as List).map((a) => Apartman.fromJson(a)).toList();
+    print(result);
+    print(list[0].datumSlobodan);
     return list;
   } catch (e) {
     print(e.toString());
@@ -59,7 +63,8 @@ Future<List<Apartman>> getPreporuke() async {
   }
 }
 
-Widget apartmanPreporuka(Apartman apartman, BuildContext context) {
+Widget apartmanPreporuka(
+    Apartman apartman, BuildContext context, Function setState) {
   DateFormat formatter = DateFormat("d/M/yyyy");
   void handleTap() {
     apartman.search = ApartmanSearch(
@@ -71,7 +76,8 @@ Widget apartmanPreporuka(Apartman apartman, BuildContext context) {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => ApartmanDetalji(apartman: apartman)));
+            builder: (context) =>
+                ApartmanDetalji(apartman: apartman, setState: setState)));
   }
 
   return Center(

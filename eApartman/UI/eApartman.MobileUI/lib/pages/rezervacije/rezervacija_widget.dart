@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 Widget rezervacijaWidget(Rezervacija rezervacija, BuildContext context) {
+  print(rezervacija.checkIn);
   DateFormat formatter = DateFormat("d/M/yyyy");
 
   void handlePogledaj() async {

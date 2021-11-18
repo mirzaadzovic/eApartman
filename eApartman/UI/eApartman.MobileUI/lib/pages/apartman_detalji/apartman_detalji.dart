@@ -6,13 +6,14 @@ import 'package:flutter/material.dart';
 
 class ApartmanDetalji extends StatelessWidget {
   Apartman apartman;
-  ApartmanDetalji({this.apartman});
+  Function setState = () {};
+  ApartmanDetalji({this.apartman, this.setState});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(title: "Apartman > Detalji"),
-      body: ApartmanDetaljiBody(apartman: apartman),
+      body: ApartmanDetaljiBody(apartman: apartman, setHome: setState),
     );
   }
 }

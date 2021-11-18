@@ -199,27 +199,27 @@ namespace eApartman.Services
 
         public class ApartmanEntry
         {
-            [KeyType(count: 31)]
+            [KeyType(count: 10)]
             public uint ApartmanID { get; set; }
 
-            [KeyType(count: 31)]
+            [KeyType(count: 10)]
             public uint CoRentedApartmanID { get; set; }
             public float Label { get; set; }
         }
 
-        public DateTime GetPrviSlobodanDatum(Model.Apartman apartman)
+        public string GetPrviSlobodanDatum(Model.Apartman apartman)
         {
             var rezervacije = _context.Rezervacijas
                 .Where(r => r.ApartmanId == apartman.ApartmanId && r.DatumCheckIn.Date >= DateTime.Today.Date);
 
-            DateTime datum=DateTime.Now.Date;
+            DateTime datum=DateTime.Today;
             var rezervacija = rezervacije.Where(r => r.DatumCheckIn.Date == datum).FirstOrDefault();
             while (rezervacija!=null)
             {             
                 datum = datum.AddDays((int)rezervacija.BrojDana).Date;
                 rezervacija = rezervacije.Where(r => r.DatumCheckIn.Date == datum).FirstOrDefault();
             }
-            return datum;
+            return datum.ToString("yyyy-MM-dd");
         }
 
     }

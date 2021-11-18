@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:core';
 import 'dart:core';
 
+import 'package:eapartman_mobile/Helpers/helpers.dart';
 import 'package:eapartman_mobile/models/apartman_ocjene.dart';
 import 'package:eapartman_mobile/models/apartman_slika.dart';
 import 'package:eapartman_mobile/models/search_objects/apartman_search.dart';
@@ -24,21 +25,22 @@ class Apartman {
   List<ApartmanSlika> apartmanSlikas;
   List<Utisak> utisci;
   ApartmanSearch search;
-  Apartman(
-      {this.apartmanId,
-      this.naziv,
-      this.vlasnikId,
-      this.adresaNaziv,
-      this.gradNaziv,
-      this.maxOsoba,
-      this.imaBalkon,
-      this.imaParking,
-      this.petFriendly,
-      this.cijena,
-      this.slikaProfilnaFile,
-      this.apartmanSlikas,
-      this.utisci,
-      this.datumSlobodan});
+  Apartman({
+    this.apartmanId,
+    this.naziv,
+    this.vlasnikId,
+    this.adresaNaziv,
+    this.gradNaziv,
+    this.maxOsoba,
+    this.imaBalkon,
+    this.imaParking,
+    this.petFriendly,
+    this.cijena,
+    this.datumSlobodan,
+    this.slikaProfilnaFile,
+    this.apartmanSlikas,
+    this.utisci,
+  });
 
   factory Apartman.fromJson(Map<String, dynamic> json) {
     String stringByte = json["slikaProfilnaFile"] as String;
@@ -68,7 +70,9 @@ class Apartman {
       slikaProfilnaFile: bytes,
       apartmanSlikas: slike,
       utisci: utisaks,
-      datumSlobodan: DateTime.parse(json["datumSlobodan"]),
+      datumSlobodan: json["datumSlobodan"] == null
+          ? DateTime.now()
+          : DateTime.parse(json["datumSlobodan"]),
     );
   }
 
