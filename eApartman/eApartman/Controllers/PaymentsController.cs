@@ -16,16 +16,16 @@ namespace eApartman.Controllers
     public class PaymentsController:ControllerBase
     {
         public readonly IOptions<StripeSettings> options;
-        private readonly IStripeClient _client;
+        private readonly StripeClient _client;
         private readonly eApartmanContext _context;
-        public PaymentsController(IOptions<StripeSettings> options, IStripeClient client, eApartmanContext context)
+        public PaymentsController(IOptions<StripeSettings> options, eApartmanContext context)
         {
             this.options = options;
-            this._client = client;
+            this._client = new StripeClient(this.options.Value.SecretKey);
             this._context = context;
         }
         [HttpPost("create-payment-intent")]
-        public async Task<IActionResult> CreatePaymentIntent(RezervacijaPayment request)
+        public async Task<IActionResult> CreatePaymentIntent([FromBody]RezervacijaPayment request)
         {
 
             var options = new PaymentIntentCreateOptions
@@ -39,7 +39,7 @@ namespace eApartman.Controllers
             };
             var service = new PaymentIntentService(this._client);
             var paymentIntent = await service.CreateAsync(options);
-            return Ok(new { ClientSecret = paymentIntent.ClientSecret });
+            return Ok(new { client_secret = paymentIntent.ClientSecret });
         }
 
         private long GetCijena(RezervacijaPayment request)

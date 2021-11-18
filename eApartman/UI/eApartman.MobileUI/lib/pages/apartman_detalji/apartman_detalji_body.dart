@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:eapartman_mobile/services/paymentservice.dart';
 import 'package:http/http.dart' as http;
 import 'package:eapartman_mobile/Helpers/helpers.dart';
 import 'package:eapartman_mobile/models/apartman.dart';
@@ -86,7 +87,10 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text("Grad: " + apartman.gradNaziv, style: BodyTextStyle),
-                    Text("Cijena: " + apartman.cijena.toStringAsFixed(0) + " €",
+                    Text(
+                        "Cijena: " +
+                            calculateCijena().toStringAsFixed(0) +
+                            " €",
                         style: BodyTextStyle),
                     Text("Max osoba: " + apartman.maxOsoba.toString(),
                         style: BodyTextStyle),
@@ -108,7 +112,7 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
   Future<void> makePayment() async {
     try {
       String cijena = calculateCijena().toStringAsFixed(0);
-      paymentIntentData = await createPaymentIntent(cijena, 'EUR');
+      paymentIntentData = await PaymentService.CreatePaymentContent(apartman);
       await Stripe.instance
           .initPaymentSheet(
               paymentSheetParameters: SetupPaymentSheetParameters(
@@ -129,35 +133,34 @@ class _ApartmanDetaljiBodyState extends State<ApartmanDetaljiBody> {
     }
   }
 
-  dynamic createPaymentIntent(String amount, String currency) async {
-    try {
-      print(amount);
-      Map<String, dynamic> body = {
-        "amount": amount.toString(),
-        "currency": currency,
-        "payment_method_types[]": "card",
-      };
+  // dynamic createPaymentIntent(String amount, String currency) async {
+  //   try {
+  //     print(amount);
+  //     Map<String, dynamic> body = {
+  //       "amount": amount.toString(),
+  //       "currency": currency,
+  //       "payment_method_types[]": "card",
+  //     };
 
-      var response = await http.post(
-          Uri.parse('https://api.stripe.com/v1/payment_intents'),
-          body: body,
-          headers: {
-            'Authorization':
-                'Bearer sk_test_51JwnUmHsjqdF5wnurCvQMqqHGLRSZ0zmyCFAtnz1LB50HwtLkTiKggyzh1cIjdFCXGGZlz4m4hzoWBcry6R3an5j00OmbqNz8P',
-            'Content-Type': 'application/x-www-form-urlencoded',
-          });
-      print(response.body.toString());
-      return jsonDecode(response.body.toString());
-    } catch (e) {
-      print("create: " + e.toString());
-    }
-  }
+  //     var response = await http.post(
+  //         Uri.parse('https://api.stripe.com/v1/payment_intents'),
+  //         body: body,
+  //         headers: {
+  //           'Authorization':
+  //               'Bearer sk_test_51JwnUmHsjqdF5wnurCvQMqqHGLRSZ0zmyCFAtnz1LB50HwtLkTiKggyzh1cIjdFCXGGZlz4m4hzoWBcry6R3an5j00OmbqNz8P',
+  //           'Content-Type': 'application/x-www-form-urlencoded',
+  //         });
+  //     print(response.body.toString());
+  //     return jsonDecode(response.body.toString());
+  //   } catch (e) {
+  //     print("create: " + e.toString());
+  //   }
+  // }
 
   double calculateCijena() {
     return apartman.cijena *
         Helpers.DateDifferenceDays(
-            apartman.search.checkIn, apartman.search.checkOut) *
-        100;
+            apartman.search.checkIn, apartman.search.checkOut);
   }
 
   Future<void> displayPaymentSheet() async {
