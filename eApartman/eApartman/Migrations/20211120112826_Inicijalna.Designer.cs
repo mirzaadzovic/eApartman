@@ -10,7 +10,7 @@ using eApartman.Database;
 namespace eApartman.Migrations
 {
     [DbContext(typeof(eApartmanContext))]
-    [Migration("20211119222851_Inicijalna")]
+    [Migration("20211120112826_Inicijalna")]
     partial class Inicijalna
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -412,11 +412,11 @@ namespace eApartman.Migrations
                         new
                         {
                             KorisnikId = 1,
-                            DatumRegistracije = new DateTime(2021, 11, 19, 23, 28, 49, 651, DateTimeKind.Local).AddTicks(125),
+                            DatumRegistracije = new DateTime(2021, 11, 20, 12, 28, 25, 45, DateTimeKind.Local).AddTicks(8486),
                             Email = "user@example.com",
                             Ime = "User",
-                            PasswordHash = "NQ6O4To5Kjw68Mg+j2ne97IHuW0=",
-                            PasswordSalt = "LMQj/Fj187Z0/6eSfri03w==",
+                            PasswordHash = "nlBkFIQkWW06j3fkQjo0nvaVgD4=",
+                            PasswordSalt = "8R4a0I2/14gtvpoklgu9WQ==",
                             Prezime = "Usersky",
                             Status = true,
                             Telefon = "062-225-883",
@@ -425,11 +425,11 @@ namespace eApartman.Migrations
                         new
                         {
                             KorisnikId = 2,
-                            DatumRegistracije = new DateTime(2021, 11, 19, 23, 28, 49, 673, DateTimeKind.Local).AddTicks(5029),
+                            DatumRegistracije = new DateTime(2021, 11, 20, 12, 28, 25, 60, DateTimeKind.Local).AddTicks(1184),
                             Email = "admin@example.com",
                             Ime = "Admin",
-                            PasswordHash = "3NpcU3oFXmv4AIN2uZcy+80cFPI=",
-                            PasswordSalt = "T+4Pi+BKyEcp54dL5iHR4Q==",
+                            PasswordHash = "vVtgnGna1sONJsNxqmss7tgZ7l4=",
+                            PasswordSalt = "McFX+/X6SeApSptk8nbTIQ==",
                             Prezime = "Admin",
                             Status = true,
                             Telefon = "061-225-883",
@@ -438,11 +438,11 @@ namespace eApartman.Migrations
                         new
                         {
                             KorisnikId = 3,
-                            DatumRegistracije = new DateTime(2021, 11, 19, 23, 28, 49, 673, DateTimeKind.Local).AddTicks(7357),
+                            DatumRegistracije = new DateTime(2021, 11, 20, 12, 28, 25, 60, DateTimeKind.Local).AddTicks(3501),
                             Email = "gost@example.com",
                             Ime = "Ado",
-                            PasswordHash = "31oNxDrFdOtrJ96rBJIlvPIkH10=",
-                            PasswordSalt = "0QR1iruyKedvYTQKnO9jvg==",
+                            PasswordHash = "eoKmeOj4pD+MP3xhCzzcSjhX5L8=",
+                            PasswordSalt = "7eGBEN5kEekw2ETgTAlREw==",
                             Prezime = "Gegaj",
                             Status = true,
                             Telefon = "063-225-883",
@@ -519,6 +519,15 @@ namespace eApartman.Migrations
                     b.HasKey("PopustId");
 
                     b.ToTable("Popust");
+
+                    b.HasData(
+                        new
+                        {
+                            PopustId = 1,
+                            Naziv = "Sedmični",
+                            Opis = "Popust za rezervacije duže od 7 dana",
+                            Procent = 0.05m
+                        });
                 });
 
             modelBuilder.Entity("eApartman.Database.Rezervacija", b =>
@@ -583,6 +592,40 @@ namespace eApartman.Migrations
                     b.HasIndex("PopustId");
 
                     b.ToTable("Rezervacija");
+
+                    b.HasData(
+                        new
+                        {
+                            RezervacijaId = 1,
+                            ApartmanId = 4,
+                            BrojDana = 2,
+                            BrojOsoba = 12,
+                            Cijena = 10m,
+                            DatumCheckIn = new DateTime(2021, 11, 18, 0, 0, 0, 0, DateTimeKind.Local),
+                            DatumCheckOut = new DateTime(2021, 11, 20, 0, 0, 0, 0, DateTimeKind.Local),
+                            GostId = 3,
+                            GostIme = "Ado",
+                            GostPrezime = "Gegaj",
+                            Izvrsena = true,
+                            Otkazana = false,
+                            Poruka = "Pravim parti drama"
+                        },
+                        new
+                        {
+                            RezervacijaId = 2,
+                            ApartmanId = 2,
+                            BrojDana = 2,
+                            BrojOsoba = 1,
+                            Cijena = 50m,
+                            DatumCheckIn = new DateTime(2021, 11, 18, 0, 0, 0, 0, DateTimeKind.Local),
+                            DatumCheckOut = new DateTime(2021, 11, 20, 0, 0, 0, 0, DateTimeKind.Local),
+                            GostId = 3,
+                            GostIme = "Ado",
+                            GostPrezime = "Gegaj",
+                            Izvrsena = true,
+                            Otkazana = false,
+                            Poruka = "Bit ću vamo sam i na Gorici s rajom istovremeno, pa ćemo viđet kako će ić"
+                        });
                 });
 
             modelBuilder.Entity("eApartman.Database.Uloga", b =>

@@ -25,7 +25,7 @@ namespace eApartman.WinUI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:5013/api")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:5013/api")]
         public string APIURL {
             get {
                 return ((string)(this["APIURL"]));

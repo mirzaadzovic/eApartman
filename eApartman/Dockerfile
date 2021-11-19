@@ -15,6 +15,6 @@ RUN dotnet publish "eApartman" -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ADD ./eApartman/Slike ./eApartman/Slike
+ADD ./img ./img
 
 ENTRYPOINT ["dotnet", "eApartman.dll"]
