@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class PaymentService {
   static String _url =
-      "http://10.0.2.2:5000/api/payments/create-payment-intent";
+      "http://10.0.2.2:5012/api/payments/create-payment-intent";
   static Future<dynamic> CreatePaymentContent(Apartman apartman) async {
     try {
       Map<String, dynamic> body = {
