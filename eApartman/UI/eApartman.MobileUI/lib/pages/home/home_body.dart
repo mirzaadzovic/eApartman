@@ -88,33 +88,30 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(60, 20, 60, 20),
-        child: Column(children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-            child: Text("Kuda biste putovali?", style: PaleTextStyle),
-          ),
-          //IconInput(_lokacijaController, "Lokacija", false, Icons.search),
-          InputLokacija(
-            controller: _lokacijaController,
-            lokacija: _lokacija,
-            text: "Lokacija",
-            icon: Icons.search,
-            setLokacija: setLokacija,
-          ),
-          SizedBox(height: 20),
-          IconInputNum(_osobaController, "Broj osoba", false, Icons.person),
-          SizedBox(height: 20),
-          DateInput(checkin, "Check-In", handleCheckin),
-          SizedBox(height: 20),
-          DateInput(checkout, "Check-Out", handleCheckout),
-          SizedBox(height: 20),
-          Button(text: "Traži", handleClick: handleTrazi),
-          HomeRecommend(() => {this.setState(() {})}),
-        ]),
-      ),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(60, 20, 60, 20),
+      child: Column(children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+          child: Text("Kuda biste putovali?", style: PaleTextStyle),
+        ),
+        //IconInput(_lokacijaController, "Lokacija", false, Icons.search),
+        InputLokacija(
+          controller: _lokacijaController,
+          lokacija: _lokacija,
+          text: "Lokacija",
+          icon: Icons.search,
+          setLokacija: setLokacija,
+        ),
+        SizedBox(height: 20),
+        IconInputNum(_osobaController, "Broj osoba", false, Icons.person),
+        SizedBox(height: 20),
+        DateInput(checkin, "Check-In", handleCheckin),
+        SizedBox(height: 20),
+        DateInput(checkout, "Check-Out", handleCheckout),
+        SizedBox(height: 20),
+        Button(text: "Traži", handleClick: handleTrazi),
+      ]),
     );
   }
 }

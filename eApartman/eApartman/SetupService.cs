@@ -11,7 +11,7 @@ namespace eApartman
     {
         public void Init(eApartmanContext context)
         {
-            context.Database.Migrate();
+            //context.Database.Migrate();
 
             if (!context.Popusts.Where(p => p.Naziv == "Sedmični").Any())
             {

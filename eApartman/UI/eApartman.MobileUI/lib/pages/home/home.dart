@@ -5,6 +5,8 @@ import 'package:eapartman_mobile/widgets/my_appbar.dart';
 import 'package:eapartman_mobile/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
 
+import 'home_recommend.dart';
+
 class Home extends StatelessWidget {
   const Home({Key key}) : super(key: key);
 
@@ -14,7 +16,14 @@ class Home extends StatelessWidget {
       appBar: MyAppBar(title: "eApartman"),
       drawer: MyDrawer(),
       drawerEnableOpenDragGesture: true,
-      body: HomeBody(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HomeBody(),
+            HomeRecommend(),
+          ],
+        ),
+      ),
     );
   }
 }

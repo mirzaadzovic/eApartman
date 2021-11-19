@@ -66,3 +66,10 @@ const SmallLinkTextStyle = TextStyle(
   fontSize: SmallTextSize,
   decoration: TextDecoration.underline,
 );
+
+const PreporukaTextStyle = TextStyle(
+  fontFamily: FontNameDefault,
+  color: Colors.black,
+  fontSize: MediumTextSize,
+  //fontWeight: FontWeight.bold,
+);

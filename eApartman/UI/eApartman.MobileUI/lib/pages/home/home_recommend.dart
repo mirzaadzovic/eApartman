@@ -7,13 +7,16 @@ import 'package:eapartman_mobile/style.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class HomeRecommend extends StatelessWidget {
+class HomeRecommend extends StatefulWidget {
+  _State createState() => _State();
+}
+
+class _State extends State<HomeRecommend> {
   List<Apartman> preporuka;
-  Function setState;
-  HomeRecommend(this.setState);
+
   @override
   Widget build(BuildContext context) {
-    return body(setState);
+    return body(() => this.setState(() {}));
   }
 }
 
@@ -33,8 +36,8 @@ Widget body(Function setState) {
                 padding: EdgeInsets.all(10),
                 child: Text("Preporuke", style: BodyTextStyle),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ...snapshot.data
                       .map((a) => apartmanPreporuka(a, context, setState))
@@ -80,29 +83,31 @@ Widget apartmanPreporuka(
                 ApartmanDetalji(apartman: apartman, setState: setState)));
   }
 
-  return Center(
+  return Expanded(
+    flex: 2,
     child: Padding(
       padding: const EdgeInsets.all(10),
       child: Column(
         children: [
-          Text(
-            apartman.naziv,
-            style: NaslovTextStyle,
-            textAlign: TextAlign.center,
-          ),
-          Text(
-            formatter.format(apartman.datumSlobodan) +
-                "-" +
-                formatter.format(apartman.datumSlobodan.add(Duration(days: 1))),
-            style: PodNaslovTextStyle,
-          ),
           GestureDetector(
             onTap: handleTap,
             child: Image(
               fit: BoxFit.cover,
               height: 100,
+              width: 150,
               image: MemoryImage(apartman.slikaProfilnaFile),
             ),
+          ),
+          Text(
+            apartman.naziv,
+            style: PreporukaTextStyle,
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            formatter.format(apartman.datumSlobodan) +
+                "\n" +
+                formatter.format(apartman.datumSlobodan.add(Duration(days: 1))),
+            style: PodNaslovTextStyle,
           ),
         ],
       ),
