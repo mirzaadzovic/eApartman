@@ -225,6 +225,10 @@ namespace eApartman.WinUI.Forms
                 frm.MdiParent = this;
                 frm.Show();
             }
+            else
+            {
+                MessageBox.Show("Nemate pravo printanja izvještaja!");
+            }
         }
     }
 }

@@ -67,7 +67,7 @@ namespace eApartman
             });
 
             services.AddDbContext<eApartmanContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("BackupDB")));
+                options.UseSqlServer(Configuration.GetConnectionString("eApartmanDB")));
             
             services.AddScoped<ICRUDService<Model.Drzava, DrzavaSearchObject, DrzavaUpsertRequest, DrzavaUpsertRequest>, DrzaveService>();
             services.AddScoped<ICRUDService<Model.Grad, GradSearchObject, GradUpsertRequest, GradUpsertRequest>, GradService>();

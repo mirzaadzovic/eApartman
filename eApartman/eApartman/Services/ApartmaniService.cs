@@ -122,75 +122,78 @@ namespace eApartman.Services
             }
 
             int apartmanId = (int)rezervacija.ApartmanId;
-  
-
-            if (mlContext == null)
+            try
             {
-                mlContext = new MLContext();
-                var tmpData = _context.Korisniks.Include("Rezervacijas")
-                    .Where(k=>k.KorisnikId!=korisnikId && k.Rezervacijas.Count>0);
-                var data = new List<ApartmanEntry>();
-                
-                foreach(var k in tmpData)
+                if (mlContext == null)
                 {
-                    var disctinctItemId = k.Rezervacijas.Select(r => r.ApartmanId).Distinct().ToList();
-                    disctinctItemId.ForEach(a =>
+                    mlContext = new MLContext();
+                    var tmpData = _context.Korisniks.Include("Rezervacijas")
+                        .Where(k => k.Rezervacijas.Count > 0);
+                    var data = new List<ApartmanEntry>();
+
+                    foreach (var k in tmpData)
                     {
-                        var relatedItems = k.Rezervacijas.Where(x => x.ApartmanId != a);
-                        foreach(var rItem in relatedItems)
+                        var disctinctItemId = k.Rezervacijas.Select(r => r.ApartmanId).Distinct().ToList();
+                        disctinctItemId.ForEach(a =>
                         {
-                            data.Add(new ApartmanEntry() 
+                            var relatedItems = k.Rezervacijas.Where(x => x.ApartmanId != a);
+                            foreach (var rItem in relatedItems)
                             {
-                                ApartmanID=(uint)a,
-                                CoRentedApartmanID=(uint)rItem.ApartmanId
-                            });
-                        }
-                    });
+                                data.Add(new ApartmanEntry()
+                                {
+                                    ApartmanID = (uint)a,
+                                    CoRentedApartmanID = (uint)rItem.ApartmanId
+                                });
+                            }
+                        });
+                    }
+                    var trainData = mlContext.Data.LoadFromEnumerable(data);
+
+                    MatrixFactorizationTrainer.Options options = new MatrixFactorizationTrainer.Options();
+                    options.MatrixColumnIndexColumnName = nameof(ApartmanEntry.ApartmanID);
+                    options.MatrixRowIndexColumnName = nameof(ApartmanEntry.CoRentedApartmanID);
+                    options.LabelColumnName = "Label";
+                    options.LossFunction = MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass;
+                    options.Alpha = 0.01;
+                    options.Lambda = 0.025;
+                    options.NumberOfIterations = 100;
+                    options.C = 0.00001;
+
+                    var est = mlContext.Recommendation().Trainers.MatrixFactorization(options);
+
+                    model = est.Fit(trainData);
+
                 }
-                var trainData = mlContext.Data.LoadFromEnumerable(data);
-                
-                MatrixFactorizationTrainer.Options options = new MatrixFactorizationTrainer.Options();
-                options.MatrixColumnIndexColumnName = nameof(ApartmanEntry.ApartmanID);
-                options.MatrixRowIndexColumnName = nameof(ApartmanEntry.CoRentedApartmanID);
-                options.LabelColumnName = "Label";
-                options.LossFunction = MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass;
-                options.Alpha = 0.01;
-                options.Lambda = 0.025;
-                options.NumberOfIterations = 100;
-                options.C = 0.00001;
 
-                var est = mlContext.Recommendation().Trainers.MatrixFactorization(options);
-               
-                model= est.Fit(trainData);
+                var allItems = _context.Apartmen.Include("Adresa.Grad").Include("ApartmanSlikas").Where(r => r.ApartmanId != apartmanId);
 
-            }
+                var predictionResult = new List<Tuple<Apartman, float>>();
 
-            var allItems = _context.Apartmen.Include("Adresa.Grad").Include("ApartmanSlikas").Where(r=>r.ApartmanId!=apartmanId);
-
-            var predictionResult = new List<Tuple<Apartman, float>>();
-
-            foreach(var item in allItems)
-            {
-                var predictionEngine = mlContext.Model.CreatePredictionEngine<ApartmanEntry, CoRented_prediction>(model);
-
-                var prediction = predictionEngine.Predict(new ApartmanEntry()
+                foreach (var item in allItems)
                 {
-                    ApartmanID=(uint)apartmanId,
-                    CoRentedApartmanID=(uint)item.ApartmanId
-                });
-                predictionResult.Add(new Tuple<Apartman, float>(item, prediction.Score));
+                    var predictionEngine = mlContext.Model.CreatePredictionEngine<ApartmanEntry, CoRented_prediction>(model);
+
+                    var prediction = predictionEngine.Predict(new ApartmanEntry()
+                    {
+                        ApartmanID = (uint)apartmanId,
+                        CoRentedApartmanID = (uint)item.ApartmanId
+                    });
+                    predictionResult.Add(new Tuple<Apartman, float>(item, prediction.Score));
+                }
+
+                var finalResult = predictionResult.OrderByDescending(x => x.Item2)
+                    .Select(pr => _mapper.Map<Model.Apartman>(pr.Item1)).Take(2).ToList();
+
+                for (int i = 0; i < finalResult.Count; i++)
+                {
+                    finalResult[i].DatumSlobodan = GetPrviSlobodanDatum(finalResult[i]);
+                }
+                return finalResult;
             }
-
-            var finalResult = predictionResult.OrderByDescending(x => x.Item2)
-                .Select(pr => _mapper.Map<Model.Apartman>(pr.Item1)).Take(2).ToList();
-
-            for(int i=0; i<finalResult.Count; i++)
+            catch
             {
-                finalResult[i].DatumSlobodan = GetPrviSlobodanDatum(finalResult[i]);
-            }
-            
-
-            return finalResult;
+                return new List<Model.Apartman>();
+            }                     
         }
         public class CoRented_prediction
         {

@@ -14,7 +14,7 @@ import 'package:http/http.dart' as http;
 class APIService {
   static String username = "";
   static String password = "";
-  static String apiUrl = "http://10.0.2.2:5012/api/";
+  static String apiUrl = "http://10.0.2.2:5013/api/";
   static Korisnik korisnik;
   String route;
 

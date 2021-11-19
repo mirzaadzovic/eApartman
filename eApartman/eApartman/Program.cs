@@ -19,7 +19,7 @@ namespace eApartman
             using(var scope = host.Services.CreateScope())
             {
                 var database = scope.ServiceProvider.GetService<eApartmanContext>();
-                new SetupService().Init(database);
+               new SetupService().Init(database);
             }
             host.Run();
         }
