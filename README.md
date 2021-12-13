@@ -12,4 +12,8 @@ Test accounts:
     - username: user
     - password: user	
 
+# Start docker containers
+
+- Open terminal in repository's root folder and run docker-compose build, docket-compose up.
+
      
